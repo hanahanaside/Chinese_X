@@ -88,6 +88,14 @@ public class Player : Character {
 		mAnimator.SetTrigger ("HighKick");
 	}
 
+	public void LowKick(){
+		mAnimator.SetTrigger ("LowKick");
+	}
+
+	public void Death(){
+		mAnimator.SetTrigger ("Death");
+	}
+
 	private void Flip () {
 		// Switch the way the player is labelled as facing.
 		mFacingRight = !mFacingRight;

@@ -18,17 +18,26 @@ public class GameContainerManager : ContainerManager<GameContainerManager> {
 	}
 
 	void OnGUI () {
-		Rect rect = new Rect (10, 10, 150, 50);
-		bool isClicked = GUI.Button (rect, "Set UP!!");
-		if (isClicked) {
-			print ("Stand by Ready!");
+		Rect gameoverRect = new Rect (10, 10, 150, 50);
+		bool gameover = GUI.Button (gameoverRect, "GAME OVER");
+		if (gameover) {
+			OnGameOverEvent ();
+			DestoryContainer ();
+		}
+		Rect deathRect = new Rect (10,100,150,50);
+		bool death = GUI.Button (deathRect,"Death");
+		if(death){
+			Player.instance.Death ();
 		}
 	}
 
 	public  void OnAtackButtonClicked () {
-		//	OnGameOverEvent();
-		//	DestoryContainer ();
-		Player.instance.HighKick ();
+		float v = Input.GetAxis ("Vertical");
+		if (v < 0) {
+			Player.instance.LowKick ();
+		} else {
+			Player.instance.HighKick ();
+		}
 	}
 
 	public void OnJumpButtonClicked () {
