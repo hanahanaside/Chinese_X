@@ -21,6 +21,6 @@ public class GameContainerManager : ContainerManager<GameContainerManager> {
 	}
 
 	public void OnJumpButtonClicked () {
-
+		Player.instance.Jump ();
 	}
 }

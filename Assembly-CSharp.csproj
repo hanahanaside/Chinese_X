@@ -161,7 +161,6 @@
      <Compile Include="Assets\NGUI\Scripts\Tweening\TweenWidth.cs" />
      <Compile Include="Assets\NGUI\Scripts\Tweening\UITweener.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UI2DSprite.cs" />
-     <Compile Include="Assets\NGUI\Scripts\UI\UI2DSpriteAnimation.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UIAnchor.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UIAtlas.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UICamera.cs" />
@@ -181,7 +180,9 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UITexture.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
+     <Compile Include="Assets\Scripts\Abstract\Character.cs" />
      <Compile Include="Assets\Scripts\Abstract\ContainerManager.cs" />
+     <Compile Include="Assets\Scripts\Character\Player.cs" />
      <Compile Include="Assets\Scripts\ContainerManager\GameContainerManager.cs" />
      <Compile Include="Assets\Scripts\ContainerManager\GameOverContainerManager.cs" />
      <Compile Include="Assets\Scripts\ContainerManager\StageInfoContainerManager.cs" />
@@ -189,6 +190,7 @@
      <Compile Include="Assets\Scripts\ContainerManager\TopContainerManager.cs" />
      <Compile Include="Assets\Scripts\PlayerPrefs\PrefsManager.cs" />
      <Compile Include="Assets\Scripts\SceneManager\MainSceneManager.cs" />
+     <Compile Include="Assets\UI2DSpriteAnimation.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\NGUI\ReadMe - 3.7.6.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 2.shader" />
