@@ -10,14 +10,17 @@ public class Player : Character {
 	// Amount of force added when the player jumps.
 	private static Player sInstance;
 	private Animator mAnimator;
+	private UI2DSprite mSprite;
+	private BoxCollider2D mBoxCollider2D;
 	private bool mFacingRight = false;
 	private bool mJump = false;
 
 	void Awake () {
 		sInstance = this;
 		mAnimator = GetComponent<Animator> ();
+		mSprite = GetComponent<UI2DSprite> ();
+		mBoxCollider2D = GetComponent<BoxCollider2D> ();
 	}
-
 	// Update is called once per frame
 	void FixedUpdate () {
 		// Cache the horizontal input.
@@ -62,6 +65,13 @@ public class Player : Character {
 			mJump = false;
 		}
 
+		// スプライトを適正なサイズにする
+		Sprite sprite = mSprite.sprite2D;
+		mSprite.width = (int)sprite.textureRect.width;
+		mSprite.height = (int)sprite.textureRect.height;
+
+		//ボックスコライダーを適正なサイズにする
+		mBoxCollider2D.size = new Vector2 (sprite.textureRect.width, sprite.textureRect.height);
 	}
 
 	public static Player instance {
@@ -70,8 +80,12 @@ public class Player : Character {
 		}
 	}
 
-	public void Jump(){
+	public void Jump () {
 		mJump = true;
+	}
+
+	public void HighKick () {
+		mAnimator.SetTrigger ("HighKick");
 	}
 
 	private void Flip () {
