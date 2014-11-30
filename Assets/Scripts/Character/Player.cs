@@ -19,7 +19,7 @@ public class Player : Character {
 	private bool mJump = false;
 	private bool mGrounded = false;
 	private Transform mTransform;
-	public LayerMask a;
+	private AnimatorStateInfo mInfo;
 
 	void Awake () {
 		sInstance = this;
@@ -27,6 +27,10 @@ public class Player : Character {
 		mSprite = GetComponent<UI2DSprite> ();
 		mBoxCollider2D = GetComponent<BoxCollider2D> ();
 		mTransform = transform;
+	}
+
+	void Update(){
+		mInfo = mAnimator.GetCurrentAnimatorStateInfo (1);  
 	}
 
 	void FixedUpdate () {
@@ -88,12 +92,19 @@ public class Player : Character {
 	}
 
 	void OnCollisionEnter2D (Collision2D collision) {
+		Debug.Log ("enter");
 		string tag = collision.gameObject.tag;
-		if (tag == "Ground") {
+		switch(tag){
+		case "Ground":
 			mGrounded = true;
-		}
-		if (tag == "Step") {
+			break;
+		case "Step":
 			ClearedEvent ();
+			break;
+		case "Enemy":
+			Debug.Log ("enemy");
+			Atack (collision);
+			break;
 		}
 	}
 
@@ -103,6 +114,12 @@ public class Player : Character {
 			mGrounded = false;
 		}
 	}
+
+	void OnCollisionStay2D (Collision2D collision) {
+		string tag = collision.gameObject.tag;
+		//	Atack (collision);
+	}
+
 
 	public static Player instance {
 		get {
@@ -127,6 +144,20 @@ public class Player : Character {
 
 	public void Death () {
 		mAnimator.SetTrigger ("Death");
+	}
+
+	private void Atack(Collision2D collision){
+		Debug.Log ("atack");
+		AnimatorStateInfo info = mInfo; 
+		if(info.nameHash == Animator.StringToHash("Atack Layer.High Kick")){
+			Debug.Log ("high kick");
+		}
+		if(info.nameHash == Animator.StringToHash("Atack Layer.Low Kick")){
+			Debug.Log ("low kick");
+		}
+		if(info.nameHash == Animator.StringToHash("Atack Layer.Empty State")){
+			Debug.Log ("empty");
+		}
 	}
 
 	private void Flip () {
