@@ -2,19 +2,35 @@
 using System.Collections;
 using System;
 
-public class GameContainerManager : ContainerManager<GameContainerManager> {
+public class Stage1ContainerManager : ContainerManager<Stage1ContainerManager> {
 	public static event Action OnGameOverEvent;
 
 	public GameObject playerPrefab;
-	// Use this for initialization
+	public GameObject atackButton;
+	public GameObject jumpButton;
+	public GameObject backGroundTexture;
+
+	private Transform mCameraTransform;
+	private Transform mPlayerTransform;
+
 	void Start () {
 		GameObject playerObject = Instantiate (playerPrefab) as GameObject;
+		mPlayerTransform = playerObject.transform;
 		playerObject.transform.parent = transform.parent;
 		playerObject.transform.localScale = new Vector3 (1, 1, 1);
+		mCameraTransform = GameObject.Find ("Camera").transform;
+		mCameraTransform.parent = transform.parent;
+		atackButton.transform.parent = mCameraTransform;
+		jumpButton.transform.parent = mCameraTransform;
+		backGroundTexture.transform.parent = mCameraTransform;
 	}
-	// Update is called once per frame
-	void Update () {
-	
+
+	void Update(){
+		float playerX = mPlayerTransform.localPosition.x;
+		if(playerX > 0){
+			return;
+		}
+		mCameraTransform.localPosition = new Vector3 (playerX,0,0);
 	}
 
 	void OnGUI () {
