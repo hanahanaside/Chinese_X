@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class Player : Character {
+public class Player : MonoSingleton<Player> {
 	public static event Action ClearedEvent;
 
 	public float moveForce = 365f;
@@ -11,28 +11,19 @@ public class Player : Character {
 	// The fastest the player can travel in the x axis.
 	public float jumpForce = 1000f;
 	// Amount of force added when the player jumps.
-	private static Player sInstance;
 	private Animator mAnimator;
 	private UI2DSprite mSprite;
-	private BoxCollider2D mBoxCollider2D;
 	private bool mFacingRight = false;
 	private bool mJump = false;
 	private bool mGrounded = false;
 	private Transform mTransform;
-	private AnimatorStateInfo mInfo;
 
 	void Awake () {
-		sInstance = this;
 		mAnimator = GetComponent<Animator> ();
 		mSprite = GetComponent<UI2DSprite> ();
-		mBoxCollider2D = GetComponent<BoxCollider2D> ();
 		mTransform = transform;
 	}
-
-	void Update(){
-		mInfo = mAnimator.GetCurrentAnimatorStateInfo (1);  
-	}
-
+		
 	void FixedUpdate () {
 
 		if (mTransform.localPosition.x > 450) {
@@ -87,12 +78,9 @@ public class Player : Character {
 		mSprite.width = (int)sprite.textureRect.width;
 		mSprite.height = (int)sprite.textureRect.height;
 
-		//ボックスコライダーを適正なサイズにする
-		mBoxCollider2D.size = new Vector2 (sprite.textureRect.width, sprite.textureRect.height);
 	}
 
 	void OnCollisionEnter2D (Collision2D collision) {
-		Debug.Log ("enter");
 		string tag = collision.gameObject.tag;
 		switch(tag){
 		case "Ground":
@@ -100,10 +88,6 @@ public class Player : Character {
 			break;
 		case "Step":
 			ClearedEvent ();
-			break;
-		case "Enemy":
-			Debug.Log ("enemy");
-			Atack (collision);
 			break;
 		}
 	}
@@ -114,52 +98,19 @@ public class Player : Character {
 			mGrounded = false;
 		}
 	}
-
-	void OnCollisionStay2D (Collision2D collision) {
-		string tag = collision.gameObject.tag;
-		//	Atack (collision);
-	}
-
-
-	public static Player instance {
-		get {
-			return sInstance;
-		}
-	}
-
+		
 	public void Jump () {
 		if (!mJump && mGrounded) {
 			mJump = true;
 			mGrounded = false;
 		}
 	}
-
-	public void HighKick () {
-		mAnimator.SetTrigger ("HighKick");
-	}
-
-	public void LowKick () {
-		mAnimator.SetTrigger ("LowKick");
-	}
+		
 
 	public void Death () {
 		mAnimator.SetTrigger ("Death");
 	}
-
-	private void Atack(Collision2D collision){
-		Debug.Log ("atack");
-		AnimatorStateInfo info = mInfo; 
-		if(info.nameHash == Animator.StringToHash("Atack Layer.High Kick")){
-			Debug.Log ("high kick");
-		}
-		if(info.nameHash == Animator.StringToHash("Atack Layer.Low Kick")){
-			Debug.Log ("low kick");
-		}
-		if(info.nameHash == Animator.StringToHash("Atack Layer.Empty State")){
-			Debug.Log ("empty");
-		}
-	}
-
+		
 	private void Flip () {
 		// Switch the way the player is labelled as facing.
 		mFacingRight = !mFacingRight;

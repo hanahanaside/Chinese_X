@@ -58,9 +58,9 @@ public class Stage1ContainerManager : ContainerManager<Stage1ContainerManager> {
 	public  void OnAtackButtonClicked () {
 		float v = Input.GetAxis ("Vertical");
 		if (v < 0) {
-			Player.instance.LowKick ();
+			PlayerAtackController.instance.LowKick ();
 		} else {
-			Player.instance.HighKick ();
+			PlayerAtackController.instance.HighKick ();
 		}
 	}
 
