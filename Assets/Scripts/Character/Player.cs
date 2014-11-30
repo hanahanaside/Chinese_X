@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Player : Character {
+	public static event Action ClearedEvent;
+
 	public float moveForce = 365f;
 	// Amount of force added to move the player left and right.
 	public float maxSpeed = 5f;
@@ -14,7 +17,9 @@ public class Player : Character {
 	private BoxCollider2D mBoxCollider2D;
 	private bool mFacingRight = false;
 	private bool mJump = false;
+	private bool mGrounded = false;
 	private Transform mTransform;
+	public LayerMask a;
 
 	void Awake () {
 		sInstance = this;
@@ -23,11 +28,11 @@ public class Player : Character {
 		mBoxCollider2D = GetComponent<BoxCollider2D> ();
 		mTransform = transform;
 	}
-	// Update is called once per frame
+
 	void FixedUpdate () {
 
-		if(mTransform.localPosition.x > 450){
-			mTransform.localPosition = new Vector3 (450,mTransform.localPosition.y,0);
+		if (mTransform.localPosition.x > 450) {
+			mTransform.localPosition = new Vector3 (450, mTransform.localPosition.y, 0);
 			return;
 		}
 
@@ -82,6 +87,23 @@ public class Player : Character {
 		mBoxCollider2D.size = new Vector2 (sprite.textureRect.width, sprite.textureRect.height);
 	}
 
+	void OnCollisionEnter2D (Collision2D collision) {
+		string tag = collision.gameObject.tag;
+		if (tag == "Ground") {
+			mGrounded = true;
+		}
+		if (tag == "Step") {
+			ClearedEvent ();
+		}
+	}
+
+	void OnCollisionExit2D (Collision2D collision) {
+		string tag = collision.gameObject.tag;
+		if (tag == "Ground") {
+			mGrounded = false;
+		}
+	}
+
 	public static Player instance {
 		get {
 			return sInstance;
@@ -89,18 +111,21 @@ public class Player : Character {
 	}
 
 	public void Jump () {
-		mJump = true;
+		if (!mJump && mGrounded) {
+			mJump = true;
+			mGrounded = false;
+		}
 	}
 
 	public void HighKick () {
 		mAnimator.SetTrigger ("HighKick");
 	}
 
-	public void LowKick(){
+	public void LowKick () {
 		mAnimator.SetTrigger ("LowKick");
 	}
 
-	public void Death(){
+	public void Death () {
 		mAnimator.SetTrigger ("Death");
 	}
 

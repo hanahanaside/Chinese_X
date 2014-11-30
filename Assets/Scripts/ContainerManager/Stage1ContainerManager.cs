@@ -13,6 +13,14 @@ public class Stage1ContainerManager : ContainerManager<Stage1ContainerManager> {
 	private Transform mCameraTransform;
 	private Transform mPlayerTransform;
 
+	void OnEnable(){
+		Player.ClearedEvent += ClearedEvent;
+	}
+
+	void OnDisable(){
+		Player.ClearedEvent -= ClearedEvent;
+	}
+
 	void Start () {
 		GameObject playerObject = Instantiate (playerPrefab) as GameObject;
 		mPlayerTransform = playerObject.transform;
@@ -58,5 +66,9 @@ public class Stage1ContainerManager : ContainerManager<Stage1ContainerManager> {
 
 	public void OnJumpButtonClicked () {
 		Player.instance.Jump ();
+	}
+
+	void ClearedEvent(){
+		Debug.Log ("clear");
 	}
 }

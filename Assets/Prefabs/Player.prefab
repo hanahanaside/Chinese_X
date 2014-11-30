@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11400002}
   - 50: {fileID: 5000000}
   - 61: {fileID: 6100000}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,6 +152,9 @@ MonoBehaviour:
   moveForce: 50
   maxSpeed: 1
   jumpForce: 250
+  a:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
