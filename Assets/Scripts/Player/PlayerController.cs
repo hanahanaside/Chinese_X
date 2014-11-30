@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class Player : MonoSingleton<Player> {
+public class PlayerController : MonoSingleton<PlayerController> {
 	public static event Action ClearedEvent;
 
 	public float moveForce = 365f;
@@ -18,7 +18,7 @@ public class Player : MonoSingleton<Player> {
 	private bool mGrounded = false;
 	private Transform mTransform;
 
-	void Awake () {
+	public override void OnInitialize() {
 		mAnimator = GetComponent<Animator> ();
 		mSprite = GetComponent<UI2DSprite> ();
 		mTransform = transform;
@@ -104,11 +104,6 @@ public class Player : MonoSingleton<Player> {
 			mJump = true;
 			mGrounded = false;
 		}
-	}
-		
-
-	public void Death () {
-		mAnimator.SetTrigger ("Death");
 	}
 		
 	private void Flip () {

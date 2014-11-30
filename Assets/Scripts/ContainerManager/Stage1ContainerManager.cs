@@ -14,11 +14,11 @@ public class Stage1ContainerManager : ContainerManager<Stage1ContainerManager> {
 	private Transform mPlayerTransform;
 
 	void OnEnable(){
-		Player.ClearedEvent += ClearedEvent;
+		PlayerController.ClearedEvent += ClearedEvent;
 	}
 
 	void OnDisable(){
-		Player.ClearedEvent -= ClearedEvent;
+		PlayerController.ClearedEvent -= ClearedEvent;
 	}
 
 	void Start () {
@@ -26,6 +26,7 @@ public class Stage1ContainerManager : ContainerManager<Stage1ContainerManager> {
 		mPlayerTransform = playerObject.transform;
 		playerObject.transform.parent = transform.parent;
 		playerObject.transform.localScale = new Vector3 (1, 1, 1);
+		playerObject.transform.localPosition = new Vector3 (600,0,0);
 		mCameraTransform = GameObject.Find ("Camera").transform;
 		mCameraTransform.parent = transform.parent;
 		atackButton.transform.parent = mCameraTransform;
@@ -40,21 +41,7 @@ public class Stage1ContainerManager : ContainerManager<Stage1ContainerManager> {
 		}
 		mCameraTransform.localPosition = new Vector3 (playerX,0,0);
 	}
-
-	void OnGUI () {
-		Rect gameoverRect = new Rect (10, 10, 150, 50);
-		bool gameover = GUI.Button (gameoverRect, "GAME OVER");
-		if (gameover) {
-			OnGameOverEvent ();
-			DestoryContainer ();
-		}
-		Rect deathRect = new Rect (10,100,150,50);
-		bool death = GUI.Button (deathRect,"Death");
-		if(death){
-			Player.instance.Death ();
-		}
-	}
-
+		
 	public  void OnAtackButtonClicked () {
 		float v = Input.GetAxis ("Vertical");
 		if (v < 0) {
@@ -65,7 +52,7 @@ public class Stage1ContainerManager : ContainerManager<Stage1ContainerManager> {
 	}
 
 	public void OnJumpButtonClicked () {
-		Player.instance.Jump ();
+		PlayerController.instance.Jump ();
 	}
 
 	void ClearedEvent(){

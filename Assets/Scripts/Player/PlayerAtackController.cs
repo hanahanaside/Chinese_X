@@ -7,7 +7,7 @@ public class PlayerAtackController : MonoSingleton<PlayerAtackController> {
 	public BoxCollider2D lowKickCollider;
 	private Animator mAnimator;
 
-	void Awake () {
+	void Start () {
 		mAnimator = transform.parent.gameObject.GetComponent<Animator> ();
 		HideCollider ();
 	}
@@ -16,6 +16,8 @@ public class PlayerAtackController : MonoSingleton<PlayerAtackController> {
 		string tag = collision.gameObject.tag;
 		if(tag == "Enemy"){
 			Debug.Log ("hit");
+			EnemyLifeManager manager = collision.gameObject.GetComponentInChildren<EnemyLifeManager>();
+			manager.ApplyDamage ();
 			HideCollider ();
 		}
 	}
