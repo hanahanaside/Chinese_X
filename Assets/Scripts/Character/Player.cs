@@ -14,15 +14,23 @@ public class Player : Character {
 	private BoxCollider2D mBoxCollider2D;
 	private bool mFacingRight = false;
 	private bool mJump = false;
+	private Transform mTransform;
 
 	void Awake () {
 		sInstance = this;
 		mAnimator = GetComponent<Animator> ();
 		mSprite = GetComponent<UI2DSprite> ();
 		mBoxCollider2D = GetComponent<BoxCollider2D> ();
+		mTransform = transform;
 	}
 	// Update is called once per frame
 	void FixedUpdate () {
+
+		if(mTransform.localPosition.x > 450){
+			mTransform.localPosition = new Vector3 (450,mTransform.localPosition.y,0);
+			return;
+		}
+
 		// Cache the horizontal input.
 		float h = Input.GetAxis ("Horizontal");
 
