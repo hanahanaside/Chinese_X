@@ -21,7 +21,7 @@ public class MainSceneManager : MonoBehaviour {
 	}
 
 	void Start () {
-		//	 InstantiateContainer ("Container/TopContainer");
+			 InstantiateContainer ("Container/TopContainer");
 	}
 
 	void OnStartStoryEvent () {

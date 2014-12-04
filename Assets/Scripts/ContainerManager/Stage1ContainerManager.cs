@@ -6,6 +6,7 @@ public class Stage1ContainerManager : ContainerManager<Stage1ContainerManager> {
 	public static event Action OnGameOverEvent;
 
 	public GameObject playerPrefab;
+	public GameObject[] cameraChildArray;
 	public GameObject atackButton;
 	public GameObject jumpButton;
 	public GameObject backGroundTexture;
@@ -57,5 +58,9 @@ public class Stage1ContainerManager : ContainerManager<Stage1ContainerManager> {
 
 	void ClearedEvent(){
 		Debug.Log ("clear");
+		mCameraTransform.localPosition = new Vector3 (0,0,0);
+
+		OnGameOverEvent ();
+		Destroy (transform.parent);
 	}
 }
