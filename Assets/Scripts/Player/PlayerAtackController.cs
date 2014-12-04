@@ -8,7 +8,7 @@ public class PlayerAtackController : MonoSingleton<PlayerAtackController> {
 	private Animator mAnimator;
 
 	void Start () {
-		mAnimator = transform.parent.gameObject.GetComponent<Animator> ();
+		mAnimator = GetComponent<Animator> ();
 		HideCollider ();
 	}
 
@@ -24,8 +24,8 @@ public class PlayerAtackController : MonoSingleton<PlayerAtackController> {
 
 	public void HighKick(){
 		mAnimator.SetTrigger ("HighKick");
-		highKickCollider.enabled = true;
-		Invoke ("HideCollider",0.3f);
+		//	highKickCollider.enabled = true;
+		//	Invoke ("HideCollider",0.3f);
 	}
 
 	public void LowKick(){

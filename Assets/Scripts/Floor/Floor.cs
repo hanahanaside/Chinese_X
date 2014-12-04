@@ -5,12 +5,12 @@ public class Floor : MonoBehaviour {
 	private GameObject mStepTexture;
 	private Transform mCameraTransform;
 	private Transform mTransForm;
-	private float mTotalWidth = 1072 * 3;
+	private float mTotalWidth =10 * 3;
 
 	void Awake () {
 		mTransForm = transform;
-		mCameraTransform = GameObject.Find ("Camera").transform;
-		mStepTexture = transform.Find ("StepTexture").gameObject;
+		mCameraTransform = GameObject.FindGameObjectWithTag ("MainCamera").transform;
+		//	mStepTexture = transform.Find ("StepTexture").gameObject;
 	}
 
 	void Update () {
@@ -25,10 +25,10 @@ public class Floor : MonoBehaviour {
 		}
 
 		//クリアかどうかをチェックする
-		if(floorX < -5000){
-			mStepTexture.SetActive (true);
-		}else if(mStepTexture.activeSelf){
-			mStepTexture.SetActive (false);
-		}
+//		if (floorX < -5000) {
+//			mStepTexture.SetActive (true);
+//		} else if (mStepTexture.activeSelf) {
+//			mStepTexture.SetActive (false);
+//		}
 	}
 }

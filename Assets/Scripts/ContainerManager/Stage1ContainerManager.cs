@@ -6,49 +6,34 @@ public class Stage1ContainerManager : ContainerManager<Stage1ContainerManager> {
 	public static event Action OnGameOverEvent;
 
 	public GameObject playerPrefab;
-	public GameObject[] cameraChildArray;
-	public GameObject atackButton;
-	public GameObject jumpButton;
-	public GameObject backGroundTexture;
-
+	public GameObject floorPrefab;
 	private Transform mCameraTransform;
 	private Transform mPlayerTransform;
 
-	void OnEnable(){
+	void OnEnable () {
 		PlayerController.ClearedEvent += ClearedEvent;
 	}
 
-	void OnDisable(){
+	void OnDisable () {
 		PlayerController.ClearedEvent -= ClearedEvent;
 	}
 
 	void Start () {
-		GameObject playerObject = Instantiate (playerPrefab) as GameObject;
-		mPlayerTransform = playerObject.transform;
-		playerObject.transform.parent = transform.parent;
-		playerObject.transform.localScale = new Vector3 (1, 1, 1);
-		playerObject.transform.localPosition = new Vector3 (600,0,0);
-		mCameraTransform = GameObject.Find ("Camera").transform;
-		mCameraTransform.parent = transform.parent;
-		atackButton.transform.parent = mCameraTransform;
-		jumpButton.transform.parent = mCameraTransform;
-		backGroundTexture.transform.parent = mCameraTransform;
-	}
-
-	void Update(){
-		float playerX = mPlayerTransform.localPosition.x;
-		if(playerX > 0){
-			return;
+		float[] floorX = { -10, 0, 10 };
+		for (int i = 0; i < 3; i++) {
+			Instantiate (floorPrefab, new Vector3 (floorX [i], 0, 0), Quaternion.identity);
 		}
-		mCameraTransform.localPosition = new Vector3 (playerX,0,0);
+		GameObject playerObject = Instantiate (playerPrefab) as GameObject;
+		GameObject cameraObject = GameObject.FindGameObjectWithTag ("MainCamera");
+		cameraObject.AddComponent<CameraFollow>();
 	}
 		
 	public  void OnAtackButtonClicked () {
 		float v = Input.GetAxis ("Vertical");
 		if (v < 0) {
-			PlayerAtackController.instance.LowKick ();
+			PlayerController.instance.LowKick ();
 		} else {
-			PlayerAtackController.instance.HighKick ();
+			PlayerController.instance.HighKick ();
 		}
 	}
 
@@ -56,9 +41,9 @@ public class Stage1ContainerManager : ContainerManager<Stage1ContainerManager> {
 		PlayerController.instance.Jump ();
 	}
 
-	void ClearedEvent(){
+	void ClearedEvent () {
 		Debug.Log ("clear");
-		mCameraTransform.localPosition = new Vector3 (0,0,0);
+		mCameraTransform.localPosition = new Vector3 (0, 0, 0);
 
 		OnGameOverEvent ();
 		Destroy (transform.parent);

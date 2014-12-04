@@ -74,9 +74,9 @@ public class PlayerController : MonoSingleton<PlayerController> {
 		}
 
 		// スプライトを適正なサイズにする
-		Sprite sprite = mSprite.sprite2D;
-		mSprite.width = (int)sprite.textureRect.width;
-		mSprite.height = (int)sprite.textureRect.height;
+//		Sprite sprite = mSprite.sprite2D;
+//		mSprite.width = (int)sprite.textureRect.width;
+//		mSprite.height = (int)sprite.textureRect.height;
 
 	}
 
@@ -105,6 +105,15 @@ public class PlayerController : MonoSingleton<PlayerController> {
 			mGrounded = false;
 		}
 	}
+
+	public void HighKick(){
+		mAnimator.SetTrigger ("HighKick");
+	}
+
+	public void LowKick(){
+		mAnimator.SetTrigger ("LowKick");
+	}
+
 		
 	private void Flip () {
 		// Switch the way the player is labelled as facing.
