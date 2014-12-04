@@ -72,12 +72,6 @@ public class PlayerController : MonoSingleton<PlayerController> {
 			// Make sure the player can't jump again until the jump conditions from Update are satisfied.
 			mJump = false;
 		}
-
-		// スプライトを適正なサイズにする
-//		Sprite sprite = mSprite.sprite2D;
-//		mSprite.width = (int)sprite.textureRect.width;
-//		mSprite.height = (int)sprite.textureRect.height;
-
 	}
 
 	void OnCollisionEnter2D (Collision2D collision) {
