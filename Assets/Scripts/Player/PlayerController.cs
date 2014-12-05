@@ -16,10 +16,14 @@ public class PlayerController : MonoSingleton<PlayerController> {
 	private bool mJump = false;
 	private bool mGrounded = false;
 	private Transform mGroundCheckTransform;
+	private GameObject mHighKickObject;
+	private GameObject mLowKickObject;
 
 	public override void OnInitialize() {
 		mAnimator = GetComponent<Animator> ();
 		mGroundCheckTransform = transform.Find ("GroundCheck");
+		mHighKickObject = transform.Find ("HighKick").gameObject;
+		mLowKickObject = transform.Find ("LowKick").gameObject;
 	}
 
 	void Update(){
@@ -27,6 +31,23 @@ public class PlayerController : MonoSingleton<PlayerController> {
 	}
 		
 	void FixedUpdate () {
+
+		//check atack
+		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (1);
+		if(info.nameHash == Animator.StringToHash("Atack Layer.High Kick")){
+			mHighKickObject.SetActive (true);
+			return;
+		}else {
+			mHighKickObject.SetActive (false);
+		}
+
+		if(info.nameHash == Animator.StringToHash("Atack Layer.Low Kick")){
+			mLowKickObject.SetActive (true);
+			return;
+		}else {
+			mLowKickObject.SetActive (false);
+		}
+
 		// Cache the horizontal input.
 		float h = Input.GetAxis ("Horizontal");
 

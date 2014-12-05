@@ -18,9 +18,6 @@ public class EnemyGenerator : MonoSingleton<EnemyGenerator> {
 	}
 
 	private void GenerateEnemy(){
-		GameObject enemyObject = Instantiate (enemyPrefab) as GameObject;
-		enemyObject.transform.parent = transform.parent;
-		enemyObject.transform.localScale = new Vector3 (1, 1, 1);
-		enemyObject.transform.localPosition = new Vector3 (-1000,0,0);
+		Instantiate (enemyPrefab);
 	}
 }

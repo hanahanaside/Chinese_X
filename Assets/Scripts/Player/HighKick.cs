@@ -3,13 +3,10 @@ using System.Collections;
 
 public class HighKick : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	void OnCollisionEnter2D (Collision2D collision) {
+		string tag = collision.gameObject.tag;
+		if(tag == "Enemy"){
+
+		}
 	}
 }

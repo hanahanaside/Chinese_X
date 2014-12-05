@@ -8,6 +8,7 @@ public class Stage1ContainerManager : ContainerManager<Stage1ContainerManager> {
 	public GameObject playerPrefab;
 	public GameObject cameraPrefab;
 	public GameObject floorPrefab;
+	public GameObject enemyGeneratorPrefab;
 	private Transform mPlayerTransform;
 
 	void OnEnable () {
@@ -25,6 +26,7 @@ public class Stage1ContainerManager : ContainerManager<Stage1ContainerManager> {
 		for (int i = 0; i < 3; i++) {
 			Instantiate (floorPrefab, new Vector3 (floorX [i], 0, 0), Quaternion.identity);
 		}
+		Instantiate (enemyGeneratorPrefab);
 	}
 
 	public  void OnAtackButtonClicked () {
