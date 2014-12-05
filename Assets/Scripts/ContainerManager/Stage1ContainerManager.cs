@@ -6,8 +6,8 @@ public class Stage1ContainerManager : ContainerManager<Stage1ContainerManager> {
 	public static event Action OnGameOverEvent;
 
 	public GameObject playerPrefab;
+	public GameObject cameraPrefab;
 	public GameObject floorPrefab;
-	private Transform mCameraTransform;
 	private Transform mPlayerTransform;
 
 	void OnEnable () {
@@ -19,15 +19,14 @@ public class Stage1ContainerManager : ContainerManager<Stage1ContainerManager> {
 	}
 
 	void Start () {
+		Instantiate (playerPrefab);
+		Instantiate (cameraPrefab);
 		float[] floorX = { -10, 0, 10 };
 		for (int i = 0; i < 3; i++) {
 			Instantiate (floorPrefab, new Vector3 (floorX [i], 0, 0), Quaternion.identity);
 		}
-		GameObject playerObject = Instantiate (playerPrefab) as GameObject;
-		GameObject cameraObject = GameObject.FindGameObjectWithTag ("MainCamera");
-		cameraObject.AddComponent<CameraFollow>();
 	}
-		
+
 	public  void OnAtackButtonClicked () {
 		float v = Input.GetAxis ("Vertical");
 		if (v < 0) {
@@ -43,7 +42,6 @@ public class Stage1ContainerManager : ContainerManager<Stage1ContainerManager> {
 
 	void ClearedEvent () {
 		Debug.Log ("clear");
-		mCameraTransform.localPosition = new Vector3 (0, 0, 0);
 
 		OnGameOverEvent ();
 		Destroy (transform.parent);

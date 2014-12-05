@@ -12,25 +12,21 @@ public class PlayerController : MonoSingleton<PlayerController> {
 	public float jumpForce = 1000f;
 	// Amount of force added when the player jumps.
 	private Animator mAnimator;
-	private UI2DSprite mSprite;
 	private bool mFacingRight = false;
 	private bool mJump = false;
 	private bool mGrounded = false;
-	private Transform mTransform;
+	private Transform mGroundCheckTransform;
 
 	public override void OnInitialize() {
 		mAnimator = GetComponent<Animator> ();
-		mSprite = GetComponent<UI2DSprite> ();
-		mTransform = transform;
+		mGroundCheckTransform = transform.Find ("GroundCheck");
+	}
+
+	void Update(){
+		mGrounded = Physics2D.Linecast(transform.position, mGroundCheckTransform.position, 1 << LayerMask.NameToLayer("Ground"));  
 	}
 		
 	void FixedUpdate () {
-
-		if (mTransform.localPosition.x > 450) {
-			mTransform.localPosition = new Vector3 (450, mTransform.localPosition.y, 0);
-			return;
-		}
-
 		// Cache the horizontal input.
 		float h = Input.GetAxis ("Horizontal");
 
@@ -76,23 +72,11 @@ public class PlayerController : MonoSingleton<PlayerController> {
 
 	void OnCollisionEnter2D (Collision2D collision) {
 		string tag = collision.gameObject.tag;
-		switch(tag){
-		case "Ground":
-			mGrounded = true;
-			break;
-		case "Step":
+		if(tag == "Step"){
 			ClearedEvent ();
-			break;
 		}
 	}
-
-	void OnCollisionExit2D (Collision2D collision) {
-		string tag = collision.gameObject.tag;
-		if (tag == "Ground") {
-			mGrounded = false;
-		}
-	}
-		
+				
 	public void Jump () {
 		if (!mJump && mGrounded) {
 			mJump = true;
@@ -107,7 +91,6 @@ public class PlayerController : MonoSingleton<PlayerController> {
 	public void LowKick(){
 		mAnimator.SetTrigger ("LowKick");
 	}
-
 		
 	private void Flip () {
 		// Switch the way the player is labelled as facing.

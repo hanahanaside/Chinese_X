@@ -194,11 +194,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400042}
-  - {fileID: 400038}
   - {fileID: 400036}
   - {fileID: 400004}
   - {fileID: 400002}
   - {fileID: 400000}
+  - {fileID: 400038}
   m_Father: {fileID: 0}
 --- !u!4 &400034
 Transform:
@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 100000, guid: d8759d1b51e2245d9b12fdd12d1ef05b, type: 2}
-  cameraChildArray: []
+  cameraPrefab: {fileID: 100000, guid: 64b12b15baf9644af9f0651e6705f0ef, type: 2}
   floorPrefab: {fileID: 100002, guid: a25293dbae46b456fbbefb083f8f689c, type: 2}
 --- !u!114 &11400010
 MonoBehaviour:

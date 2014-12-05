@@ -85,12 +85,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a1ff7ff4ce484f1aad8887efed74b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xMargin: 2
-  yMargin: 2
+  xMargin: 0
+  yMargin: 0
   xSmooth: 2
-  ySmooth: 2
-  maxXAndY: {x: 5, y: 5}
-  minXAndY: {x: -5, y: -5}
+  ySmooth: 4
+  maxXAndY: {x: 0, y: .5}
+  minXAndY: {x: -1000, y: 0}
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1
