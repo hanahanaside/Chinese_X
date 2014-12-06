@@ -6,15 +6,19 @@ TagManager:
   - ground
   - 
   - Enemy
-  - EnemyAtack
+  - EnemyGenerator
   - 
-  - 
+  - Floor
   - 
   - 
   - 
   - 
   - Step
   - Ground
+  - 
+  - 
+  - 
+  - PlayerAtack
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

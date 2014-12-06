@@ -6,6 +6,8 @@ public class EnemyGenerator : MonoBehaviour {
 	private float mInterval;
 
 	void Start () {
+		GameObject camera = GameObject.FindGameObjectWithTag ("MainCamera");
+		transform.parent = camera.transform;
 		mInterval = 3.0f;
 		GenerateEnemy ();
 	}

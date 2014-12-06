@@ -9,6 +9,7 @@ public class StageContainerManager : MonoBehaviour {
 	public GameObject playerPrefab;
 	public GameObject cameraPrefab;
 	public GameObject floorPrefab;
+	public GameObject backgroundPrefab;
 	public GameObject enemyGeneratorPrefab;
 	public int stageLevel;
 	private Transform mPlayerTransform;
@@ -28,6 +29,7 @@ public class StageContainerManager : MonoBehaviour {
 		for (int i = 0; i < 3; i++) {
 			Instantiate (floorPrefab, new Vector3 (floorX [i], 0, 0), Quaternion.identity);
 		}
+		Instantiate (backgroundPrefab);
 		Instantiate (enemyGeneratorPrefab);
 	}
 

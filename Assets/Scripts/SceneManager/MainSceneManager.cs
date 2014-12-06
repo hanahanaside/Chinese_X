@@ -59,7 +59,6 @@ public class MainSceneManager : MonoBehaviour {
 		}
 		Destroy (GameObject.FindGameObjectWithTag ("MainCamera"));
 		Destroy (GameObject.FindGameObjectWithTag ("Player"));
-		Destroy (GameObject.FindGameObjectWithTag("EnemyGenerator"));
 		stageLevel++;
 		InstantiateContainer ("Container/Stage" + stageLevel + "Container");
 		loadingObject.SetActive (false);
