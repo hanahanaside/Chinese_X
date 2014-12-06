@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveForce: 100
-  maxSpeed: 1
+  maxSpeed: 2
   life: 1
   jumpForce: 700
 --- !u!114 &11400002

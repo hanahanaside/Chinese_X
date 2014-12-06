@@ -9,16 +9,18 @@ public class MainSceneManager : MonoBehaviour {
 		TopContainerManager.OnStartButtonClickedEvent += OnStartStoryEvent;
 		StoryContainerManager.OnStoryFinishedEvent += OnStoryFinishedEvent;
 		StageInfoContainerManager.OnStartButtonClickedEvent += OnStartGameEvent;
-		Stage1ContainerManager.OnGameOverEvent += OnGameOverEvent;
+		StageContainerManager.OnGameOverEvent += OnGameOverEvent;
 		GameOverContainerManager.OnFinishGameEvent += OnFinishGameEvent;
+		StageContainerManager.StageClearedEvent += StageClearedEvent;
 	}
 
 	void OnDisable () {
 		TopContainerManager.OnStartButtonClickedEvent -= OnStartStoryEvent;
 		StoryContainerManager.OnStoryFinishedEvent -= OnStoryFinishedEvent;
 		StageInfoContainerManager.OnStartButtonClickedEvent -= OnStartGameEvent;
-		Stage1ContainerManager.OnGameOverEvent -= OnGameOverEvent;
+		StageContainerManager.OnGameOverEvent -= OnGameOverEvent;
 		GameOverContainerManager.OnFinishGameEvent -= OnFinishGameEvent;
+		StageContainerManager.StageClearedEvent -= StageClearedEvent;
 	}
 
 	void Start () {
@@ -45,6 +47,10 @@ public class MainSceneManager : MonoBehaviour {
 
 	void OnFinishGameEvent(){
 		InstantiateContainer ("Container/TopContainer");
+	}
+
+	void StageClearedEvent(int stageLevel){
+		Debug.Log ("clear");
 	}
 
 	private void InstantiateContainer (string path) {

@@ -2,13 +2,15 @@
 using System.Collections;
 using System;
 
-public class Stage1ContainerManager : ContainerManager<Stage1ContainerManager> {
+public class StageContainerManager : ContainerManager<StageContainerManager> {
 	public static event Action OnGameOverEvent;
+	public static event Action<int> StageClearedEvent;
 
 	public GameObject playerPrefab;
 	public GameObject cameraPrefab;
 	public GameObject floorPrefab;
 	public GameObject enemyGeneratorPrefab;
+	public int stageLevel;
 	private Transform mPlayerTransform;
 
 	void OnEnable () {
@@ -43,9 +45,6 @@ public class Stage1ContainerManager : ContainerManager<Stage1ContainerManager> {
 	}
 
 	void ClearedEvent () {
-		Debug.Log ("clear");
-
-		OnGameOverEvent ();
-		Destroy (transform.parent);
+		StageClearedEvent (stageLevel);
 	}
 }
