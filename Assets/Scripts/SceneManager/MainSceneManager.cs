@@ -3,6 +3,7 @@ using System.Collections;
 
 public class MainSceneManager : MonoBehaviour {
 	public GameObject uiRoot;
+	public GameObject loadingObject;
 	public bool debug;
 
 	void OnEnable () {
@@ -51,6 +52,13 @@ public class MainSceneManager : MonoBehaviour {
 
 	void StageClearedEvent(int stageLevel){
 		Debug.Log ("clear");
+		loadingObject.SetActive (true);
+		GameObject[] floorArray = GameObject.FindGameObjectsWithTag ("Floor");
+		foreach(GameObject floor in floorArray){
+			Destroy (floor);
+		}
+		Destroy (GameObject.FindGameObjectWithTag("MainCamera"));
+		Destroy (GameObject.FindGameObjectWithTag("Player"));
 	}
 
 	private void InstantiateContainer (string path) {

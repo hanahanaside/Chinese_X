@@ -46,5 +46,6 @@ public class StageContainerManager : ContainerManager<StageContainerManager> {
 
 	void ClearedEvent () {
 		StageClearedEvent (stageLevel);
+		Destroy (transform.parent.gameObject);
 	}
 }
