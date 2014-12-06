@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyController1 : MonoBehaviour {
+public class KickMan : MonoBehaviour {
 	public float moveForce = 1.0f;
 	public float maxSpeed = 5f;
 	public float atackDistance = 2.1f;

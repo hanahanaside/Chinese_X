@@ -2,16 +2,11 @@
 using System.Collections;
 using System;
 
-public class PlayerController : MonoSingleton<PlayerController> {
+public class Player : Character {
 	public static event Action ClearedEvent;
 
-	public float moveForce = 365f;
-	// Amount of force added to move the player left and right.
-	public float maxSpeed = 5f;
-	// The fastest the player can travel in the x axis.
 	public float jumpForce = 1000f;
 	// Amount of force added when the player jumps.
-	private float mLife = 1.0f;
 	private Animator mAnimator;
 	private bool mFacingRight = false;
 	private bool mJump = false;
@@ -19,8 +14,10 @@ public class PlayerController : MonoSingleton<PlayerController> {
 	private Transform mGroundCheckTransform;
 	private GameObject mHighKickObject;
 	private GameObject mLowKickObject;
+	private static Player sInstance;
 
-	public override void OnInitialize() {
+	void Start(){
+		sInstance = this;
 		mAnimator = GetComponent<Animator> ();
 		mGroundCheckTransform = transform.Find ("GroundCheck");
 		mHighKickObject = transform.Find ("HighKick").gameObject;
@@ -32,8 +29,8 @@ public class PlayerController : MonoSingleton<PlayerController> {
 	}
 		
 	void FixedUpdate () {
-		LifeManager.instance.UpdatePlayerLife (mLife);
-		if(mLife <=0){
+		LifeManager.instance.UpdatePlayerLife (life);
+		if(life <=0){
 			mAnimator.SetTrigger ("Death");
 			enabled = false;
 			Destroy (gameObject,0.7f);
@@ -105,7 +102,13 @@ public class PlayerController : MonoSingleton<PlayerController> {
 	}
 
 	void ApplyDamage(){
-		mLife -= 0.1f;
+		life -= 0.1f;
+	}
+
+	public static Player instance{
+		get{
+			return sInstance;
+		}
 	}
 				
 	public void Jump () {

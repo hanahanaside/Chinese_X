@@ -12,11 +12,11 @@ public class Stage1ContainerManager : ContainerManager<Stage1ContainerManager> {
 	private Transform mPlayerTransform;
 
 	void OnEnable () {
-		PlayerController.ClearedEvent += ClearedEvent;
+		Player.ClearedEvent += ClearedEvent;
 	}
 
 	void OnDisable () {
-		PlayerController.ClearedEvent -= ClearedEvent;
+		Player.ClearedEvent -= ClearedEvent;
 	}
 
 	void Start () {
@@ -32,14 +32,14 @@ public class Stage1ContainerManager : ContainerManager<Stage1ContainerManager> {
 	public  void OnAtackButtonClicked () {
 		float v = Input.GetAxis ("Vertical");
 		if (v < 0) {
-			PlayerController.instance.LowKick ();
+			Player.instance.LowKick ();
 		} else {
-			PlayerController.instance.HighKick ();
+			Player.instance.HighKick ();
 		}
 	}
 
 	public void OnJumpButtonClicked () {
-		PlayerController.instance.Jump ();
+		Player.instance.Jump ();
 	}
 
 	void ClearedEvent () {
