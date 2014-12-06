@@ -56,17 +56,7 @@ public class Player : Character {
 		// The Speed animator parameter is set to the absolute value of the horizontal input.
 		mAnimator.SetFloat ("Speed", Mathf.Abs (h));
 
-		// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
-		if (h * rigidbody2D.velocity.x < maxSpeed) {
-			// ... add a force to the player.
-			rigidbody2D.AddForce (Vector2.right * h * moveForce);
-		}
-
-		// If the player's horizontal velocity is greater than the maxSpeed...
-		if (Mathf.Abs (rigidbody2D.velocity.x) > maxSpeed) {
-			// ... set the player's velocity to the maxSpeed in the x axis.
-			rigidbody2D.velocity = new Vector2 (Mathf.Sign (rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
-		}
+		Move (h);
 
 		CheckFlip (h);
 

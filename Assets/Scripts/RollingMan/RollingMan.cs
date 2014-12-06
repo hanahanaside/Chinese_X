@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class KickMan :  Enemy {
+public class RollingMan : Enemy {
 
 	private Animator mAnimator;
-	private GameObject mAtackObject;
 	private Transform mPlayerTransform;
+	private GameObject mAtackObject;
 	private float mH;
 
 	void Start () {
 		mAnimator = GetComponent<Animator> ();
-		mAtackObject = transform.Find ("Atack").gameObject;
-		mAtackObject.SetActive (false);
 		mAnimator.SetFloat ("Speed", moveForce);
 		mPlayerTransform = GameObject.FindGameObjectWithTag ("Player").transform;
+		mAtackObject = transform.Find ("Atack").gameObject;
+		mAtackObject.SetActive (false);
 		if (mPlayerTransform.position.x > transform.position.x) {
 			mH = 0.5f;
 		} else {
@@ -27,28 +27,26 @@ public class KickMan :  Enemy {
 			mAnimator.SetTrigger ("Death");
 			enabled = false;
 			Destroy (gameObject,0.8f);
-		}
-		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (0);
-		if(info.nameHash == Animator.StringToHash ("Base Layer.Atack")){
-			mAtackObject.SetActive (true);
-		}else {
-			mAtackObject.SetActive (false);
-		}
-		if (info.nameHash != Animator.StringToHash ("Base Layer.Walk")) {
 			return;
 		}
+		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (0);
+		if (info.nameHash == Animator.StringToHash ("Base Layer.Idle")) {
+			return;
+		}
+
+		if (info.nameHash == Animator.StringToHash ("Base Layer.Atack")) {
+			mAtackObject.SetActive (true);
+			collider2D.enabled = false;
+		}
 			
-
 		Move (mH);
-
-
 
 		float distance = Vector3.Distance (mPlayerTransform.position,transform.position);
 		if(distance < atackDistance){
 			mAnimator.SetFloat ("Speed", 0);
 		}
 	}
-
+		
 	public override void ApplyDamage () {
 		life -= 1.0f;
 		LifeManager.instance.UpdateEnemyLife (life);
