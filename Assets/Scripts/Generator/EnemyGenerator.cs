@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyGenerator : MonoSingleton<EnemyGenerator> {
+public class EnemyGenerator : MonoBehaviour {
 	public GameObject enemyPrefab;
 	private float mInterval;
 

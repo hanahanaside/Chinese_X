@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class StageContainerManager : ContainerManager<StageContainerManager> {
+public class StageContainerManager : MonoBehaviour {
 	public static event Action OnGameOverEvent;
 	public static event Action<int> StageClearedEvent;
 
@@ -45,7 +45,8 @@ public class StageContainerManager : ContainerManager<StageContainerManager> {
 	}
 
 	void ClearedEvent () {
-		StageClearedEvent (stageLevel);
+
 		Destroy (transform.parent.gameObject);
+		StageClearedEvent (stageLevel);
 	}
 }

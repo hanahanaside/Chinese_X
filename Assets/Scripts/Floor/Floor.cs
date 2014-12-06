@@ -26,7 +26,7 @@ public class Floor : MonoBehaviour {
 		}
 
 //		//クリアかどうかをチェックする
-		if (floorX < -30) {
+		if (floorX < -10) {
 			mStepObject.SetActive (true);
 		} else if (mStepObject.activeSelf) {
 			mStepObject.SetActive (false);

@@ -16,7 +16,7 @@ public class CameraFollow : MonoBehaviour {
 	// The minimum x and y coordinates the camera can have.
 	private Transform player;
 	// Reference to the player's transform.
-	void Awake () {
+	void Start () {
 		// Setting up the reference.
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 	}

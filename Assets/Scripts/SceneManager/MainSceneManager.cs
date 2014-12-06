@@ -25,7 +25,7 @@ public class MainSceneManager : MonoBehaviour {
 	}
 
 	void Start () {
-		if(!debug){
+		if (!debug) {
 			InstantiateContainer ("Container/TopContainer");
 		}
 	}
@@ -34,31 +34,35 @@ public class MainSceneManager : MonoBehaviour {
 		InstantiateContainer ("Container/StoryContainer");
 	}
 
-	void OnStoryFinishedEvent(){
+	void OnStoryFinishedEvent () {
 		InstantiateContainer ("Container/StageInfoContainer");
 	}
 
-	void OnStartGameEvent(){
+	void OnStartGameEvent () {
 		InstantiateContainer ("Container/Stage1Container");
 	}
 
-	void OnGameOverEvent(){
+	void OnGameOverEvent () {
 		InstantiateContainer ("Container/GameOverContainer");
 	}
 
-	void OnFinishGameEvent(){
+	void OnFinishGameEvent () {
 		InstantiateContainer ("Container/TopContainer");
 	}
 
-	void StageClearedEvent(int stageLevel){
+	void StageClearedEvent (int stageLevel) {
 		Debug.Log ("clear");
 		loadingObject.SetActive (true);
 		GameObject[] floorArray = GameObject.FindGameObjectsWithTag ("Floor");
-		foreach(GameObject floor in floorArray){
+		foreach (GameObject floor in floorArray) {
 			Destroy (floor);
 		}
-		Destroy (GameObject.FindGameObjectWithTag("MainCamera"));
-		Destroy (GameObject.FindGameObjectWithTag("Player"));
+		Destroy (GameObject.FindGameObjectWithTag ("MainCamera"));
+		Destroy (GameObject.FindGameObjectWithTag ("Player"));
+		Destroy (GameObject.FindGameObjectWithTag("EnemyGenerator"));
+		stageLevel++;
+		InstantiateContainer ("Container/Stage" + stageLevel + "Container");
+		loadingObject.SetActive (false);
 	}
 
 	private void InstantiateContainer (string path) {
