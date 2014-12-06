@@ -3,6 +3,7 @@ using System.Collections;
 
 public class MainSceneManager : MonoBehaviour {
 	public GameObject uiRoot;
+	public bool debug;
 
 	void OnEnable () {
 		TopContainerManager.OnStartButtonClickedEvent += OnStartStoryEvent;
@@ -21,7 +22,9 @@ public class MainSceneManager : MonoBehaviour {
 	}
 
 	void Start () {
-			 InstantiateContainer ("Container/TopContainer");
+		if(!debug){
+			InstantiateContainer ("Container/TopContainer");
+		}
 	}
 
 	void OnStartStoryEvent () {

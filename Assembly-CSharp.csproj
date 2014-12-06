@@ -187,11 +187,12 @@
      <Compile Include="Assets\Scripts\ContainerManager\StageInfoContainerManager.cs" />
      <Compile Include="Assets\Scripts\ContainerManager\StoryContainerManager.cs" />
      <Compile Include="Assets\Scripts\ContainerManager\TopContainerManager.cs" />
-     <Compile Include="Assets\Scripts\Enemy\EnemyController.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyAtack1.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyController1.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyLifeManager.cs" />
      <Compile Include="Assets\Scripts\Floor\Floor.cs" />
      <Compile Include="Assets\Scripts\Generator\EnemyGenerator.cs" />
+     <Compile Include="Assets\Scripts\Life\LifeManager.cs" />
      <Compile Include="Assets\Scripts\Player\HighKick.cs" />
      <Compile Include="Assets\Scripts\Player\LowKick.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerAtackController.cs" />

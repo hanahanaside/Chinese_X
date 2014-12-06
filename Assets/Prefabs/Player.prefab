@@ -32,7 +32,7 @@ GameObject:
   - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: HighKick
-  m_TagString: Untagged
+  m_TagString: PlayerAtack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,7 +64,7 @@ GameObject:
   - 114: {fileID: 11400004}
   m_Layer: 0
   m_Name: LowKick
-  m_TagString: Untagged
+  m_TagString: PlayerAtack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -4,14 +4,14 @@
 TagManager:
   tags:
   - ground
-  - Crate
+  - 
   - Enemy
-  - Wall
-  - Obstacle
-  - Bullet
-  - BombPickup
-  - ExplosionFX
-  - HealthBar
+  - EnemyAtack
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - Step
   - Ground

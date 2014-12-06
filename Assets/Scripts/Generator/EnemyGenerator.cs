@@ -7,12 +7,13 @@ public class EnemyGenerator : MonoSingleton<EnemyGenerator> {
 
 	void Start () {
 		mInterval = 3.0f;
+		GenerateEnemy ();
 	}
 	// Update is called once per frame
 	void Update () {
 		mInterval -= Time.deltaTime;
 		if(mInterval < 0){
-			GenerateEnemy ();
+
 			mInterval = 3.0f;
 		}
 	}

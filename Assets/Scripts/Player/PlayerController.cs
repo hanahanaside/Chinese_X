@@ -11,6 +11,7 @@ public class PlayerController : MonoSingleton<PlayerController> {
 	// The fastest the player can travel in the x axis.
 	public float jumpForce = 1000f;
 	// Amount of force added when the player jumps.
+	private float mLife = 1.0f;
 	private Animator mAnimator;
 	private bool mFacingRight = false;
 	private bool mJump = false;
@@ -31,8 +32,13 @@ public class PlayerController : MonoSingleton<PlayerController> {
 	}
 		
 	void FixedUpdate () {
+		LifeManager.instance.UpdatePlayerLife (mLife);
+		if(mLife <=0){
+			mAnimator.SetTrigger ("Death");
+			enabled = false;
+			Destroy (gameObject,0.7f);
+		}
 
-		//check atack
 		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (1);
 		if(info.nameHash == Animator.StringToHash("Atack Layer.High Kick")){
 			mHighKickObject.SetActive (true);
@@ -96,6 +102,10 @@ public class PlayerController : MonoSingleton<PlayerController> {
 		if(tag == "Step"){
 			ClearedEvent ();
 		}
+	}
+
+	void ApplyDamage(){
+		mLife -= 0.1f;
 	}
 				
 	public void Jump () {
