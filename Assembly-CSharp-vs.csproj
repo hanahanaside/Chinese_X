@@ -182,6 +182,7 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
      <Compile Include="Assets\Scripts\Abstract\Character.cs" />
      <Compile Include="Assets\Scripts\Abstract\ContainerManager.cs" />
+     <Compile Include="Assets\Scripts\Abstract\Enemy.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\ContainerManager\GameOverContainerManager.cs" />
      <Compile Include="Assets\Scripts\ContainerManager\Stage1ContainerManager.cs" />

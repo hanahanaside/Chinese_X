@@ -1,12 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class KickMan : MonoBehaviour {
-	public float moveForce = 1.0f;
-	public float maxSpeed = 5f;
-	public float atackDistance = 2.1f;
-	private float mLife = 1.0f;
-	private bool mFacingRight = false;
+public class KickMan :  Enemy {
+
 	private Animator mAnimator;
 	private GameObject mAtackObject;
 	private Transform mPlayerTransform;
@@ -20,7 +16,7 @@ public class KickMan : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		if(mLife <=0){
+		if(life <=0){
 			mAnimator.SetTrigger ("Death");
 			enabled = false;
 			Destroy (gameObject,0.8f);
@@ -48,17 +44,7 @@ public class KickMan : MonoBehaviour {
 			rigidbody2D.AddForce (Vector2.right * h * moveForce);
 		}
 
-		// If the input is moving the player right and the player is facing left...
-		if (h > 0 && !mFacingRight) {
-			// ... flip the player.
-			Flip ();
-		}
-
-		// Otherwise if the input is moving the player left and the player is facing right...
-		else if (h < 0 && mFacingRight) {
-			// ... flip the player.
-			Flip ();
-		}
+		CheckFlip (h);
 
 		float distance = Vector3.Distance (mPlayerTransform.position,transform.position);
 		if(distance < atackDistance){
@@ -66,18 +52,9 @@ public class KickMan : MonoBehaviour {
 		}
 	}
 
-	void ApplyDamage () {
-		mLife -= 1.0f;
-		LifeManager.instance.UpdateEnemyLife (mLife);
+	public override void ApplyDamage () {
+		life -= 1.0f;
+		LifeManager.instance.UpdateEnemyLife (life);
 	}
 
-	private void Flip () {
-		// Switch the way the player is labelled as facing.
-		mFacingRight = !mFacingRight;
-
-		// Multiply the player's x local scale by -1.
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
-	}
 }

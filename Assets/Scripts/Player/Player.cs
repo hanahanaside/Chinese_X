@@ -8,7 +8,6 @@ public class Player : Character {
 	public float jumpForce = 1000f;
 	// Amount of force added when the player jumps.
 	private Animator mAnimator;
-	private bool mFacingRight = false;
 	private bool mJump = false;
 	private bool mGrounded = false;
 	private Transform mGroundCheckTransform;
@@ -69,17 +68,7 @@ public class Player : Character {
 			rigidbody2D.velocity = new Vector2 (Mathf.Sign (rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
 		}
 
-		// If the input is moving the player right and the player is facing left...
-		if (h > 0 && !mFacingRight) {
-			// ... flip the player.
-			Flip ();
-		}
-
-		// Otherwise if the input is moving the player left and the player is facing right...
-		else if (h < 0 && mFacingRight) {
-			// ... flip the player.
-			Flip ();
-		}
+		CheckFlip (h);
 
 		// If the player should jump...
 		if (mJump) {
@@ -101,7 +90,7 @@ public class Player : Character {
 		}
 	}
 
-	void ApplyDamage(){
+	public override void ApplyDamage(){
 		life -= 0.1f;
 	}
 
@@ -126,13 +115,4 @@ public class Player : Character {
 		mAnimator.SetTrigger ("LowKick");
 	}
 		
-	private void Flip () {
-		// Switch the way the player is labelled as facing.
-		mFacingRight = !mFacingRight;
-
-		// Multiply the player's x local scale by -1.
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
-	}
 }
