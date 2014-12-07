@@ -4,6 +4,7 @@ using System;
 
 public class Player : Character {
 	public static event Action ClearedEvent;
+	public static event Action GameOverEvent;
 
 	public float jumpForce = 1000f;
 	// Amount of force added when the player jumps.
@@ -32,7 +33,7 @@ public class Player : Character {
 		if(life <=0){
 			mAnimator.SetTrigger ("Death");
 			enabled = false;
-			Destroy (gameObject,0.7f);
+
 		}
 
 		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (1);

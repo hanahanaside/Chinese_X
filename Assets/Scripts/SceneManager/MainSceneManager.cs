@@ -10,18 +10,18 @@ public class MainSceneManager : MonoBehaviour {
 		TopContainerManager.OnStartButtonClickedEvent += OnStartStoryEvent;
 		StoryContainerManager.OnStoryFinishedEvent += OnStoryFinishedEvent;
 		StageInfoContainerManager.OnStartButtonClickedEvent += OnStartGameEvent;
-		StageContainerManager.OnGameOverEvent += OnGameOverEvent;
+		Player.GameOverEvent += OnGameOverEvent;
+		Player.ClearedEvent += StageClearedEvent;
 		GameOverContainerManager.OnFinishGameEvent += OnFinishGameEvent;
-		StageContainerManager.StageClearedEvent += StageClearedEvent;
 	}
 
 	void OnDisable () {
 		TopContainerManager.OnStartButtonClickedEvent -= OnStartStoryEvent;
 		StoryContainerManager.OnStoryFinishedEvent -= OnStoryFinishedEvent;
 		StageInfoContainerManager.OnStartButtonClickedEvent -= OnStartGameEvent;
-		StageContainerManager.OnGameOverEvent -= OnGameOverEvent;
+		Player.GameOverEvent -= OnGameOverEvent;
+		Player.ClearedEvent -= StageClearedEvent;
 		GameOverContainerManager.OnFinishGameEvent -= OnFinishGameEvent;
-		StageContainerManager.StageClearedEvent -= StageClearedEvent;
 	}
 
 	void Start () {
