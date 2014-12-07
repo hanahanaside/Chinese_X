@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class StoryContainerManager : ContainerManager<StoryContainerManager> {
+public class StoryContainerManager : MonoBehaviour {
 
 	public static event Action OnStoryFinishedEvent;
 
@@ -18,6 +18,6 @@ public class StoryContainerManager : ContainerManager<StoryContainerManager> {
 
 	public void OnSkipButtonClicked(){
 		OnStoryFinishedEvent ();
-		DestoryContainer ();
+		Destroy (transform.parent.gameObject);
 	}
 }

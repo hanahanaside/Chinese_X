@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class StageInfoContainerManager : ContainerManager<StageInfoContainerManager> {
+public class StageInfoContainerManager : MonoBehaviour {
 
 	public static event Action OnStartButtonClickedEvent;
 
@@ -18,6 +18,6 @@ public class StageInfoContainerManager : ContainerManager<StageInfoContainerMana
 
 	public void OnStartButtonClicked(){
 		OnStartButtonClickedEvent ();
-		DestoryContainer ();
+		Destroy (transform.parent.gameObject);
 	}
 }

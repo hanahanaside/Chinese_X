@@ -181,7 +181,6 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
      <Compile Include="Assets\Scripts\Abstract\Character.cs" />
-     <Compile Include="Assets\Scripts\Abstract\ContainerManager.cs" />
      <Compile Include="Assets\Scripts\Abstract\Enemy.cs" />
      <Compile Include="Assets\Scripts\Background\StageBackground.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />

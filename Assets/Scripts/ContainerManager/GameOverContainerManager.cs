@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class GameOverContainerManager : ContainerManager<GameOverContainerManager> {
+public class GameOverContainerManager : MonoBehaviour {
 
 	public static event Action OnFinishGameEvent;
 	public static event Action ContinueEvent;
@@ -19,11 +19,11 @@ public class GameOverContainerManager : ContainerManager<GameOverContainerManage
 
 	public void OnNoButtonClicked(){
 		OnFinishGameEvent ();
-		DestoryContainer ();
+		Destroy (transform.parent.gameObject);
 	}
 
 	public void OnYesButtonClicked(){
-		DestoryContainer ();
+		Destroy (transform.parent.gameObject);
 		ContinueEvent ();
 	}
 }

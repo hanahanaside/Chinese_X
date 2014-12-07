@@ -2,12 +2,12 @@
 using System.Collections;
 using System;
 
-public class TopContainerManager : ContainerManager<TopContainerManager> {
+public class TopContainerManager : MonoBehaviour {
 
 	public static event Action OnStartButtonClickedEvent;
 
 	public void OnStartButtonClicked(){
 		OnStartButtonClickedEvent ();
-		DestoryContainer ();
+		Destroy (transform.parent.gameObject);
 	}
 }
