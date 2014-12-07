@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 
 public class StageContainerManager : MonoBehaviour {
-	public static event Action OnGameOverEvent;
+	public static event Action StageGameOverEvent;
 	public static event Action<int> StageClearedEvent;
 
 	public GameObject playerPrefab;
@@ -16,10 +16,12 @@ public class StageContainerManager : MonoBehaviour {
 
 	void OnEnable () {
 		Player.ClearedEvent += ClearedEvent;
+		Player.GameOverEvent += GameoverEvent;
 	}
 
 	void OnDisable () {
 		Player.ClearedEvent -= ClearedEvent;
+		Player.GameOverEvent -= GameoverEvent;
 	}
 
 	void Start () {
@@ -47,8 +49,11 @@ public class StageContainerManager : MonoBehaviour {
 	}
 
 	void ClearedEvent () {
-
 		Destroy (transform.parent.gameObject);
 		StageClearedEvent (stageLevel);
+	}
+
+	void GameoverEvent(){
+		StageGameOverEvent ();
 	}
 }

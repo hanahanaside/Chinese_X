@@ -492,8 +492,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 100000, guid: d8759d1b51e2245d9b12fdd12d1ef05b, type: 2}
   cameraPrefab: {fileID: 100000, guid: 64b12b15baf9644af9f0651e6705f0ef, type: 2}
-  floorPrefab: {fileID: 100006, guid: ef898043f1cc544b99d3f6a2c15481ce, type: 2}
-  backgroundPrefab: {fileID: 100000, guid: f5302471a240941bfaadb003c34b30c1, type: 2}
+  floorPrefab: {fileID: 100006, guid: ad55f4f3018884c6c8689136437a3322, type: 2}
+  backgroundPrefab: {fileID: 100000, guid: 23d6259caf5e547c7bc4698eb1203472, type: 2}
   enemyGeneratorPrefab: {fileID: 100000, guid: 9abdfefac25fd42b787349caf4d7fae0, type: 2}
   stageLevel: 3
 --- !u!114 &11400012
