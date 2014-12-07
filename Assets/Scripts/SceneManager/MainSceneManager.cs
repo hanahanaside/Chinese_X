@@ -13,6 +13,7 @@ public class MainSceneManager : MonoBehaviour {
 		StageContainerManager.StageGameOverEvent += OnGameOverEvent;
 		GameOverContainerManager.OnFinishGameEvent += OnFinishGameEvent;
 		StageContainerManager.StageClearedEvent += StageClearedEvent;
+		GameOverContainerManager.ContinueEvent += ContinueEvent;
 	}
 
 	void OnDisable () {
@@ -22,6 +23,7 @@ public class MainSceneManager : MonoBehaviour {
 		StageContainerManager.StageGameOverEvent -= OnGameOverEvent;
 		GameOverContainerManager.OnFinishGameEvent -= OnFinishGameEvent;
 		StageContainerManager.StageClearedEvent -= StageClearedEvent;
+		GameOverContainerManager.ContinueEvent -= ContinueEvent;
 	}
 
 	void Start () {
@@ -44,33 +46,42 @@ public class MainSceneManager : MonoBehaviour {
 
 	void OnGameOverEvent () {
 		Debug.Log ("game over");
-		//	InstantiateContainer ("Container/GameOverContainer");
+		DestroyObjects ();
+		InstantiateContainer ("Container/GameOverContainer");
 	}
 
 	void OnFinishGameEvent () {
 		InstantiateContainer ("Container/TopContainer");
 	}
 
+	void ContinueEvent(){
+		InstantiateContainer ("Container/StageInfoContainer");
+	}
+
 	void StageClearedEvent (int stageLevel) {
 		Debug.Log ("clear");
 		loadingObject.SetActive (true);
+		DestroyObjects ();
+		if (stageLevel >= 3) {
+			stageLevel = 1;
+		} else {
+			stageLevel++;
+		}
+		InstantiateContainer ("Container/Stage" + stageLevel + "Container");
+		loadingObject.SetActive (false);
+	}
+
+	private void DestroyObjects () {
 		GameObject[] floorArray = GameObject.FindGameObjectsWithTag ("Floor");
 		foreach (GameObject floor in floorArray) {
 			Destroy (floor);
 		}
 		GameObject[] enemyArray = GameObject.FindGameObjectsWithTag ("Enemy");
-		foreach(GameObject enemy in enemyArray){
+		foreach (GameObject enemy in enemyArray) {
 			Destroy (enemy);
 		}
 		Destroy (GameObject.FindGameObjectWithTag ("MainCamera"));
 		Destroy (GameObject.FindGameObjectWithTag ("Player"));
-		if(stageLevel >= 3){
-			stageLevel = 1;
-		}else {
-			stageLevel++;
-		}
-		InstantiateContainer ("Container/Stage" + stageLevel + "Container");
-		loadingObject.SetActive (false);
 	}
 
 	private void InstantiateContainer (string path) {

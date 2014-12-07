@@ -35,8 +35,8 @@ public class Player : Character {
 			enabled = false;
 			rigidbody2D.isKinematic = true;
 			GameOverEvent ();
+			return;
 		}
-
 		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (1);
 		if(info.nameHash == Animator.StringToHash("Atack Layer.High Kick")){
 			mHighKickObject.SetActive (true);

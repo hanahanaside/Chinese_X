@@ -5,6 +5,7 @@ using System;
 public class GameOverContainerManager : ContainerManager<GameOverContainerManager> {
 
 	public static event Action OnFinishGameEvent;
+	public static event Action ContinueEvent;
 
 	// Use this for initialization
 	void Start () {
@@ -16,8 +17,13 @@ public class GameOverContainerManager : ContainerManager<GameOverContainerManage
 	
 	}
 
-	public void OnFinishGameButtonClicked(){
+	public void OnNoButtonClicked(){
 		OnFinishGameEvent ();
 		DestoryContainer ();
+	}
+
+	public void OnYesButtonClicked(){
+		DestoryContainer ();
+		ContinueEvent ();
 	}
 }

@@ -54,6 +54,11 @@ public class StageContainerManager : MonoBehaviour {
 	}
 
 	void GameoverEvent(){
+		Invoke ("GameOver",3.0f);
+	}
+
+	private void GameOver(){
+		Destroy (transform.parent.gameObject);
 		StageGameOverEvent ();
 	}
 }
