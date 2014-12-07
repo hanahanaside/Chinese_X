@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiRoot: {fileID: 623669171}
   loadingObject: {fileID: 160182484}
-  debug: 1
+  debug: 0
 --- !u!1 &160182484
 GameObject:
   m_ObjectHideFlags: 0

@@ -57,9 +57,17 @@ public class MainSceneManager : MonoBehaviour {
 		foreach (GameObject floor in floorArray) {
 			Destroy (floor);
 		}
+		GameObject[] enemyArray = GameObject.FindGameObjectsWithTag ("Enemy");
+		foreach(GameObject enemy in enemyArray){
+			Destroy (enemy);
+		}
 		Destroy (GameObject.FindGameObjectWithTag ("MainCamera"));
 		Destroy (GameObject.FindGameObjectWithTag ("Player"));
-		stageLevel++;
+		if(stageLevel >= 3){
+			stageLevel = 1;
+		}else {
+			stageLevel++;
+		}
 		InstantiateContainer ("Container/Stage" + stageLevel + "Container");
 		loadingObject.SetActive (false);
 	}
