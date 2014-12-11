@@ -6,7 +6,7 @@ public class KickMan :  Enemy {
 	private Animator mAnimator;
 	private GameObject mAtackObject;
 	private Transform mPlayerTransform;
-	private float mH;
+	private float mMoveSpeed = 0.5f;
 
 	void Start () {
 		mAnimator = GetComponent<Animator> ();
@@ -14,12 +14,6 @@ public class KickMan :  Enemy {
 		mAtackObject.SetActive (false);
 		mAnimator.SetFloat ("Speed", moveForce);
 		mPlayerTransform = GameObject.FindGameObjectWithTag ("Player").transform;
-		if (mPlayerTransform.position.x > transform.position.x) {
-			mH = 0.5f;
-		} else {
-			mH = -0.5f;
-		}
-		CheckFlip (mH);
 	}
 
 	void FixedUpdate () {
@@ -33,24 +27,31 @@ public class KickMan :  Enemy {
 			mAtackObject.SetActive (true);
 		}else {
 			mAtackObject.SetActive (false);
+		}			
+
+		if (mPlayerTransform.position.x > transform.position.x) {
+			mMoveSpeed = 0.5f;
+		} else {
+			mMoveSpeed = -0.5f;
 		}
-		if (info.nameHash != Animator.StringToHash ("Base Layer.Walk")) {
-			return;
-		}
-			
 
-		Move (mH);
-
-
+		CheckFlip (mMoveSpeed);
 
 		float distance = Vector3.Distance (mPlayerTransform.position,transform.position);
-		if(distance < atackDistance){
+		if(distance <= atackDistance){
 			mAnimator.SetFloat ("Speed", 0);
+		}else {
+			mAnimator.SetFloat ("Speed", moveForce);
 		}
+
+		if(info.nameHash == Animator.StringToHash("Base Layer.Walk")){
+			Move (mMoveSpeed);
+		}
+
 	}
 
 	public override void ApplyDamage () {
-		life -= 1.0f;
+		life -= 1f;
 		LifeManager.instance.UpdateEnemyLife (life);
 	}
 

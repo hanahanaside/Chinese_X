@@ -18,10 +18,13 @@ public class Player : Character {
 
 	void Start(){
 		sInstance = this;
+		life = 1.0f;
 		mAnimator = GetComponent<Animator> ();
 		mGroundCheckTransform = transform.Find ("GroundCheck");
 		mHighKickObject = transform.Find ("HighKick").gameObject;
 		mLowKickObject = transform.Find ("LowKick").gameObject;
+		mHighKickObject.SetActive (false);
+		mLowKickObject.SetActive (false);
 	}
 
 	void Update(){
@@ -36,20 +39,6 @@ public class Player : Character {
 			rigidbody2D.isKinematic = true;
 			GameOverEvent ();
 			return;
-		}
-		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (1);
-		if(info.nameHash == Animator.StringToHash("Atack Layer.High Kick")){
-			mHighKickObject.SetActive (true);
-			return;
-		}else {
-			mHighKickObject.SetActive (false);
-		}
-
-		if(info.nameHash == Animator.StringToHash("Atack Layer.Low Kick")){
-			mLowKickObject.SetActive (true);
-			return;
-		}else {
-			mLowKickObject.SetActive (false);
 		}
 
 		// Cache the horizontal input.
@@ -93,6 +82,9 @@ public class Player : Character {
 	}
 				
 	public void Jump () {
+		if(!enabled){
+			return;
+		}
 		if (!mJump && mGrounded) {
 			mJump = true;
 			mGrounded = false;
@@ -100,11 +92,17 @@ public class Player : Character {
 	}
 
 	public void HighKick(){
-		mAnimator.SetTrigger ("HighKick");
+		if(enabled){
+			mAnimator.SetTrigger ("HighKick");
+			mHighKickObject.SetActive (true);
+		}
 	}
 
 	public void LowKick(){
-		mAnimator.SetTrigger ("LowKick");
+		if(enabled){
+			mAnimator.SetTrigger ("LowKick");
+			mLowKickObject.SetActive (true);
+		}
 	}
 		
 }
