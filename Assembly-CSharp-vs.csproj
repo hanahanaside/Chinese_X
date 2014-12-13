@@ -209,6 +209,7 @@
      <Compile Include="Assets\Scripts\RollingMan\RollingMan.cs" />
      <Compile Include="Assets\Scripts\SceneManager\MainSceneManager.cs" />
      <Compile Include="Assets\Scripts\ScoreKeeper\ScoreKeeper.cs" />
+     <Compile Include="Assets\Scripts\StageManager\StageManager.cs" />
      <Compile Include="Assets\Scripts\Test\Test.cs" />
      <Compile Include="Assets\Scripts\TimeKeeper\TimeKeeper.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />

@@ -27,6 +27,7 @@ public class EnemyGenerator : MonoBehaviour {
 		GameObject enemy = enemyPrefabArray[rand];
 		rand = Random.Range (0,2);
 		Transform generateTransform = generatePosition[rand];
-		Instantiate (enemy, generateTransform.position, Quaternion.identity);
+		GameObject enemyObject =  Instantiate (enemy, generateTransform.position, Quaternion.identity) as GameObject;
+		enemyObject.transform.parent = transform.parent.transform.parent;
 	}
 }

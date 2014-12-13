@@ -3,16 +3,15 @@ using System.Collections;
 
 public class MainSceneManager : MonoBehaviour {
 	public GameObject uiRoot;
-	public GameObject loadingObject;
 	public bool debug;
 
 	void OnEnable () {
 		TopContainerManager.OnStartButtonClickedEvent += OnStartStoryEvent;
 		StoryContainerManager.OnStoryFinishedEvent += OnStoryFinishedEvent;
 		StageInfoContainerManager.OnStartButtonClickedEvent += OnStartGameEvent;
-		StageContainerManager.StageGameOverEvent += OnGameOverEvent;
+		StageManager.StageGameOverEvent += OnGameOverEvent;
 		GameOverContainerManager.OnFinishGameEvent += OnFinishGameEvent;
-		StageContainerManager.StageClearedEvent += StageClearedEvent;
+		StageManager.StageClearedEvent += StageClearedEvent;
 		GameOverContainerManager.ContinueEvent += ContinueEvent;
 	}
 
@@ -20,9 +19,9 @@ public class MainSceneManager : MonoBehaviour {
 		TopContainerManager.OnStartButtonClickedEvent -= OnStartStoryEvent;
 		StoryContainerManager.OnStoryFinishedEvent -= OnStoryFinishedEvent;
 		StageInfoContainerManager.OnStartButtonClickedEvent -= OnStartGameEvent;
-		StageContainerManager.StageGameOverEvent -= OnGameOverEvent;
+		StageManager.StageGameOverEvent -= OnGameOverEvent;
 		GameOverContainerManager.OnFinishGameEvent -= OnFinishGameEvent;
-		StageContainerManager.StageClearedEvent -= StageClearedEvent;
+		StageManager.StageClearedEvent -= StageClearedEvent;
 		GameOverContainerManager.ContinueEvent -= ContinueEvent;
 	}
 
@@ -41,12 +40,11 @@ public class MainSceneManager : MonoBehaviour {
 	}
 
 	void OnStartGameEvent () {
-		InstantiateContainer ("Container/StageContainer1");
+		InstantiateStageManager (1);
 	}
 
 	void OnGameOverEvent () {
 		Debug.Log ("game over");
-		DestroyObjects ();
 		InstantiateContainer ("Container/GameOverContainer");
 	}
 
@@ -60,34 +58,23 @@ public class MainSceneManager : MonoBehaviour {
 
 	void StageClearedEvent (int stageLevel) {
 		Debug.Log ("clear");
-		loadingObject.SetActive (true);
-		DestroyObjects ();
 		if (stageLevel >= 3) {
 			stageLevel = 1;
 		} else {
 			stageLevel++;
 		}
-		InstantiateContainer ("Container/StageContainer" + stageLevel);
-		loadingObject.SetActive (false);
+		InstantiateStageManager (stageLevel);
 	}
-
-	private void DestroyObjects () {
-		GameObject[] floorArray = GameObject.FindGameObjectsWithTag ("Floor");
-		foreach (GameObject floor in floorArray) {
-			Destroy (floor);
-		}
-		GameObject[] enemyArray = GameObject.FindGameObjectsWithTag ("Enemy");
-		foreach (GameObject enemy in enemyArray) {
-			Destroy (enemy);
-		}
-		Destroy (GameObject.FindGameObjectWithTag ("MainCamera"));
-		Destroy (GameObject.FindGameObjectWithTag ("Player"));
-	}
-
+		
 	private void InstantiateContainer (string path) {
 		GameObject containerPrefab = Resources.Load (path) as GameObject;
 		GameObject containerObject = Instantiate (containerPrefab) as GameObject;
 		containerObject.transform.parent = uiRoot.transform;
 		containerObject.transform.localScale = new Vector3 (1f, 1f, 1f);
+	}
+
+	private void InstantiateStageManager(int level){
+		GameObject stageManagerPrefab =	Resources.Load ("StageManager/StageManager" + level) as GameObject;
+		Instantiate (stageManagerPrefab);
 	}
 }
