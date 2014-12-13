@@ -17,11 +17,13 @@ public class EnemyGenerator : MonoBehaviour {
 		if (mInterval < 0) {
 			GenerateEnemy ();
 			mInterval = 3.0f;
+			enabled = false;
 		}
 	}
 
 	private void GenerateEnemy () {
 		int rand = Random.Range (0,1);
+		rand = 1;
 		GameObject enemy = enemyPrefab[rand];
 		rand = Random.Range (0,2);
 		Transform generateTransform = generatePosition[rand];

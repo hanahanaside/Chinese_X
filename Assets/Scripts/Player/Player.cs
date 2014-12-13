@@ -42,6 +42,10 @@ public class Player : Character {
 			return;
 		}
 
+		#if UNITY_EDITOR
+		mHorizontal = Input.GetAxis ("Horizontal");
+		#endif
+
 		// The Speed animator parameter is set to the absolute value of the horizontal input.
 		mAnimator.SetFloat ("Speed", Mathf.Abs (mHorizontal));
 
