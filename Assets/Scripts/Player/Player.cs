@@ -15,6 +15,7 @@ public class Player : Character {
 	private GameObject mHighKickObject;
 	private GameObject mLowKickObject;
 	private static Player sInstance;
+	private float mHorizontal;
 
 	void Start(){
 		sInstance = this;
@@ -41,15 +42,12 @@ public class Player : Character {
 			return;
 		}
 
-		// Cache the horizontal input.
-		float h = Input.GetAxis ("Horizontal");
-
 		// The Speed animator parameter is set to the absolute value of the horizontal input.
-		mAnimator.SetFloat ("Speed", Mathf.Abs (h));
+		mAnimator.SetFloat ("Speed", Mathf.Abs (mHorizontal));
 
-		Move (h);
+		Move (mHorizontal);
 
-		CheckFlip (h);
+		CheckFlip (mHorizontal);
 
 		// If the player should jump...
 		if (mJump) {
@@ -68,6 +66,12 @@ public class Player : Character {
 		string tag = collision.gameObject.tag;
 		if(tag == "Step"){
 			ClearedEvent ();
+		}
+	}
+
+	public float Horizontal{
+		set{
+			mHorizontal = value;
 		}
 	}
 

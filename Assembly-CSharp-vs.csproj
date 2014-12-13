@@ -46,6 +46,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Joystick\Scripts\CameraOrbitController.cs" />
+     <Compile Include="Assets\Joystick\Scripts\GameControl.cs" />
+     <Compile Include="Assets\Joystick\Scripts\Joystick.cs" />
+     <Compile Include="Assets\Joystick\Scripts\JoystickFloat.cs" />
+     <Compile Include="Assets\Joystick\Scripts\Shell.cs" />
+     <Compile Include="Assets\Joystick\Scripts\TankController.cs" />
+     <Compile Include="Assets\Joystick\Scripts\TouchCamera.cs" />
+     <Compile Include="Assets\Joystick\Scripts\UIAnchorCollider.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UICursor.cs" />

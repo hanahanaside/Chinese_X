@@ -164,7 +164,7 @@ MonoBehaviour:
   moveForce: 100
   maxSpeed: 1
   life: 1
-  atackDistance: 2.0999999
+  atackDistance: 1
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

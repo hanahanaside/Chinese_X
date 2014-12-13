@@ -48,16 +48,20 @@ public class StageContainerManager : MonoBehaviour {
 		Player.instance.Jump ();
 	}
 
+	public void OnJoystick (Vector2 delta) {
+		Player.instance.Horizontal = delta.x;
+	}
+
 	void ClearedEvent () {
 		Destroy (transform.parent.gameObject);
 		StageClearedEvent (stageLevel);
 	}
 
-	void GameoverEvent(){
-		Invoke ("GameOver",3.0f);
+	void GameoverEvent () {
+		Invoke ("GameOver", 3.0f);
 	}
 
-	private void GameOver(){
+	private void GameOver () {
 		Destroy (transform.parent.gameObject);
 		StageGameOverEvent ();
 	}
