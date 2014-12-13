@@ -18,8 +18,10 @@ public class KickMan :  Enemy {
 
 	void FixedUpdate () {
 		if(life <=0){
+			CheckFlip (mMoveSpeed);
 			mAnimator.SetTrigger ("Death");
 			enabled = false;
+			ScoreKeeper.instance.AddScore (score);
 			Destroy (gameObject,0.8f);
 		}
 		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (0);
@@ -49,10 +51,4 @@ public class KickMan :  Enemy {
 		}
 
 	}
-
-	public override void ApplyDamage () {
-		life -= 1f;
-		LifeManager.instance.UpdateEnemyLife (life);
-	}
-
 }

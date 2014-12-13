@@ -3,7 +3,9 @@ using System.Collections;
 
 public class EnemyGenerator : MonoBehaviour {
 	public Transform[] generatePosition;
-	public GameObject[] enemyPrefab;
+	public GameObject[] enemyPrefabArray;
+	public float minInterval;
+	public float maxInterval;
 	private float mInterval;
 
 	void Start () {
@@ -16,14 +18,13 @@ public class EnemyGenerator : MonoBehaviour {
 		mInterval -= Time.deltaTime;
 		if (mInterval < 0) {
 			GenerateEnemy ();
-			mInterval = 3.0f;
+			mInterval = Random.Range(minInterval,maxInterval);
 		}
 	}
 
 	private void GenerateEnemy () {
-		int rand = Random.Range (0,1);
-		rand = 1;
-		GameObject enemy = enemyPrefab[rand];
+		int rand = Random.Range (0,enemyPrefabArray.Length);
+		GameObject enemy = enemyPrefabArray[rand];
 		rand = Random.Range (0,2);
 		Transform generateTransform = generatePosition[rand];
 		Instantiate (enemy, generateTransform.position, Quaternion.identity);

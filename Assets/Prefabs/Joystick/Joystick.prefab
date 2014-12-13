@@ -215,6 +215,7 @@ MonoBehaviour:
   center: {fileID: 400004}
   isRotation: 0
   constraint: 1
+  stageContainerManager: {fileID: 0}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1

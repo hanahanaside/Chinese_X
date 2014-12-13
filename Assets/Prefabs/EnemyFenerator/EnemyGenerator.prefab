@@ -95,9 +95,11 @@ MonoBehaviour:
   generatePosition:
   - {fileID: 400002}
   - {fileID: 400004}
-  enemyPrefab:
+  enemyPrefabArray:
   - {fileID: 100000, guid: 2f23b0528a3c04b068387a531364239b, type: 2}
   - {fileID: 100000, guid: 3503d4ae845ed45f19b042ca58316476, type: 2}
+  minInterval: 3
+  maxInterval: 5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -22,8 +22,10 @@ public class RollingMan : Enemy {
 
 	void FixedUpdate () {
 		if (life <= 0) {
+			CheckFlip (mPlayerTransform.position.x - transform.position.x);
 			mAnimator.SetTrigger ("Death");
 			enabled = false;
+			ScoreKeeper.instance.AddScore (score);
 			Destroy (gameObject, 0.8f);
 			return;
 		}
@@ -54,10 +56,5 @@ public class RollingMan : Enemy {
 		if(tag == "Player"){
 			Player.instance.ApplyDamage ();
 		}
-	}
-
-	public override void ApplyDamage () {
-		life -= 1.0f;
-		LifeManager.instance.UpdateEnemyLife (life);
 	}
 }

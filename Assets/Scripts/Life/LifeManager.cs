@@ -3,18 +3,23 @@ using System.Collections;
 
 public class LifeManager : MonoBehaviour {
 
-	public UISlider playerLife;
-	public UISlider enemyLife;
+	private UISlider playerLife;
+	private UISlider enemyLife;
 	private static LifeManager sInstance;
-
-	void Awake(){
-		sInstance = this;
-	}
 
 	public static LifeManager instance{
 		get{
 			return sInstance;
 		}
+	}
+
+	void Awake(){
+		sInstance = this;
+	}
+
+	void Start(){
+		playerLife = transform.Find ("PlayerLife").GetComponent<UISlider>();
+		enemyLife = transform.Find ("EnemyLife").GetComponent<UISlider>();
 	}
 
 	public void UpdatePlayerLife(float life){
