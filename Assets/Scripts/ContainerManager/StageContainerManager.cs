@@ -17,11 +17,13 @@ public class StageContainerManager : MonoBehaviour {
 	void OnEnable () {
 		Player.ClearedEvent += ClearedEvent;
 		Player.GameOverEvent += GameoverEvent;
+		TimeKeeper.TimeUpEvent += TimeUpEvent;
 	}
 
 	void OnDisable () {
 		Player.ClearedEvent -= ClearedEvent;
 		Player.GameOverEvent -= GameoverEvent;
+		TimeKeeper.TimeUpEvent -= TimeUpEvent;
 	}
 
 	void Start () {
@@ -33,6 +35,10 @@ public class StageContainerManager : MonoBehaviour {
 		}
 		Instantiate (backgroundPrefab);
 		Instantiate (enemyGeneratorPrefab);
+	}
+
+	void TimeUpEvent(){
+		GameOver ();
 	}
 
 	public  void OnAtackButtonClicked () {

@@ -17,7 +17,6 @@ public class EnemyGenerator : MonoBehaviour {
 		if (mInterval < 0) {
 			GenerateEnemy ();
 			mInterval = 3.0f;
-			enabled = false;
 		}
 	}
 
