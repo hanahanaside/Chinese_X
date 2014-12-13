@@ -41,7 +41,7 @@ public class MainSceneManager : MonoBehaviour {
 	}
 
 	void OnStartGameEvent () {
-		InstantiateContainer ("Container/Stage1Container");
+		InstantiateContainer ("Container/StageContainer1");
 	}
 
 	void OnGameOverEvent () {
@@ -67,7 +67,7 @@ public class MainSceneManager : MonoBehaviour {
 		} else {
 			stageLevel++;
 		}
-		InstantiateContainer ("Container/Stage" + stageLevel + "Container");
+		InstantiateContainer ("Container/StageContainer" + stageLevel);
 		loadingObject.SetActive (false);
 	}
 

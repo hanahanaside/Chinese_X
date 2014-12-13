@@ -9,7 +9,6 @@ public class HighKick : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D collision) {
 		string tag = collision.gameObject.tag;
-		Debug.Log ("hit");
 		if(tag == "Enemy"){
 			Enemy enemy = collision.gameObject.GetComponent<Enemy>();
 			enemy.ApplyDamage ();
