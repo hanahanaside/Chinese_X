@@ -166,7 +166,7 @@ MonoBehaviour:
   life: 1
   atackDistance: 1
   score: 1
-  hp: 3
+  hp: 1
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

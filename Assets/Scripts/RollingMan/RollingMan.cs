@@ -23,6 +23,7 @@ public class RollingMan : Enemy {
 	void FixedUpdate () {
 		if (life <= 0) {
 			CheckFlip (mPlayerTransform.position.x - transform.position.x);
+			Move (-mMoveSpeed * 10);
 			mAnimator.SetTrigger ("Death");
 			enabled = false;
 			ScoreKeeper.instance.AddScore (score);

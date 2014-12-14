@@ -43,7 +43,7 @@ public class Player : Character {
 		}
 
 		#if UNITY_EDITOR
-		mHorizontal = Input.GetAxis ("Horizontal");
+			mHorizontal = Input.GetAxis ("Horizontal");
 		#endif
 
 		// The Speed animator parameter is set to the absolute value of the horizontal input.

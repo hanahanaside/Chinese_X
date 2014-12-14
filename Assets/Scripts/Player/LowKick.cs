@@ -4,7 +4,7 @@ using System.Collections;
 public class LowKick : MonoBehaviour {
 
 	void OnEnable(){
-		Invoke ("Hide",0.4f);
+		Invoke ("Hide",0.3f);
 	}
 
 	void OnTriggerEnter2D (Collider2D collision) {

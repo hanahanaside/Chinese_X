@@ -19,6 +19,7 @@ public class KickMan :  Enemy {
 	void FixedUpdate () {
 		if(life <=0){
 			CheckFlip (mMoveSpeed);
+			Move (-mMoveSpeed * 10);
 			mAnimator.SetTrigger ("Death");
 			enabled = false;
 			ScoreKeeper.instance.AddScore (score);
