@@ -62,7 +62,8 @@ public class StageManager : MonoBehaviour {
 	}
 
 	private void GameOver () {
-		Destroy (transform.parent.gameObject);
+		Destroy (gameObject);
+		Destroy (mStageContainerObject);
 		StageGameOverEvent ();
 	}
 }

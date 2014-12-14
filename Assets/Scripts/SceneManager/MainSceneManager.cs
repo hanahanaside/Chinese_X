@@ -2,8 +2,9 @@
 using System.Collections;
 
 public class MainSceneManager : MonoBehaviour {
-	public GameObject uiRoot;
+
 	public bool debug;
+	private GameObject mUIRoot;
 
 	void OnEnable () {
 		TopContainerManager.OnStartButtonClickedEvent += OnStartStoryEvent;
@@ -26,6 +27,7 @@ public class MainSceneManager : MonoBehaviour {
 	}
 
 	void Start () {
+		mUIRoot = GameObject.FindGameObjectWithTag ("UIRoot");
 		if (!debug) {
 			InstantiateContainer ("Container/TopContainer");
 		}
@@ -69,7 +71,7 @@ public class MainSceneManager : MonoBehaviour {
 	private void InstantiateContainer (string path) {
 		GameObject containerPrefab = Resources.Load (path) as GameObject;
 		GameObject containerObject = Instantiate (containerPrefab) as GameObject;
-		containerObject.transform.parent = uiRoot.transform;
+		containerObject.transform.parent = mUIRoot.transform;
 		containerObject.transform.localScale = new Vector3 (1f, 1f, 1f);
 	}
 
