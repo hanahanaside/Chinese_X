@@ -190,14 +190,15 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
      <Compile Include="Assets\Scripts\Abstract\Character.cs" />
      <Compile Include="Assets\Scripts\Abstract\Enemy.cs" />
+     <Compile Include="Assets\Scripts\Background\StageBackground.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\ContainerManager\GameOverContainerManager.cs" />
      <Compile Include="Assets\Scripts\ContainerManager\StageContainerManager.cs" />
      <Compile Include="Assets\Scripts\ContainerManager\StageInfoContainerManager.cs" />
      <Compile Include="Assets\Scripts\ContainerManager\StoryContainerManager.cs" />
      <Compile Include="Assets\Scripts\ContainerManager\TopContainerManager.cs" />
-     <Compile Include="Assets\Scripts\EnemyGenerator\EnemyGenerator.cs" />
      <Compile Include="Assets\Scripts\Floor\Floor.cs" />
+     <Compile Include="Assets\Scripts\Generator\EnemyGenerator.cs" />
      <Compile Include="Assets\Scripts\KickMan\KickMan.cs" />
      <Compile Include="Assets\Scripts\KickMan\KickManAtack.cs" />
      <Compile Include="Assets\Scripts\Life\LifeManager.cs" />

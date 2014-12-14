@@ -35,8 +35,8 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
 
 			m_Instance.OnInitialize ();
 		} else if (m_Instance != instance) {
-				DestroyImmediate (instance.gameObject);
-			//	UnityEditor.EditorApplication.delayCall += () => DestroyImmediate(instance.gameObject);
+			//	DestroyImmediate (instance.gameObject);
+				UnityEditor.EditorApplication.delayCall += () => DestroyImmediate(instance.gameObject);
 		}
 	}
 
