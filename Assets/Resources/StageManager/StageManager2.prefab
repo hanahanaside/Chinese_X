@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: StageManager1
+  m_Name: StageManager2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,11 +40,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 100000, guid: d8759d1b51e2245d9b12fdd12d1ef05b, type: 2}
   cameraPrefab: {fileID: 100000, guid: 64b12b15baf9644af9f0651e6705f0ef, type: 2}
-  floorPrefab: {fileID: 100002, guid: a25293dbae46b456fbbefb083f8f689c, type: 2}
-  backgroundPrefab: {fileID: 100000, guid: eb69a8777b7074a41986aee60fadb830, type: 2}
+  floorPrefab: {fileID: 100006, guid: ef898043f1cc544b99d3f6a2c15481ce, type: 2}
+  backgroundPrefab: {fileID: 100000, guid: f5302471a240941bfaadb003c34b30c1, type: 2}
   enemyGeneratorPrefab: {fileID: 100000, guid: 9abdfefac25fd42b787349caf4d7fae0, type: 2}
   stageContainerPrefab: {fileID: 100022, guid: bff44d93587fd4d27b7635966a9a938e, type: 2}
-  stageLevel: 1
+  stageLevel: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
