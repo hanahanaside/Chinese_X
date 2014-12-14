@@ -26,7 +26,7 @@ public class Joystick : MonoBehaviour {
 	/// </summary>
 	public bool isRotation = false;
 	public Constraints constraint = Constraints.None;
-	public StageContainerManager stageContainerManager;
+	public StageManager stageContainerManager;
 	float joystickRadius = 0f;
 	Plane plane;
 	int cntFrame;

@@ -193,7 +193,6 @@
      <Compile Include="Assets\Scripts\Background\StageBackground.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\ContainerManager\GameOverContainerManager.cs" />
-     <Compile Include="Assets\Scripts\ContainerManager\StageContainerManager.cs" />
      <Compile Include="Assets\Scripts\ContainerManager\StageInfoContainerManager.cs" />
      <Compile Include="Assets\Scripts\ContainerManager\StoryContainerManager.cs" />
      <Compile Include="Assets\Scripts\ContainerManager\TopContainerManager.cs" />
