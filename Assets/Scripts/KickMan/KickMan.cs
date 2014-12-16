@@ -13,7 +13,7 @@ public class KickMan :  Enemy {
 		mAtackObject = transform.Find ("Atack").gameObject;
 		mAtackObject.SetActive (false);
 		mAnimator.SetFloat ("Speed", moveForce);
-		mPlayerTransform = GameObject.FindGameObjectWithTag ("Player").transform;
+		mPlayerTransform = Player.instance.transform;
 	}
 
 	void FixedUpdate () {

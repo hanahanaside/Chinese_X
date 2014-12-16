@@ -17,7 +17,7 @@ public class Player : Character {
 	private static Player sInstance;
 	private float mHorizontal;
 
-	void Start(){
+	void Start () {
 		sInstance = this;
 		life = 1.0f;
 		mAnimator = GetComponent<Animator> ();
@@ -28,13 +28,13 @@ public class Player : Character {
 		mLowKickObject.SetActive (false);
 	}
 
-	void Update(){
-		mGrounded = Physics2D.Linecast(transform.position, mGroundCheckTransform.position, 1 << LayerMask.NameToLayer("Ground"));  
+	void Update () {
+		mGrounded = Physics2D.Linecast (transform.position, mGroundCheckTransform.position, 1 << LayerMask.NameToLayer ("Ground"));  
 	}
-		
+
 	void FixedUpdate () {
 		LifeManager.instance.UpdatePlayerLife (life);
-		if(life <=0){
+		if (life <= 0) {
 			mAnimator.SetTrigger ("Death");
 			enabled = false;
 			rigidbody2D.isKinematic = true;
@@ -43,13 +43,16 @@ public class Player : Character {
 		}
 
 		#if UNITY_EDITOR
-			mHorizontal = Input.GetAxis ("Horizontal");
+		mHorizontal = Input.GetAxis ("Horizontal");
 		#endif
 
 		// The Speed animator parameter is set to the absolute value of the horizontal input.
 		mAnimator.SetFloat ("Speed", Mathf.Abs (mHorizontal));
 
-		Move (mHorizontal);
+		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (0);
+		if (info.nameHash != Animator.StringToHash ("Base Layer.Atack")) {
+			Move (mHorizontal);
+		}
 
 		CheckFlip (mHorizontal);
 
@@ -68,29 +71,29 @@ public class Player : Character {
 
 	void OnTriggerEnter2D (Collider2D collider) {
 		string tag = collider.gameObject.tag;
-		if(tag == "Step"){
+		if (tag == "Step") {
 			ClearedEvent ();
 		}
 	}
 
-	public float Horizontal{
-		set{
+	public float Horizontal {
+		set {
 			mHorizontal = value;
 		}
 	}
 
-	public override void ApplyDamage(){
+	public override void ApplyDamage () {
 		life -= 0.1f;
 	}
 
-	public static Player instance{
-		get{
+	public static Player instance {
+		get {
 			return sInstance;
 		}
 	}
-				
+
 	public void Jump () {
-		if(!enabled){
+		if (!enabled) {
 			return;
 		}
 		if (!mJump && mGrounded) {
@@ -99,18 +102,17 @@ public class Player : Character {
 		}
 	}
 
-	public void HighKick(){
-		if(enabled){
+	public void HighKick () {
+		if (enabled) {
 			mAnimator.SetTrigger ("HighKick");
 			mHighKickObject.SetActive (true);
 		}
 	}
 
-	public void LowKick(){
-		if(enabled){
+	public void LowKick () {
+		if (enabled) {
 			mAnimator.SetTrigger ("LowKick");
 			mLowKickObject.SetActive (true);
 		}
 	}
-		
 }

@@ -96,6 +96,7 @@ MonoBehaviour:
   - {fileID: 400002}
   - {fileID: 400004}
   enemyPrefabArray:
+  - {fileID: 100002, guid: 71d57d795ce7b4285b2428a349ebef13, type: 2}
   - {fileID: 100000, guid: 2f23b0528a3c04b068387a531364239b, type: 2}
   - {fileID: 100000, guid: 3503d4ae845ed45f19b042ca58316476, type: 2}
   minInterval: 3

@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: KnifeMan@Death
+  serializedVersion: 4
+  m_AnimationType: 2
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves: []
+  m_CompressedRotationCurves: []
+  m_PositionCurves: []
+  m_ScaleCurves: []
+  m_FloatCurves: []
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: dc47a615cc39b4a969c82d5d3418af82, type: 3}
+    - time: .0833333358
+      value: {fileID: 21300000, guid: 5abb140e0625a4bd49f924788a0c67a6, type: 3}
+    - time: .166666672
+      value: {fileID: 21300000, guid: 8bf757165f1934390bd55441c8f35493, type: 3}
+    - time: .25
+      value: {fileID: 21300000, guid: 4b365be3718c542088d61a2b3bc362df, type: 3}
+    - time: .333333343
+      value: {fileID: 21300000, guid: 6c3882e48f4fc4ddc872300f22871de8, type: 3}
+    - time: .416666657
+      value: {fileID: 21300000, guid: d1d9023d1072c4cfcb941e518aa35101, type: 3}
+    - time: .5
+      value: {fileID: 21300000, guid: ad84abc0f277442ff9a80b6c7ea22da6, type: 3}
+    - time: .583333313
+      value: {fileID: 21300000, guid: cf9302398838944edb5feab830646374, type: 3}
+    - time: .666666687
+      value: {fileID: 21300000, guid: 6764dfbf09131425480dccde0be6c925, type: 3}
+    - time: .75
+      value: {fileID: 21300000, guid: c5dacf99bafb547ef8487bf4339dbd62, type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 212
+    script: {fileID: 0}
+  m_SampleRate: 12
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_StartTime: 0
+    m_StopTime: .833333313
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_LoopTime: 1
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
+  m_Events: []
