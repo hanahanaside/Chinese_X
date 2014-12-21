@@ -633,7 +633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   center: {fileID: 400000}
   isRotation: 0
-  constraint: 1
+  constraint: 0
   stageContainerManager: {fileID: 11400042}
 --- !u!114 &11400006
 MonoBehaviour:

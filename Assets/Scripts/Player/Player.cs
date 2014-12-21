@@ -15,7 +15,11 @@ public class Player : Character {
 	private GameObject mHighKickObject;
 	private GameObject mLowKickObject;
 	private static Player sInstance;
-	private float mHorizontal;
+
+	public Vector2 Delta {
+		get;
+		set;
+	}
 
 	void Start () {
 		sInstance = this;
@@ -43,18 +47,29 @@ public class Player : Character {
 		}
 
 		#if UNITY_EDITOR
-		mHorizontal = Input.GetAxis ("Horizontal");
-		#endif
-
-		// The Speed animator parameter is set to the absolute value of the horizontal input.
-		mAnimator.SetFloat ("Speed", Mathf.Abs (mHorizontal));
+		float h = Input.GetAxis ("Horizontal");
+		mAnimator.SetFloat ("Speed", Mathf.Abs (h));
 
 		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (0);
-		if (info.nameHash != Animator.StringToHash ("Base Layer.Atack")) {
-			Move (mHorizontal);
+		if (info.nameHash == Animator.StringToHash ("Base Layer.Walk")) {
+			Move (h);
 		}
 
-		CheckFlip (mHorizontal);
+		CheckFlip (h);
+
+		#else
+
+		// The Speed animator parameter is set to the absolute value of the horizontal input.
+		mAnimator.SetFloat ("Speed", Mathf.Abs (Delta.x));
+	
+		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (0);
+		if (info.nameHash == Animator.StringToHash ("Base Layer.Walk")) {
+			Move (Delta.x);
+		}
+
+		CheckFlip (Delta.x);
+
+		#endif
 
 		// If the player should jump...
 		if (mJump) {
@@ -73,12 +88,6 @@ public class Player : Character {
 		string tag = collider.gameObject.tag;
 		if (tag == "Step") {
 			ClearedEvent ();
-		}
-	}
-
-	public float Horizontal {
-		set {
-			mHorizontal = value;
 		}
 	}
 
@@ -102,17 +111,24 @@ public class Player : Character {
 		}
 	}
 
-	public void HighKick () {
-		if (enabled) {
-			mAnimator.SetTrigger ("HighKick");
-			mHighKickObject.SetActive (true);
+	public void Atack () {
+		if (!enabled) {
+			return;
+		}
+		if (Delta.y >= 0) {
+			HighKick ();
+		} else {
+			LowKick ();
 		}
 	}
 
-	public void LowKick () {
-		if (enabled) {
-			mAnimator.SetTrigger ("LowKick");
-			mLowKickObject.SetActive (true);
-		}
+	private void HighKick () {
+		mAnimator.SetTrigger ("HighKick");
+		mHighKickObject.SetActive (true);
+	}
+
+	private void LowKick () {
+		mAnimator.SetTrigger ("LowKick");
+		mLowKickObject.SetActive (true);
 	}
 }
