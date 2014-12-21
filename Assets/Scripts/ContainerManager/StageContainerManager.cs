@@ -4,12 +4,6 @@ using System.Collections;
 public class StageContainerManager : MonoBehaviour {
 
 	public  void OnAtackButtonClicked () {
-//		float v = Input.GetAxis ("Vertical");
-//		if (v < 0) {
-//			Player.instance.LowKick ();
-//		} else {
-//			Player.instance.HighKick ();
-//		}
 		Player.instance.Atack ();
 	}
 
