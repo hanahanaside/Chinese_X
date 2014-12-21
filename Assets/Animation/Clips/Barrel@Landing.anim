@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Barrel@Landing
+  serializedVersion: 4
+  m_AnimationType: 2
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves: []
+  m_CompressedRotationCurves: []
+  m_PositionCurves: []
+  m_ScaleCurves: []
+  m_FloatCurves: []
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: 00c826dcf464b47d0ab1b7babc70ea98, type: 3}
+    - time: .0833333358
+      value: {fileID: 21300000, guid: de4ba5c590f31482ba91304a108c1132, type: 3}
+    - time: .166666672
+      value: {fileID: 21300000, guid: 597048fc240ab438aaa1141d2299daf9, type: 3}
+    - time: .25
+      value: {fileID: 21300000, guid: 608ddde7b26c646a1ae63194b631c758, type: 3}
+    - time: .333333343
+      value: {fileID: 21300000, guid: 0513456bbe42f4e948e708824847bb37, type: 3}
+    - time: .416666657
+      value: {fileID: 21300000, guid: e84b9a6407a6e4aa0ab202787c75cffd, type: 3}
+    - time: .5
+      value: {fileID: 21300000, guid: bcdddbf5d25f34215b291eba897251dc, type: 3}
+    - time: .583333313
+      value: {fileID: 21300000, guid: 8e539bcad6b7941a6b5eae49f2a44e0d, type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 212
+    script: {fileID: 0}
+  m_SampleRate: 12
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_StartTime: 0
+    m_StopTime: .666666627
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_LoopTime: 1
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
+  m_Events: []

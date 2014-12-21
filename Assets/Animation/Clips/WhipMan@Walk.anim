@@ -15,8 +15,29 @@ AnimationClip:
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
-  m_PPtrCurves: []
-  m_SampleRate: 60
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: 21a5c61364bb14a2bacde4d91c3feae2, type: 3}
+    - time: .0833333358
+      value: {fileID: 21300000, guid: f468ea7a68c7d4bcc85d26915856d4b3, type: 3}
+    - time: .166666672
+      value: {fileID: 21300000, guid: 5471c31df45cc4530a6222524976e9f3, type: 3}
+    - time: .25
+      value: {fileID: 21300000, guid: a3bcd90588cdd46b387e5acfb506af64, type: 3}
+    - time: .333333343
+      value: {fileID: 21300000, guid: c8f3dc226b13b47c8bf5585610c89833, type: 3}
+    - time: .416666657
+      value: {fileID: 21300000, guid: 0c46e923543e5460aa22930e516724c2, type: 3}
+    - time: .5
+      value: {fileID: 21300000, guid: 10a47dafb326b4eb1990577264e1b118, type: 3}
+    - time: .583333313
+      value: {fileID: 21300000, guid: 1137346bc28a442a99980fd439a7785a, type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 212
+    script: {fileID: 0}
+  m_SampleRate: 12
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -24,7 +45,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: 1
+    m_StopTime: .666666627
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
