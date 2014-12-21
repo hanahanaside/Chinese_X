@@ -213,6 +213,7 @@
      <Compile Include="Assets\Scripts\StageManager\StageManager.cs" />
      <Compile Include="Assets\Scripts\Test\Test.cs" />
      <Compile Include="Assets\Scripts\TimeKeeper\TimeKeeper.cs" />
+     <Compile Include="Assets\Scripts\WhipMan\WhipMan.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\NGUI\ReadMe - 3.7.6.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 2.shader" />
