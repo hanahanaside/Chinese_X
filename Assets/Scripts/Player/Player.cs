@@ -45,9 +45,12 @@ public class Player : Character {
 			GameOverEvent ();
 			return;
 		}
-
+		float h = 0;
 		#if UNITY_EDITOR
-		float h = Input.GetAxis ("Horizontal");
+		 h = Input.GetAxis ("Horizontal");
+		#else
+		h = Delta.x;
+		#endif
 		mAnimator.SetFloat ("Speed", Mathf.Abs (h));
 
 		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (0);
@@ -56,20 +59,6 @@ public class Player : Character {
 		}
 
 		CheckFlip (h);
-
-		#else
-
-		// The Speed animator parameter is set to the absolute value of the horizontal input.
-		mAnimator.SetFloat ("Speed", Mathf.Abs (Delta.x));
-	
-		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (0);
-		if (info.nameHash == Animator.StringToHash ("Base Layer.Walk")) {
-			Move (Delta.x);
-		}
-
-		CheckFlip (Delta.x);
-
-		#endif
 
 		// If the player should jump...
 		if (mJump) {
@@ -115,7 +104,13 @@ public class Player : Character {
 		if (!enabled) {
 			return;
 		}
-		if (Delta.y >= 0) {
+		float v = 0;
+		#if UNITY_EDITOR
+		v = Input.GetAxis ("Vertical");
+		#else
+		v = Delta.y;
+		#endif
+		if (v >= 0) {
 			HighKick ();
 		} else {
 			LowKick ();
