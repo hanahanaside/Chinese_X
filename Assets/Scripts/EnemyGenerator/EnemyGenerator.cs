@@ -11,7 +11,7 @@ public class EnemyGenerator : MonoBehaviour {
 	void Start () {
 		GameObject camera = GameObject.FindGameObjectWithTag ("MainCamera");
 		transform.parent = camera.transform;
-		mInterval = 5.0f;
+		mInterval = Random.Range(minInterval,maxInterval);
 	}
 	// Update is called once per frame
 	void Update () {

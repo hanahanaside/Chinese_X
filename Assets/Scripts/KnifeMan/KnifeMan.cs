@@ -41,7 +41,7 @@ public class KnifeMan : Enemy {
 			if(!mAtacking){
 				mAtacking = true;
 				mAnimator.SetFloat ("Speed", 0);
-				Invoke ("SetAtack",2.0f);
+				Invoke ("SetAtack",0.5f);
 			}
 		} else {
 			mAnimator.SetFloat ("Speed", moveForce);

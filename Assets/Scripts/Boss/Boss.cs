@@ -73,7 +73,7 @@ public class Boss : Enemy {
 			mAnimator.SetTrigger ("Kick");
 		}
 
-		mAtackInterval = 120.0f;
+		mAtackInterval = 2.0f;
 	}
 
 	private void ThrowBarrel(){

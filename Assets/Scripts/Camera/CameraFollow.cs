@@ -16,10 +16,6 @@ public class CameraFollow : MonoBehaviour {
 	// The minimum x and y coordinates the camera can have.
 	private Transform player;
 	// Reference to the player's transform.
-	void Start () {
-		// Setting up the reference.
-		player = GameObject.FindGameObjectWithTag ("Player").transform;
-	}
 
 	bool CheckXMargin () {
 		// Returns true if the distance between the camera and the player in the x axis is greater than the x margin.
@@ -32,6 +28,9 @@ public class CameraFollow : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
+		if(player == null){
+			return;
+		}
 		TrackPlayer ();
 	}
 
@@ -56,5 +55,9 @@ public class CameraFollow : MonoBehaviour {
 
 		// Set the camera's position to the target position with the same z component.
 		transform.position = new Vector3 (targetX, targetY, transform.position.z);
+	}
+
+	public void SetPlayerTransform(Transform playerTransform){
+		player = playerTransform;
 	}
 }

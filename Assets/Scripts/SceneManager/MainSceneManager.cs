@@ -5,6 +5,7 @@ public class MainSceneManager : MonoBehaviour {
 
 	public bool debug;
 	private GameObject mUIRoot;
+	private int mStageLevel = 1;
 
 	void OnEnable () {
 		TopContainerManager.OnStartButtonClickedEvent += OnStartStoryEvent;
@@ -38,11 +39,11 @@ public class MainSceneManager : MonoBehaviour {
 	}
 
 	void OnStoryFinishedEvent () {
-		InstantiateContainer ("Container/StageInfoContainer");
+		InstantiateContainer ("Container/StageInfoContainer_1");
 	}
 
 	void OnStartGameEvent () {
-		InstantiateStageManager (1);
+		InstantiateStageManager (mStageLevel);
 	}
 
 	void OnGameOverEvent () {
@@ -55,17 +56,19 @@ public class MainSceneManager : MonoBehaviour {
 	}
 
 	void ContinueEvent(){
-		InstantiateContainer ("Container/StageInfoContainer");
+		InstantiateContainer ("Container/StageInfoContainer_" + mStageLevel);
 	}
 
-	void StageClearedEvent (int stageLevel) {
+	void StageClearedEvent () {
 		Debug.Log ("clear");
-		if (stageLevel >= 3) {
-			stageLevel = 1;
+		AdManager.instance.ShowInterstitialAd ();
+		if (mStageLevel >= 3) {
+			mStageLevel = 1;
 		} else {
-			stageLevel++;
+			mStageLevel++;
 		}
-		InstantiateStageManager (stageLevel);
+		Debug.Log ("lovel " + mStageLevel);
+		InstantiateContainer ("Container/StageInfoContainer_" + mStageLevel);
 	}
 		
 	private void InstantiateContainer (string path) {

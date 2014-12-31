@@ -4,15 +4,15 @@ using System;
 
 public class StageManager : MonoBehaviour {
 	public static event Action StageGameOverEvent;
-	public static event Action<int> StageClearedEvent;
+	public static event Action StageClearedEvent;
 
 	public GameObject playerPrefab;
 	public GameObject cameraPrefab;
 	public GameObject floorPrefab;
+	public GameObject groundPrefab;
 	public GameObject backgroundPrefab;
 	public GameObject enemyGeneratorPrefab;
 	public GameObject stageContainerPrefab;
-	public int stageLevel;
 	private GameObject mStageContainerObject;
 
 	void OnEnable () {
@@ -32,10 +32,10 @@ public class StageManager : MonoBehaviour {
 		GameObject uiRootObject = GameObject.FindGameObjectWithTag ("UIRoot");
 		mStageContainerObject.transform.parent = uiRootObject.transform;
 		mStageContainerObject.transform.localScale = new Vector3 (1,1,1);
-		GameObject playerObject = Instantiate (playerPrefab) as GameObject;
-		playerObject.transform.parent = transform;
 		GameObject cameraObject = Instantiate (cameraPrefab) as GameObject;
 		cameraObject.transform.parent = transform;
+		GameObject groundObject =  Instantiate (groundPrefab) as GameObject;
+		groundObject.transform.parent = gameObject.transform;
 		float[] floorX = { -10, 0, 10 };
 		for (int i = 0; i < 3; i++) {
 			GameObject floorObject = Instantiate (floorPrefab, new Vector3 (floorX [i], 0, 0), Quaternion.identity) as GameObject;
@@ -45,6 +45,9 @@ public class StageManager : MonoBehaviour {
 		backGroundObject.transform.parent = cameraObject.transform;
 		GameObject enemyGeneratorObject = Instantiate (enemyGeneratorPrefab) as GameObject;
 		enemyGeneratorObject.transform.parent = cameraObject.transform;
+		GameObject playerObject = Instantiate (playerPrefab) as GameObject;
+		playerObject.transform.parent = transform;
+		cameraObject.GetComponent<CameraFollow> ().SetPlayerTransform (playerObject.transform);
 	}
 
 	void TimeUpEvent () {
@@ -54,7 +57,7 @@ public class StageManager : MonoBehaviour {
 	void ClearedEvent () {
 		Destroy (gameObject);
 		Destroy (mStageContainerObject);
-		StageClearedEvent (stageLevel);
+		StageClearedEvent ();
 	}
 
 	void GameoverEvent () {
