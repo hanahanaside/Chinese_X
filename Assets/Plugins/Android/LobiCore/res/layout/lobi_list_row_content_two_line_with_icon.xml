@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<view
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:lobi="http://schemas.android.com/apk/res-auto"
-    class="com.kayac.lobi.libnakamap.components.ListRow$TwoLine"
-    lobi:lobi_two_line_layout="@layout/lobi_list_row_center_twoline_with_icon"
-    android:layout_width="match_parent"
-    android:layout_height="150dp"
-    />

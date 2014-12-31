@@ -7,10 +7,9 @@ public class TopContainerManager : MonoBehaviour {
 	public static event Action OnStartButtonClickedEvent;
 
 	public void OnStartButtonClicked(){
-		LobiUtil.Instance.showRanking ();
-//		AdManager.instance.HideBannerAd ();
-//		AdManager.instance.HideIconAd ();
-//		OnStartButtonClickedEvent ();
-//		Destroy (transform.parent.gameObject);
+		AdManager.instance.HideBannerAd ();
+		AdManager.instance.HideIconAd ();
+		OnStartButtonClickedEvent ();
+		Destroy (transform.parent.gameObject);
 	}
 }
