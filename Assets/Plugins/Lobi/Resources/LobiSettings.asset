@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787257afec49f4175b24b88235c6bff9, type: 3}
+  m_Name: LobiSettings
+  m_EditorClassIdentifier: 
+  clientId: bf26a7955af25c6a5911e0888306dd56aeaa9f2c
+  baseName: gest
+  chatEnabled: 0
+  recEnabled: 1
+  rankingEnabled: 1
+  iosSupportEnabled: 1
+  androidSupportEnabled: 0
+  testButtonsEnabled: 0
