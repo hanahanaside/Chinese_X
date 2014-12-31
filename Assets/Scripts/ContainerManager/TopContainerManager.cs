@@ -12,4 +12,8 @@ public class TopContainerManager : MonoBehaviour {
 		OnStartButtonClickedEvent ();
 		Destroy (transform.parent.gameObject);
 	}
+
+	public void OnRankingButtonClicked(){
+		LobiUtil.Instance.showRanking ();
+	}
 }

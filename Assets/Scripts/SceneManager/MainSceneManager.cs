@@ -52,7 +52,9 @@ public class MainSceneManager : MonoBehaviour {
 	}
 
 	void OnFinishGameEvent () {
+		LobiUtil.Instance.sendScore (gameObject,LobiUtil.Instance.RANKING_IDS[0],ScoreKeeper.instance.score);
 		InstantiateContainer ("Container/TopContainer");
+		ScoreKeeper.instance.score = 0;
 	}
 
 	void ContinueEvent(){
