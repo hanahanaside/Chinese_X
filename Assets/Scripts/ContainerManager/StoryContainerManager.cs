@@ -5,19 +5,29 @@ using System;
 public class StoryContainerManager : MonoBehaviour {
 
 	public static event Action OnStoryFinishedEvent;
+	public string[] storyTextArray;
+	public Texture[] backgroundTextureArray;
+	public UILabel storyLabel;
+	public UITexture backgroundTexture;
+	private TypewriterEffect mTypewriterEffect;
+	private int mStoryIndex;
 
-	// Use this for initialization
 	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+		mTypewriterEffect = storyLabel.GetComponent<TypewriterEffect>();
+		backgroundTexture.mainTexture = backgroundTextureArray[mStoryIndex];
+		storyLabel.text = storyTextArray[mStoryIndex];
 	}
 
 	public void OnSkipButtonClicked(){
-		OnStoryFinishedEvent ();
-		Destroy (transform.parent.gameObject);
+		mTypewriterEffect.Finish ();
+		mStoryIndex++;
+		if(mStoryIndex >= storyTextArray.Length){
+			OnStoryFinishedEvent ();
+			Destroy (transform.parent.gameObject);
+		}else {
+			backgroundTexture.mainTexture = backgroundTextureArray[mStoryIndex];
+			storyLabel.text = storyTextArray[mStoryIndex];
+			mTypewriterEffect.ResetToBeginning ();
+		}
 	}
 }
