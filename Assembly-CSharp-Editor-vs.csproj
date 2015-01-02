@@ -164,6 +164,7 @@
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_list_row_content_one_line.xml" />
      <None Include="Assets\NGUI\Examples\Models\Orc\Orc Skin.shader" />
      <None Include="Assets\Plugins\Android\LobiCore\res\drawable\lobi_action_bar_ico_trash_enabled.xml" />
+     <None Include="Assets\Plugins\Android\res\values\version.xml" />
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_root_activity.xml" />
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_hint_private_group.xml" />
@@ -440,6 +441,9 @@
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_custom_large_button_layout.xml" />
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_action_bar_content_close.xml" />
      <None Include="Assets\Plugins\Android\LobiRanking\res\layout\lobi_ranking_activity.xml" />
+ <Reference Include="Assembly-UnityScript">
+ <HintPath>/Users/flower/Unity/Repogitories/Chinese_X/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -23,25 +23,44 @@ public class AdManager : MonoSingleton<AdManager> {
 		IMobileSdkAdsUnityPlugin.registerFullScreen (PUBLICER_ID, "135714", mInterstitialSpotId);
 		IMobileSdkAdsUnityPlugin.start (mInterstitialSpotId);
 		IMobileSdkAdsUnityPlugin.setAdOrientation (IMobileSdkAdsUnityPlugin.ImobileSdkAdsAdOrientation.IMOBILESDKADS_AD_ORIENTATION_LANDSCAPE);
+
+		HideBannerAd ();
+		HideIconAd ();
 	}
 
 	public void ShowBannerAd () {
-		IMobileSdkAdsUnityPlugin.setVisibility (mBannerId, true);
+		if (Application.systemLanguage == SystemLanguage.Japanese) {
+			AdMobManager.instance.hide ();
+			IMobileSdkAdsUnityPlugin.setVisibility (mBannerId, true);
+		} else {
+			IMobileSdkAdsUnityPlugin.setVisibility (mBannerId, false);
+			AdMobManager.instance.show ();
+		}
+
 	}
 
 	public void HideBannerAd () {
-		IMobileSdkAdsUnityPlugin.setVisibility (mBannerId, false);
+		if (Application.systemLanguage == SystemLanguage.Japanese) {
+			IMobileSdkAdsUnityPlugin.setVisibility (mBannerId, false);
+		}else {
+			AdMobManager.instance.hide ();
+		}
+
 	}
 
 	public void ShowIconAd () {
-		IMobileSdkAdsUnityPlugin.setVisibility (mIconId, true);
+		if (Application.systemLanguage == SystemLanguage.Japanese) {
+			IMobileSdkAdsUnityPlugin.setVisibility (mIconId, true);
+		}
 	}
 
 	public void HideIconAd () {
 		IMobileSdkAdsUnityPlugin.setVisibility (mIconId, false);
 	}
 
-	public void ShowInterstitialAd(){
-		IMobileSdkAdsUnityPlugin.show (mInterstitialSpotId);
+	public void ShowInterstitialAd () {
+		if (Application.systemLanguage == SystemLanguage.Japanese) {
+			IMobileSdkAdsUnityPlugin.show (mInterstitialSpotId);
+		}
 	}
 }
