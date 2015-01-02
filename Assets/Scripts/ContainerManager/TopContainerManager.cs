@@ -6,6 +6,11 @@ public class TopContainerManager : MonoBehaviour {
 
 	public static event Action OnStartButtonClickedEvent;
 
+	void Start(){
+		AdManager.instance.ShowBannerAd ();
+		AdManager.instance.ShowIconAd ();
+	}
+
 	public void OnStartButtonClicked(){
 		AdManager.instance.HideBannerAd ();
 		AdManager.instance.HideIconAd ();

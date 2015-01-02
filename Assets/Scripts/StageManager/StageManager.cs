@@ -14,16 +14,21 @@ public class StageManager : MonoBehaviour {
 	public GameObject enemyGeneratorPrefab;
 	public GameObject stageContainerPrefab;
 	private GameObject mStageContainerObject;
+	private bool boss;
 
 	void OnEnable () {
 		Player.ClearedEvent += ClearedEvent;
 		Player.GameOverEvent += GameoverEvent;
+		Boss.bossGenerated += BossGenerated;
+		Boss.bossDestroyed += BossDestroyed;
 		TimeKeeper.TimeUpEvent += TimeUpEvent;
 	}
 
 	void OnDisable () {
 		Player.ClearedEvent -= ClearedEvent;
 		Player.GameOverEvent -= GameoverEvent;
+		Boss.bossGenerated -= BossGenerated;
+		Boss.bossDestroyed -= BossDestroyed;
 		TimeKeeper.TimeUpEvent -= TimeUpEvent;
 	}
 
@@ -50,11 +55,22 @@ public class StageManager : MonoBehaviour {
 		cameraObject.GetComponent<CameraFollow> ().SetPlayerTransform (playerObject.transform);
 	}
 
+	void BossGenerated(){
+		boss = true;
+	}
+
+	void BossDestroyed(){
+		boss = false;
+	}
+
 	void TimeUpEvent () {
 		GameOver ();
 	}
 		
 	void ClearedEvent () {
+		if(boss){
+			return;
+		}
 		Destroy (gameObject);
 		Destroy (mStageContainerObject);
 		StageClearedEvent ();

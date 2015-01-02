@@ -73,7 +73,7 @@ public class Player : Character {
 		}
 	}
 
-	void OnTriggerEnter2D (Collider2D collider) {
+	void OnCollisionEnter2D (Collision2D collider) {
 		string tag = collider.gameObject.tag;
 		if (tag == "Step") {
 			ClearedEvent ();

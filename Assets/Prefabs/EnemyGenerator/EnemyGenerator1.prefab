@@ -59,6 +59,7 @@ Transform:
   - {fileID: 400004}
   - {fileID: 400002}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!4 &400002
 Transform:
   m_ObjectHideFlags: 1
@@ -70,6 +71,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
+  m_RootOrder: 1
 --- !u!4 &400004
 Transform:
   m_ObjectHideFlags: 1
@@ -81,6 +83,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
+  m_RootOrder: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -98,6 +101,7 @@ MonoBehaviour:
   enemyPrefabArray:
   - {fileID: 100000, guid: 2f23b0528a3c04b068387a531364239b, type: 2}
   - {fileID: 100000, guid: 3503d4ae845ed45f19b042ca58316476, type: 2}
+  bossPrefab: {fileID: 0}
   minInterval: 1
   maxInterval: 2
 --- !u!1001 &100100000

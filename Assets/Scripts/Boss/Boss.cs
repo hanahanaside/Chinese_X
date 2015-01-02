@@ -1,7 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Boss : Enemy {
+
+	public static event Action bossGenerated;
+	public static event Action bossDestroyed;
+
 	public GameObject barrelPrefab;
 	public float maxAtackInterval;
 	private Animator mAnimator;
@@ -19,6 +24,7 @@ public class Boss : Enemy {
 		mAnimator.SetFloat ("Speed", moveForce);
 		mPlayerTransform = Player.instance.transform;
 		mAtackInterval = 2.0f;
+		bossGenerated();
 	}
 
 	void FixedUpdate () {
@@ -28,6 +34,7 @@ public class Boss : Enemy {
 			mAnimator.SetTrigger ("Death");
 			enabled = false;
 			ScoreKeeper.instance.AddScore (score);
+			bossDestroyed ();
 			Destroy (gameObject, 0.8f);
 		}
 
