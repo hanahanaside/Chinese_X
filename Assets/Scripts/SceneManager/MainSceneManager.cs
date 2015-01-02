@@ -5,7 +5,7 @@ public class MainSceneManager : MonoBehaviour {
 
 	public bool debug;
 	private GameObject mUIRoot;
-	private int mStageLevel = 1;
+	private int mStageLevel = 0;
 
 	void OnEnable () {
 		TopContainerManager.OnStartButtonClickedEvent += OnStartStoryEvent;
@@ -15,6 +15,7 @@ public class MainSceneManager : MonoBehaviour {
 		GameOverContainerManager.OnFinishGameEvent += OnFinishGameEvent;
 		StageManager.StageClearedEvent += StageClearedEvent;
 		GameOverContainerManager.ContinueEvent += ContinueEvent;
+		ShopContainerManager.CloseShopEvent += CloseShopEvent;
 	}
 
 	void OnDisable () {
@@ -25,6 +26,7 @@ public class MainSceneManager : MonoBehaviour {
 		GameOverContainerManager.OnFinishGameEvent -= OnFinishGameEvent;
 		StageManager.StageClearedEvent -= StageClearedEvent;
 		GameOverContainerManager.ContinueEvent -= ContinueEvent;
+		ShopContainerManager.CloseShopEvent -= CloseShopEvent;
 	}
 
 	void Start () {
@@ -39,7 +41,8 @@ public class MainSceneManager : MonoBehaviour {
 	}
 
 	void OnStoryFinishedEvent () {
-		InstantiateContainer ("Container/StageInfoContainer_1");
+		mStageLevel = 1;
+		InstantiateContainer ("Container/StageInfoContainer_" + mStageLevel);
 	}
 
 	void OnStartGameEvent () {
@@ -71,6 +74,14 @@ public class MainSceneManager : MonoBehaviour {
 		}
 		Debug.Log ("lovel " + mStageLevel);
 		InstantiateContainer ("Container/StageInfoContainer_" + mStageLevel);
+	}
+
+	void CloseShopEvent(){
+		if(mStageLevel == 0){
+			InstantiateContainer ("Container/TopContainer");
+		}else {
+			InstantiateContainer ("Container/GameOverContainer");
+		}
 	}
 		
 	private void InstantiateContainer (string path) {

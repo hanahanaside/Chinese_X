@@ -21,4 +21,16 @@ public class TopContainerManager : MonoBehaviour {
 	public void OnRankingButtonClicked(){
 		LobiUtil.Instance.showRanking ();
 	}
+
+	public void OnItemButtonClicked(){
+		GameObject containerPrefab = Resources.Load ("Container/ShopContainer") as GameObject;
+		GameObject containerObject = Instantiate (containerPrefab) as GameObject;
+		containerObject.transform.parent = transform.parent.transform.parent;
+		containerObject.transform.localScale = new Vector3 (1f, 1f, 1f);
+		Destroy (transform.parent.gameObject);
+	}
+
+	public void OnRecommendButtonClicked(){
+
+	}
 }
