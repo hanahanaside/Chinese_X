@@ -164,6 +164,7 @@
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_list_row_content_one_line.xml" />
      <None Include="Assets\NGUI\Examples\Models\Orc\Orc Skin.shader" />
      <None Include="Assets\Plugins\Android\LobiCore\res\drawable\lobi_action_bar_ico_trash_enabled.xml" />
+     <None Include="Assets\Plugins\Android\res\values\version.xml" />
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_root_activity.xml" />
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_hint_private_group.xml" />
@@ -455,6 +456,8 @@
       <Project>{61BA98AF-E631-7E26-E25C-8DB8999BBC66}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{F00C4A0D-96E1-2C6F-200A-0DACE85E997B}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript.unityproj">
+      <Project>{C457A9CA-DBDE-16E6-9DED-DDADB80262E2}</Project>      <Name>Assembly-UnityScript</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
