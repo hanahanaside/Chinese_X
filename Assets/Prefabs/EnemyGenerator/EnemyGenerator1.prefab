@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b17f1506d24a4bdb94686327ac576fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generateCount: 10
   generatePosition:
   - {fileID: 400002}
   - {fileID: 400004}
@@ -103,7 +104,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: 3503d4ae845ed45f19b042ca58316476, type: 2}
   bossPrefab: {fileID: 0}
   minInterval: 1
-  maxInterval: 2
+  maxInterval: 4
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

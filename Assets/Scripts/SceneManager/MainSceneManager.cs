@@ -54,6 +54,7 @@ public class MainSceneManager : MonoBehaviour {
 
 	void OnGameOverEvent () {
 		Debug.Log ("game over");
+		SoundManager.instance.StopSE (SoundManager.SECannel.Go);
 		InstantiateContainer ("Container/GameOverContainer");
 		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.Gameover);
 	}
@@ -71,6 +72,7 @@ public class MainSceneManager : MonoBehaviour {
 
 	void StageClearedEvent () {
 		Debug.Log ("clear");
+		SoundManager.instance.StopSE (SoundManager.SECannel.Go);
 		AdManager.instance.ShowInterstitialAd ();
 		if (mStageLevel >= 3) {
 			mStageLevel = 1;

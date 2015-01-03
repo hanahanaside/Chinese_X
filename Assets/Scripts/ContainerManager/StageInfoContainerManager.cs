@@ -16,7 +16,8 @@ public class StageInfoContainerManager : MonoBehaviour {
 	
 	}
 
-	public void OnStartButtonClicked(){
+	public void OnStartButtonClicked(){ 
+		SoundManager.instance.PlaySE (SoundManager.SECannel.Button);
 		OnStartButtonClickedEvent ();
 		Destroy (transform.parent.gameObject);
 	}

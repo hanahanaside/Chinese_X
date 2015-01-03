@@ -27,7 +27,7 @@ TagManager:
   Builtin Layer 2: Ignore Raycast
   Builtin Layer 3: 
   Builtin Layer 4: Water
-  Builtin Layer 5: 
+  Builtin Layer 5: UI
   Builtin Layer 6: 
   Builtin Layer 7: 
   User Layer 8: Player
@@ -37,7 +37,7 @@ TagManager:
   User Layer 12: Ground
   User Layer 13: GUI
   User Layer 14: Wepon
-  User Layer 15: 
+  User Layer 15: Step
   User Layer 16: 
   User Layer 17: 
   User Layer 18: 

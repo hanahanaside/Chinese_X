@@ -14,7 +14,9 @@ public class StageManager : MonoBehaviour {
 	public GameObject enemyGeneratorPrefab;
 	public GameObject stageContainerPrefab;
 	private GameObject mStageContainerObject;
+	private GameObject mGoLabelObject;
 	private bool boss;
+	private bool mCompleteGenerate;
 
 	void OnEnable () {
 		Player.ClearedEvent += ClearedEvent;
@@ -22,6 +24,7 @@ public class StageManager : MonoBehaviour {
 		Boss.bossGenerated += BossGenerated;
 		Boss.bossDestroyed += BossDestroyed;
 		TimeKeeper.TimeUpEvent += TimeUpEvent;
+		EnemyGenerator.CompleteGenerate += CompleteGenerateEvent;
 	}
 
 	void OnDisable () {
@@ -30,10 +33,12 @@ public class StageManager : MonoBehaviour {
 		Boss.bossGenerated -= BossGenerated;
 		Boss.bossDestroyed -= BossDestroyed;
 		TimeKeeper.TimeUpEvent -= TimeUpEvent;
+		EnemyGenerator.CompleteGenerate -= CompleteGenerateEvent;
 	}
 
 	void Start () {
 		mStageContainerObject = Instantiate (stageContainerPrefab)as GameObject;
+		mGoLabelObject = mStageContainerObject.transform.Find ("GoLabel").gameObject;
 		GameObject uiRootObject = GameObject.FindGameObjectWithTag ("UIRoot");
 		mStageContainerObject.transform.parent = uiRootObject.transform;
 		mStageContainerObject.transform.localScale = new Vector3 (1,1,1);
@@ -69,7 +74,10 @@ public class StageManager : MonoBehaviour {
 	}
 		
 	void ClearedEvent () {
-		if(boss){
+		if(!mCompleteGenerate){
+			return;
+		}
+		if (boss) {
 			return;
 		}
 		SoundManager.instance.PlaySE (SoundManager.SECannel.Step);
@@ -80,6 +88,12 @@ public class StageManager : MonoBehaviour {
 
 	void GameoverEvent () {
 		Invoke ("GameOver", 3.0f);
+	}
+
+	void CompleteGenerateEvent(){
+		mCompleteGenerate = true;
+		mGoLabelObject.SetActive (true);
+		SoundManager.instance.PlaySE (SoundManager.SECannel.Go);
 	}
 
 	private void GameOver () {

@@ -15,10 +15,10 @@ public class AdManager : MonoSingleton<AdManager> {
 		IMobileSdkAdsUnityPlugin.registerInline (PUBLICER_ID, "131681", "330695");
 		IMobileSdkAdsUnityPlugin.start ("330695");
 		var iconParams = new IMobileIconParams ();
-		iconParams.iconNumber = 6;
+		iconParams.iconNumber = 2;
 		iconParams.iconTitleShadowEnable = false;
 		iconParams.iconTitleEnable = false;
-		mIconId = IMobileSdkAdsUnityPlugin.show ("330695", IMobileSdkAdsUnityPlugin.AdType.ICON, 10, 10, iconParams);
+		mIconId = IMobileSdkAdsUnityPlugin.show ("330695", IMobileSdkAdsUnityPlugin.AdType.ICON, 0, 10, iconParams);
 
 		IMobileSdkAdsUnityPlugin.registerFullScreen (PUBLICER_ID, "135714", mInterstitialSpotId);
 		IMobileSdkAdsUnityPlugin.start (mInterstitialSpotId);

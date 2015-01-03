@@ -29,5 +29,6 @@ public class StoryContainerManager : MonoBehaviour {
 			storyLabel.text = storyTextArray[mStoryIndex];
 			mTypewriterEffect.ResetToBeginning ();
 		}
+		SoundManager.instance.PlaySE (SoundManager.SECannel.Button);
 	}
 }

@@ -9,7 +9,9 @@ public class SoundManager : MonoSingleton<SoundManager> {
 		Death,
 		Step,
 		HighKick,
-		LowKick
+		LowKick,
+		Go,
+		Button
 	}
 
 	public enum BGMChannel{
@@ -35,6 +37,11 @@ public class SoundManager : MonoSingleton<SoundManager> {
 		mSEAudioSourceArray = new AudioSource[seClipArray.Length];
 		for (int i = 0; i < mSEAudioSourceArray.Length; i++) {
 			mSEAudioSourceArray[i] = gameObject.AddComponent<AudioSource> ();
+			switch(i){
+			case (int)SECannel.Go:
+				mSEAudioSourceArray [i].loop = true;
+				break;
+			}
 			mSEAudioSourceArray[i].clip = seClipArray[i];
 		}
 	}
@@ -46,5 +53,9 @@ public class SoundManager : MonoSingleton<SoundManager> {
 
 	public void PlaySE(SECannel channel){
 		mSEAudioSourceArray [(int)channel].Play ();
+	}
+
+	public void StopSE(SECannel channel){
+		mSEAudioSourceArray [(int)channel].Stop ();
 	}
 }

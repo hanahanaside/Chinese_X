@@ -23,7 +23,7 @@ public class KickMan :  Enemy {
 			mAnimator.SetTrigger ("Death");
 			enabled = false;
 			ScoreKeeper.instance.AddScore (score);
-			Destroy (gameObject,0.8f);
+			Destroy (gameObject,0.6f);
 		}
 		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (0);
 		if(info.nameHash == Animator.StringToHash ("Base Layer.Atack")){

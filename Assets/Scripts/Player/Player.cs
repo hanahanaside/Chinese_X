@@ -37,7 +37,6 @@ public class Player : Character {
 	}
 
 	void FixedUpdate () {
-		LifeManager.instance.UpdatePlayerLife (life);
 		if (life <= 0) {
 			mAnimator.SetTrigger ("Death");
 			enabled = false;
@@ -83,7 +82,9 @@ public class Player : Character {
 
 	public override void ApplyDamage () {
 		if(life > 0){
+			float fromLife = life;
 			life -= 0.1f;
+			LifeManager.instance.UpdatePlayerLife (fromLife,life);
 			SoundManager.instance.PlaySE (SoundManager.SECannel.Damage);
 		}
 	}

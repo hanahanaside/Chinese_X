@@ -14,8 +14,9 @@ public abstract class Enemy : Character {
 	}
 
 	public override void ApplyDamage () {
+		float fromLife = life;
 		life -= 1f / hp;
-		LifeManager.instance.UpdateEnemyLife (life);
+		LifeManager.instance.UpdateEnemyLife (fromLife,life);
 	}
 
 }

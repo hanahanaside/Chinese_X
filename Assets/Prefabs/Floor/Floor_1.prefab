@@ -58,7 +58,7 @@ GameObject:
   - 4: {fileID: 400006}
   - 212: {fileID: 21200004}
   - 61: {fileID: 6100004}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: StepSprite
   m_TagString: Step
   m_Icon: {fileID: 0}

@@ -33,11 +33,13 @@ public class GameOverContainerManager : MonoBehaviour {
 	public void OnNoButtonClicked(){
 		OnFinishGameEvent ();
 		Destroy (transform.parent.gameObject);
+		SoundManager.instance.PlaySE (SoundManager.SECannel.Button);
 	}
 
 	public void OnYesButtonClicked(){
 		AdManager.instance.HideBannerAd ();
 		Destroy (transform.parent.gameObject);
 		ContinueEvent ();
+		SoundManager.instance.PlaySE (SoundManager.SECannel.Button);
 	}
 }
