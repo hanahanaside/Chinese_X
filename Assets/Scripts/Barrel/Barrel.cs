@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class Barrel : MonoBehaviour {
-
 	public float moveForce;
 	public float maxSpeed;
 	private Transform mPlayerTransform;
@@ -10,13 +9,13 @@ public class Barrel : MonoBehaviour {
 
 	void Start () {
 		mPlayerTransform = Player.instance.transform;
-		if(transform.position.x > mPlayerTransform.position.x){
+		if (transform.position.x > mPlayerTransform.position.x) {
 			moveForce = -moveForce;
 		}
 	}
 
-	void Update(){
-		rigidbody2D.AddForce (Vector2.right *  moveForce);
+	void Update () {
+		rigidbody2D.AddForce (Vector2.right * moveForce);
 		// If the player's horizontal velocity is greater than the maxSpeed...
 		if (Mathf.Abs (rigidbody2D.velocity.x) > maxSpeed) {
 			// ... set the player's velocity to the maxSpeed in the x axis.
@@ -27,7 +26,7 @@ public class Barrel : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D collision) {
 		string tag = collision.gameObject.tag;
-		if(tag == "Player"){
+		if (tag == "Player") {
 			Player.instance.ApplyDamage ();
 			Destroy (gameObject);
 		}

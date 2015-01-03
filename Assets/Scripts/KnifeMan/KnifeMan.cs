@@ -43,12 +43,7 @@ public class KnifeMan : Enemy {
 				mAnimator.SetFloat ("Speed", 0);
 				Invoke ("SetAtack",1.5f);
 			}
-		} else {
-			mAnimator.SetFloat ("Speed", moveForce);
-			mAtacking = false;
-			CancelInvoke ("SetAtack");
-			CancelInvoke ("ThrowKnife");
-		}
+		} 
 
 		if (info.nameHash == Animator.StringToHash ("Base Layer.Walk")) {
 			Move (mMoveSpeed);
@@ -64,7 +59,7 @@ public class KnifeMan : Enemy {
 	private void ThrowKnife () {
 		if(enabled){
 			Instantiate (knifePrefab, mThrowPointTransform.position, Quaternion.identity);
-			mAtacking = false;
+			Invoke ("SetAtack",1.5f);
 		}
 	}
 }

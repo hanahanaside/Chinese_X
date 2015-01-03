@@ -180,7 +180,7 @@ MonoBehaviour:
   maxSpeed: 1
   life: 1
   atackDistance: 2
-  score: 1
+  score: 100
   hp: 2
 --- !u!212 &21200000
 SpriteRenderer:
