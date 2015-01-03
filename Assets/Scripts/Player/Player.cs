@@ -43,6 +43,7 @@ public class Player : Character {
 			enabled = false;
 			rigidbody2D.isKinematic = true;
 			GameOverEvent ();
+			SoundManager.instance.PlaySE (SoundManager.SECannel.Death);
 			return;
 		}
 		float h = 0;
@@ -100,6 +101,7 @@ public class Player : Character {
 		if (!mJump && mGrounded) {
 			mJump = true;
 			mGrounded = false;
+			SoundManager.instance.PlaySE (SoundManager.SECannel.Jump);
 		}
 	}
 
@@ -123,10 +125,12 @@ public class Player : Character {
 	private void HighKick () {
 		mAnimator.SetTrigger ("HighKick");
 		mHighKickObject.SetActive (true);
+		SoundManager.instance.PlaySE (SoundManager.SECannel.HighKick);
 	}
 
 	private void LowKick () {
 		mAnimator.SetTrigger ("LowKick");
 		mLowKickObject.SetActive (true);
+		SoundManager.instance.PlaySE (SoundManager.SECannel.LowKick);
 	}
 }

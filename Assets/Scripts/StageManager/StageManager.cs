@@ -72,6 +72,7 @@ public class StageManager : MonoBehaviour {
 		if(boss){
 			return;
 		}
+		SoundManager.instance.PlaySE (SoundManager.SECannel.Step);
 		Destroy (gameObject);
 		Destroy (mStageContainerObject);
 		StageClearedEvent ();
