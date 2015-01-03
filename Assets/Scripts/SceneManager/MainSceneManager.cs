@@ -33,16 +33,19 @@ public class MainSceneManager : MonoBehaviour {
 		mUIRoot = GameObject.FindGameObjectWithTag ("UIRoot");
 		if (!debug) {
 			InstantiateContainer ("Container/TopContainer");
+			SoundManager.instance.PlayBGM (SoundManager.BGMChannel.Opening);
 		}
 	}
 
 	void OnStartStoryEvent () {
 		InstantiateContainer ("Container/StoryContainer");
+		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.Story);
 	}
 
 	void OnStoryFinishedEvent () {
 		mStageLevel = 1;
 		InstantiateContainer ("Container/StageInfoContainer_" + mStageLevel);
+		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.StageInfo);
 	}
 
 	void OnStartGameEvent () {
@@ -52,16 +55,18 @@ public class MainSceneManager : MonoBehaviour {
 	void OnGameOverEvent () {
 		Debug.Log ("game over");
 		InstantiateContainer ("Container/GameOverContainer");
+		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.Gameover);
 	}
 
 	void OnFinishGameEvent () {
-		LobiUtil.Instance.sendScore (gameObject,LobiUtil.Instance.RANKING_IDS[0],ScoreKeeper.instance.score);
 		InstantiateContainer ("Container/TopContainer");
 		ScoreKeeper.instance.score = 0;
+		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.Opening);
 	}
 
 	void ContinueEvent(){
 		InstantiateContainer ("Container/StageInfoContainer_" + mStageLevel);
+		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.StageInfo);
 	}
 
 	void StageClearedEvent () {
@@ -74,6 +79,7 @@ public class MainSceneManager : MonoBehaviour {
 		}
 		Debug.Log ("lovel " + mStageLevel);
 		InstantiateContainer ("Container/StageInfoContainer_" + mStageLevel);
+		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.StageInfo);
 	}
 
 	void CloseShopEvent(){
@@ -94,5 +100,16 @@ public class MainSceneManager : MonoBehaviour {
 	private void InstantiateStageManager(int level){
 		GameObject stageManagerPrefab =	Resources.Load ("StageManager/StageManager" + level) as GameObject;
 		Instantiate (stageManagerPrefab);
+		switch(level){
+		case 1:
+			SoundManager.instance.PlayBGM (SoundManager.BGMChannel.Stage_1);
+			break;
+		case 2:
+			SoundManager.instance.PlayBGM (SoundManager.BGMChannel.Stage_2);
+			break;
+		case 3:
+			SoundManager.instance.PlayBGM (SoundManager.BGMChannel.Stage_3);
+			break;
+		}
 	}
 }

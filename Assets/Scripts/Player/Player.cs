@@ -81,7 +81,10 @@ public class Player : Character {
 	}
 
 	public override void ApplyDamage () {
-		life -= 0.1f;
+		if(life > 0){
+			life -= 0.1f;
+			SoundManager.instance.PlaySE (SoundManager.SECannel.Damage);
+		}
 	}
 
 	public static Player instance {

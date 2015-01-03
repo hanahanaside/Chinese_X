@@ -20,6 +20,7 @@ public class GameOverContainerManager : MonoBehaviour {
 			bestScore = ScoreKeeper.instance.score;
 			PrefsManager.instance.BestScore = bestScore;
 			newLabelObject.SetActive (true);
+			LobiUtil.Instance.sendScore (gameObject,LobiUtil.Instance.RANKING_IDS[0],ScoreKeeper.instance.score);
 		}
 		bestScoreLabel.text = "" + bestScore;
 	}

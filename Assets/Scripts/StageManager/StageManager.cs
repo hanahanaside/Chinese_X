@@ -57,6 +57,7 @@ public class StageManager : MonoBehaviour {
 
 	void BossGenerated(){
 		boss = true;
+		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.Boss);
 	}
 
 	void BossDestroyed(){
