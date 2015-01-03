@@ -63,6 +63,8 @@ public class StageManager : MonoBehaviour {
 	void BossGenerated(){
 		boss = true;
 		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.Boss);
+		mGoLabelObject.SetActive (false);
+		SoundManager.instance.StopSE (SoundManager.SECannel.Go);
 	}
 
 	void BossDestroyed(){

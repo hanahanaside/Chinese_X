@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b17f1506d24a4bdb94686327ac576fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generateCount: 20
+  generateCount: 2
   generatePosition:
   - {fileID: 400002}
   - {fileID: 400004}

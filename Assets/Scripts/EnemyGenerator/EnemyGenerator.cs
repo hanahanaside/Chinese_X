@@ -31,6 +31,9 @@ public class EnemyGenerator : MonoBehaviour {
 		if(bossPrefab == null){
 			return;
 		}
+		if(generateCount > 0){
+			return;
+		}
 		if(mCameraTransform.position.x < -15){
 			Transform generateTransform = generatePosition[0];
 			GameObject enemyObject =  Instantiate (bossPrefab, generateTransform.position, Quaternion.identity) as GameObject;
@@ -40,15 +43,23 @@ public class EnemyGenerator : MonoBehaviour {
 	}
 		
 	private void GenerateEnemy () {
+		if(generateCount <= 0){
+			return;
+		}
 		int rand = UnityEngine.Random.Range (0,enemyPrefabArray.Length);
 		GameObject enemy = enemyPrefabArray[rand];
 		rand = UnityEngine.Random.Range (0,2);
 		Transform generateTransform = generatePosition[rand];
 		GameObject enemyObject =  Instantiate (enemy, generateTransform.position, Quaternion.identity) as GameObject;
 		enemyObject.transform.parent = transform.parent.transform.parent;
-		generateCount--;
-		if(generateCount <=0){
+		generateCount--; 
+		if(generateCount > 0){
+			return;
+		}
+		if(bossPrefab == null){
 			enabled = false;
+			CompleteGenerate ();
+		}else {
 			CompleteGenerate ();
 		}
 	}

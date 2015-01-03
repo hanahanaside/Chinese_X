@@ -35,7 +35,7 @@ public class Boss : Enemy {
 			enabled = false;
 			ScoreKeeper.instance.AddScore (score);
 			bossDestroyed ();
-			Destroy (gameObject, 0.8f);
+			Destroy (gameObject, 2.1f);
 		}
 
 		mAtackInterval -= Time.deltaTime;

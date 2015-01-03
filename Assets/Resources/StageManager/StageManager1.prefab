@@ -27,6 +27,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -43,9 +44,8 @@ MonoBehaviour:
   floorPrefab: {fileID: 100002, guid: a25293dbae46b456fbbefb083f8f689c, type: 2}
   groundPrefab: {fileID: 100000, guid: a450330aa3f744e2abd39c185fed831b, type: 2}
   backgroundPrefab: {fileID: 100000, guid: eb69a8777b7074a41986aee60fadb830, type: 2}
-  enemyGeneratorPrefab: {fileID: 100000, guid: 9abdfefac25fd42b787349caf4d7fae0, type: 2}
+  enemyGeneratorPrefab: {fileID: 100000, guid: f9aab9dbc499d438298da858d6d0cd9a, type: 2}
   stageContainerPrefab: {fileID: 100022, guid: bff44d93587fd4d27b7635966a9a938e, type: 2}
-  stageLevel: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
