@@ -12,6 +12,7 @@ public class HighKick : MonoBehaviour {
 		if(tag == "Enemy"){
 			Enemy enemy = collision.gameObject.GetComponent<Enemy>();
 			enemy.ApplyDamage ();
+			Hide ();
 		}
 	}
 

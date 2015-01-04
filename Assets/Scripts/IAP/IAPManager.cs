@@ -10,8 +10,11 @@ public class IAPManager : MonoSingleton<IAPManager> {
 	}
 
 	public string[] productIdentifiers;
-	private List<StoreKitProduct> mProductList;
+
 	#if UNITY_IPHONE
+
+	private List<StoreKitProduct> mProductList;
+
 	void OnEnable () {
 		StoreKitManager.productListReceivedEvent += ReceivedProductsList;
 		StoreKitManager.productListRequestFailedEvent += productListRequestFailedEvent;

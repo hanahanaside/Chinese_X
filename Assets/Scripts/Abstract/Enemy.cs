@@ -7,6 +7,11 @@ public abstract class Enemy : Character {
 	public int score;
 	public float hp;
 
+	void Awake(){
+		hp = hp * MainSceneManager.instance.GameLevel;
+		score = score * MainSceneManager.instance.GameLevel;
+	}
+
 	void Update(){
 		if(transform.position.y < -10){
 			Destroy (gameObject);

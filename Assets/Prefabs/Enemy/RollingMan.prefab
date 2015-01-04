@@ -129,7 +129,7 @@ MonoBehaviour:
   life: 1
   atackDistance: 4
   score: 10
-  hp: 1
+  hp: .5
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

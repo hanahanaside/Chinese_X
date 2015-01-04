@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MainSceneManager : MonoBehaviour {
-
+public class MainSceneManager : MonoSingleton<MainSceneManager> {
 	public bool debug;
 	private GameObject mUIRoot;
 	private int mStageLevel = 0;
+	private int mGameLevel = 1;
 
 	void OnEnable () {
 		TopContainerManager.OnStartButtonClickedEvent += OnStartStoryEvent;
@@ -65,7 +65,7 @@ public class MainSceneManager : MonoBehaviour {
 		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.Opening);
 	}
 
-	void ContinueEvent(){
+	void ContinueEvent () {
 		InstantiateContainer ("Container/StageInfoContainer_" + mStageLevel);
 		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.StageInfo);
 	}
@@ -76,22 +76,30 @@ public class MainSceneManager : MonoBehaviour {
 		AdManager.instance.ShowInterstitialAd ();
 		if (mStageLevel >= 3) {
 			mStageLevel = 1;
+			mGameLevel++;
+			InstantiateContainer ("Container/StoryContainer");
+			SoundManager.instance.PlayBGM (SoundManager.BGMChannel.Story);
 		} else {
 			mStageLevel++;
+			InstantiateContainer ("Container/StageInfoContainer_" + mStageLevel);
+			SoundManager.instance.PlayBGM (SoundManager.BGMChannel.StageInfo);
 		}
-		Debug.Log ("lovel " + mStageLevel);
-		InstantiateContainer ("Container/StageInfoContainer_" + mStageLevel);
-		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.StageInfo);
 	}
 
-	void CloseShopEvent(){
-		if(mStageLevel == 0){
+	void CloseShopEvent () {
+		if (mStageLevel == 0) {
 			InstantiateContainer ("Container/TopContainer");
-		}else {
+		} else {
 			InstantiateContainer ("Container/GameOverContainer");
 		}
 	}
-		
+
+	public int GameLevel {
+		get {
+			return mGameLevel;
+		}
+	}
+
 	private void InstantiateContainer (string path) {
 		GameObject containerPrefab = Resources.Load (path) as GameObject;
 		GameObject containerObject = Instantiate (containerPrefab) as GameObject;
@@ -99,10 +107,10 @@ public class MainSceneManager : MonoBehaviour {
 		containerObject.transform.localScale = new Vector3 (1f, 1f, 1f);
 	}
 
-	private void InstantiateStageManager(int level){
+	private void InstantiateStageManager (int level) {
 		GameObject stageManagerPrefab =	Resources.Load ("StageManager/StageManager" + level) as GameObject;
 		Instantiate (stageManagerPrefab);
-		switch(level){
+		switch (level) {
 		case 1:
 			SoundManager.instance.PlayBGM (SoundManager.BGMChannel.Stage_1);
 			break;
