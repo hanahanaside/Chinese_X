@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class IAPManager : MonoSingleton<IAPManager> {
+
+	public static event Action UpdateTicketCountEvent;
+
 	public enum productID {
 		item_1,
 		item_2,
@@ -10,9 +14,7 @@ public class IAPManager : MonoSingleton<IAPManager> {
 	}
 
 	public string[] productIdentifiers;
-
 	#if UNITY_IPHONE
-
 	private List<StoreKitProduct> mProductList;
 
 	void OnEnable () {
@@ -51,6 +53,14 @@ public class IAPManager : MonoSingleton<IAPManager> {
 
 	void purchaseSuccessfulEvent (StoreKitTransaction transaction) {
 		Debug.Log ("purchaseSuccessfulEvent: " + transaction);
+		string productId = transaction.productIdentifier;
+		if (productId == productIdentifiers [0]) {
+			PrefsManager.instance.TicketCount = PrefsManager.instance.TicketCount + 1;
+		}
+		if (productId == productIdentifiers [1]) {
+			PrefsManager.instance.TicketCount = PrefsManager.instance.TicketCount + 2;
+		}
+		UpdateTicketCountEvent ();
 	}
 
 	public override void OnInitialize () {

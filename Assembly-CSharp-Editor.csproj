@@ -148,6 +148,9 @@
      <Compile Include="Assets\NGUI\Scripts\Editor\UIWidgetContainerEditor.cs" />
      <Compile Include="Assets\NGUI\Scripts\Editor\UIWidgetInspector.cs" />
      <Compile Include="Assets\NGUI\Scripts\Editor\UIWrapContentEditor.cs" />
+     <Compile Include="Assets\Terasurware\Classes\Editor\stage_info_importer.cs" />
+     <Compile Include="Assets\Terasurware\Classes\Editor\story_importer.cs" />
+     <Compile Include="Assets\Terasurware\Editor\ExcelImporterMaker.cs" />
      <None Include="Assets\Plugins\Android\res\drawable\com_unicon_ltd_konect_sdk_ad_typeb_mobile_close.xml" />
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_list_row_content_image_view.xml" />
      <None Include="Assets\Plugins\Android\LobiCore\res\drawable\lobi_action_bar_ico_close_on.xml" />
@@ -384,6 +387,8 @@
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_invitation_activity.xml" />
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_list_row_content_checkbox_small.xml" />
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_chat_group_info_settings_change_leader_activity.xml" />
+     <None Include="Assets\Terasurware\Editor\ExportTemplate.txt" />
+     <None Include="Assets\Terasurware\Editor\ExportTemplate2.txt" />
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_hint_account_switch_here.xml" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
      <None Include="Assets\Plugins\Android\LobiCore\res\drawable\lobi_custom_dialog_button_selector.xml" />
@@ -395,8 +400,10 @@
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_custom_dialog_content_image.xml" />
      <None Include="Assets\Plugins\Android\LobiRanking\res\layout\lobi_ranking_list_item.xml" />
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_custom_dialog_content_edittext.xml" />
+     <None Include="Assets\Terasurware\Editor\EntityTemplate.txt" />
      <None Include="Assets\Plugins\Android\res\drawable-ldpi\com_unicon_ltd_konect_sdk_shape_button_negative_pressed.xml" />
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_action_bar_button.xml" />
+     <None Include="Assets\Terasurware\Editor\EntityTemplate2.txt" />
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_group_list_item.xml" />
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_chat_group_info_settings_activity.xml" />
      <None Include="Assets\Plugins\Android\LobiCore\res\drawable\lobi_button_camera_selector.xml" />
@@ -533,6 +540,9 @@
  </Reference>
  <Reference Include="Prime31MenuItem">
  <HintPath>/Users/flower/Unity/Repogitories/Chinese_X/Assets/Editor/Prime31/Prime31MenuItem.dll</HintPath>
+ </Reference>
+ <Reference Include="NPOI">
+ <HintPath>/Users/flower/Unity/Repogitories/Chinese_X/Assets/Terasurware/Editor/npoi/NPOI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

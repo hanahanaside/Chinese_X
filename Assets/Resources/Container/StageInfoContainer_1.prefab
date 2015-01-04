@@ -323,6 +323,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3a8ff878f5e54b00aa7952b482e727d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storyLabel: {fileID: 11431328}
+  entityStageInfo: {fileID: 11400000, guid: eb1eb1fb3cce1445cbb78bd50949b78c, type: 2}
+  stageInfoId: 1
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -408,7 +411,7 @@ MonoBehaviour:
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 4a010654079fa495c96a5374c53aa7ce, type: 3}
   mFont: {fileID: 0}
-  mText: "\u8179\u6E1B\u3063\u305F\u30FC\n\u305C\u3063\u305F\u3044\u306B\u30E1\u30B7\u3092\u3068\u308A\u3082\u3069\u3057\u3066\u3084\u308B"
+  mText: "\u30CF\u30E9\u3078\u3063\u305F\u30FC\u30FC\u30FC\n\u305C\u3063\u305F\u3044\u306B\u30E1\u30B7\u3092\u3068\u308A\u3082\u3069\u3057\u3066\u3084\u308B\u30FC\u30FC\u30FC\u30FC\u30FC\u30FC!!"
   mFontSize: 30
   mFontStyle: 0
   mAlignment: 0
