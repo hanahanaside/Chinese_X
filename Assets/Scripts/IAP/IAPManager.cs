@@ -58,6 +58,9 @@ public class IAPManager : MonoSingleton<IAPManager> {
 			PrefsManager.instance.TicketCount = PrefsManager.instance.TicketCount + 1;
 		}
 		if (productId == productIdentifiers [1]) {
+
+		}
+		if(productId == productIdentifiers[2]){
 			PrefsManager.instance.TicketCount = PrefsManager.instance.TicketCount + 2;
 		}
 		UpdateTicketCountEvent ();

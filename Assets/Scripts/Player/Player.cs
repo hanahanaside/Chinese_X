@@ -47,14 +47,14 @@ public class Player : Character {
 		}
 		float h = 0;
 		#if UNITY_EDITOR
-		 h = Input.GetAxis ("Horizontal");
+		h = Input.GetAxis ("Horizontal");
 		#else
 		h = Delta.x;
 		#endif
 		mAnimator.SetFloat ("Speed", Mathf.Abs (h));
 
 		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (0);
-		if (info.nameHash == Animator.StringToHash ("Base Layer.Walk")) {
+		if (info.nameHash == Animator.StringToHash ("Base Layer.Walk") || info.nameHash == Animator.StringToHash ("Base Layer.Jump")) {
 			Move (h);
 		}
 
@@ -66,7 +66,7 @@ public class Player : Character {
 			mAnimator.SetTrigger ("Jump");
 
 			// Add a vertical force to the player.
-			rigidbody2D.AddForce (new Vector2 (0f, jumpForce));
+			rigidbody2D.AddForce (new Vector2 (0, jumpForce));
 
 			// Make sure the player can't jump again until the jump conditions from Update are satisfied.
 			mJump = false;
@@ -81,10 +81,10 @@ public class Player : Character {
 	}
 
 	public override void ApplyDamage () {
-		if(life > 0){
+		if (life > 0) {
 			float fromLife = life;
 			life -= 0.1f;
-			LifeManager.instance.UpdatePlayerLife (fromLife,life);
+			LifeManager.instance.UpdatePlayerLife (fromLife, life);
 			SoundManager.instance.PlaySE (SoundManager.SECannel.Damage);
 		}
 	}
@@ -124,12 +124,20 @@ public class Player : Character {
 	}
 
 	private void HighKick () {
+		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (0);
+		if (info.nameHash == Animator.StringToHash ("Base Layer.HighKick") || info.nameHash == Animator.StringToHash ("Base Layer.LowKick")) {
+			return;
+		}
 		mAnimator.SetTrigger ("HighKick");
 		mHighKickObject.SetActive (true);
 		SoundManager.instance.PlaySE (SoundManager.SECannel.HighKick);
 	}
 
 	private void LowKick () {
+		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (0);
+		if (info.nameHash == Animator.StringToHash ("Base Layer.HighKick") || info.nameHash == Animator.StringToHash ("Base Layer.LowKick")) {
+			return;
+		}
 		mAnimator.SetTrigger ("LowKick");
 		mLowKickObject.SetActive (true);
 		SoundManager.instance.PlaySE (SoundManager.SECannel.LowKick);
