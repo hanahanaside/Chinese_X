@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    
+    <ApplicationId>(Application ID, 例:12345)</ApplicationId>
+    <IsTest>true</IsTest>
+    <NotificationLaunchActivityPackage>com.unity3d.player</NotificationLaunchActivityPackage>
+    <NotificationLaunchActivityName>UnityPlayerActivity</NotificationLaunchActivityName>
+    <NotificationTitle>(プッシュ通知のタイトル)</NotificationTitle>
+    <NotificationIcon>(アプリのアイコンリソースID, 例:app_icon)</NotificationIcon>
+    <EnableNotificationDialog>(ダイアログで通知を表示するかどうか, true/false)</EnableNotificationDialog>
+    
+</config>
