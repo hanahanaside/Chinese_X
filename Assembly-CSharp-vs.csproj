@@ -208,6 +208,7 @@
      <Compile Include="Assets\Scripts\EnemyGenerator\EnemyGenerator.cs" />
      <Compile Include="Assets\Scripts\Floor\Floor.cs" />
      <Compile Include="Assets\Scripts\Ground\Ground.cs" />
+     <Compile Include="Assets\Scripts\IAP\IAPManager.cs" />
      <Compile Include="Assets\Scripts\KickMan\KickMan.cs" />
      <Compile Include="Assets\Scripts\KickMan\KickManAtack.cs" />
      <Compile Include="Assets\Scripts\Knife\Knife.cs" />
@@ -523,6 +524,9 @@
      <None Include="Assets\Plugins\Android\LobiRanking\res\layout\lobi_ranking_activity.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="P31RestKit">
+ <HintPath>/Users/flower/Unity/Repogitories/Chinese_X/Assets/Plugins/P31RestKit.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

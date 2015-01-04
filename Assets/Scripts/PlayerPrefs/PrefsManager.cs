@@ -14,7 +14,8 @@ public class PrefsManager : PlayerPrefsX {
 	}
 
 	public enum Kies {
-		BestScore
+		BestScore,
+		TicketCount
 	}
 
 	public int BestScore {
@@ -24,6 +25,17 @@ public class PrefsManager : PlayerPrefsX {
 		}
 		set {
 			PlayerPrefs.SetInt (Kies.BestScore.ToString (), value);
+			PlayerPrefs.Save ();
+		}
+	}
+
+	public int TicketCount{
+		get{
+			int ticketCount = PlayerPrefs.GetInt (Kies.TicketCount.ToString());
+			return ticketCount;
+		}
+		set{
+			PlayerPrefs.SetInt (Kies.TicketCount.ToString(),value);
 			PlayerPrefs.Save ();
 		}
 	}
