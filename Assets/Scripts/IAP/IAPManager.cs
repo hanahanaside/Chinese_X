@@ -67,17 +67,22 @@ public class IAPManager : MonoSingleton<IAPManager> {
 	}
 
 	public override void OnInitialize () {
-		if (StoreKitBinding.canMakePayments ()) {
-			StoreKitBinding.requestProductData (productIdentifiers);
-		}
+		RequestProducts ();
 	}
 
 	public void PurchaseProduct (IAPManager.productID productID) { 
 		if (mProductList == null) {
+			ConnectErrorDialog.instance.Show ();
 			return;
 		}
 		StoreKitProduct product = mProductList [(int)productID];
 		StoreKitBinding.purchaseProduct (product.productIdentifier, 1);
+	}
+
+	public void RequestProducts(){
+		if (StoreKitBinding.canMakePayments ()) {
+			StoreKitBinding.requestProductData (productIdentifiers);
+		}
 	}
 
 	#endif

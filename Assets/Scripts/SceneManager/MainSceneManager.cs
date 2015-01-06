@@ -49,6 +49,7 @@ public class MainSceneManager : MonoSingleton<MainSceneManager> {
 	}
 
 	void OnStartGameEvent () {
+		mStageLevel = 1;
 		InstantiateStageManager (mStageLevel);
 	}
 
@@ -62,6 +63,7 @@ public class MainSceneManager : MonoSingleton<MainSceneManager> {
 	void OnFinishGameEvent () {
 		InstantiateContainer ("Container/TopContainer");
 		ScoreKeeper.instance.score = 0;
+		mStageLevel = 0;
 		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.Opening);
 	}
 
