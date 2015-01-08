@@ -22,6 +22,12 @@ public abstract class Enemy : Character {
 		float fromLife = life;
 		life -= 1f / hp;
 		LifeManager.instance.UpdateEnemyLife (fromLife,life);
+		if(life > 0){
+			SoundManager.instance.PlaySE (SoundManager.SECannel.Damage_Enemy);
+		}else {
+			SoundManager.instance.PlaySE (SoundManager.SECannel.Death_Enemy);
+		}
+
 	}
 
 }

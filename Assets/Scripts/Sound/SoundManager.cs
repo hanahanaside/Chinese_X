@@ -4,14 +4,16 @@ using System.Collections;
 public class SoundManager : MonoSingleton<SoundManager> {
 
 	public enum SECannel{
-		Damage,
+		Damage_Player,
 		Jump,
-		Death,
+		Death_Player,
 		Step,
 		HighKick,
 		LowKick,
 		Go,
-		Button
+		Button,
+		Damage_Enemy,
+		Death_Enemy
 	}
 
 	public enum BGMChannel{

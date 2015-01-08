@@ -35,6 +35,5 @@ public class TopContainerManager : MonoBehaviour {
 
 	public void OnRecommendButtonClicked(){
 		SoundManager.instance.PlaySE (SoundManager.SECannel.Button);
-		ConnectErrorDialog.instance.Show ();
 	}
 }

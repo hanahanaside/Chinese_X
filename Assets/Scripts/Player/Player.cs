@@ -38,12 +38,20 @@ public class Player : Character {
 
 	void FixedUpdate () {
 		if (life <= 0) {
-			mAnimator.SetTrigger ("Death");
 			enabled = false;
+			mAnimator.SetTrigger ("Death");
 			rigidbody2D.isKinematic = true;
 			GameOverEvent ();
-			SoundManager.instance.PlaySE (SoundManager.SECannel.Death);
+			SoundManager.instance.PlaySE (SoundManager.SECannel.Death_Player);
 			return;
+		}
+		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (0);
+		if(info.nameHash == Animator.StringToHash ("Base Layer.Damage")){
+			collider2D.enabled = false;
+			return;
+		}
+		if(!collider2D.enabled){
+			collider2D.enabled = true;
 		}
 		float h = 0;
 		#if UNITY_EDITOR
@@ -53,7 +61,7 @@ public class Player : Character {
 		#endif
 		mAnimator.SetFloat ("Speed", Mathf.Abs (h));
 
-		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (0);
+
 		if (info.nameHash == Animator.StringToHash ("Base Layer.Walk") || info.nameHash == Animator.StringToHash ("Base Layer.Jump")) {
 			Move (h);
 		}
@@ -81,11 +89,19 @@ public class Player : Character {
 	}
 
 	public override void ApplyDamage () {
+		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (0);
+		if(info.nameHash == Animator.StringToHash ("Base Layer.Damage")){
+			return;
+		}
 		if (life > 0) {
 			float fromLife = life;
 			life -= 0.1f;
+			if(life > 0){
+				mAnimator.SetTrigger ("Damage");
+			}
+
 			LifeManager.instance.UpdatePlayerLife (fromLife, life);
-			SoundManager.instance.PlaySE (SoundManager.SECannel.Damage);
+			SoundManager.instance.PlaySE (SoundManager.SECannel.Damage_Player);
 		}
 	}
 
@@ -99,6 +115,11 @@ public class Player : Character {
 		if (!enabled) {
 			return;
 		}
+		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (0);
+		if(info.nameHash == Animator.StringToHash ("Base Layer.Damage")){
+			return;
+		}
+
 		if (!mJump && mGrounded) {
 			mJump = true;
 			mGrounded = false;
@@ -108,6 +129,10 @@ public class Player : Character {
 
 	public void Atack () {
 		if (!enabled) {
+			return;
+		}
+		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (0);
+		if(info.nameHash == Animator.StringToHash ("Base Layer.Damage")){
 			return;
 		}
 		float v = 0;

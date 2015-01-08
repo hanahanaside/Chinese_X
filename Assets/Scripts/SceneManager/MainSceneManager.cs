@@ -38,18 +38,17 @@ public class MainSceneManager : MonoSingleton<MainSceneManager> {
 	}
 
 	void OnStartStoryEvent () {
+		mStageLevel = 1;
 		InstantiateContainer ("Container/StoryContainer");
 		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.Story);
 	}
 
 	void OnStoryFinishedEvent () {
-		mStageLevel = 1;
 		InstantiateContainer ("Container/StageInfoContainer_" + mStageLevel);
 		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.StageInfo);
 	}
 
 	void OnStartGameEvent () {
-		mStageLevel = 1;
 		InstantiateStageManager (mStageLevel);
 	}
 
