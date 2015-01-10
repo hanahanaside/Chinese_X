@@ -716,6 +716,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6e5dfbbe68eca4e668fcd31d2eea2928, type: 3}
   - {fileID: 8300000, guid: 3fc8210e85d954c9fa65170c24ddf4d2, type: 3}
   - {fileID: 8300000, guid: a087639cb5f804866b02bf149bb4366d, type: 3}
+  - {fileID: 8300000, guid: 0e5b93b7589e342f381f337755ba5ae8, type: 3}
+  - {fileID: 8300000, guid: e04834c76b9134794ba5bffb89640fd1, type: 3}
   bgmClipArray:
   - {fileID: 8300000, guid: f728d2425854248c9b11c51ce8f49d50, type: 3}
   - {fileID: 8300000, guid: fec39ced2ed0643849b3c131b09b4d87, type: 3}

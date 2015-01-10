@@ -43,9 +43,9 @@ MonoBehaviour:
   mSprites:
   - name: bg_joystick
     x: 0
-    y: 89
-    width: 153
-    height: 154
+    y: 90
+    width: 152
+    height: 153
     borderLeft: 0
     borderRight: 0
     borderTop: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: bt_atack
-    x: 154
+    x: 153
     y: 90
     width: 149
     height: 153
@@ -147,9 +147,9 @@ MonoBehaviour:
     paddingBottom: 0
   - name: center_joystick
     x: 647
-    y: 927
-    width: 93
-    height: 97
+    y: 944
+    width: 80
+    height: 80
     borderLeft: 0
     borderRight: 0
     borderTop: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: life_enemy_fore
-    x: 741
+    x: 728
     y: 998
     width: 243
     height: 26
@@ -198,7 +198,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: life_player_fore
-    x: 741
+    x: 728
     y: 971
     width: 223
     height: 26
