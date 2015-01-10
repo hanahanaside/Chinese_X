@@ -25,7 +25,7 @@ public class ShopContainerManager : MonoBehaviour {
 
 	public void TicketButton1Clicked(){
 		SoundManager.instance.PlaySE (SoundManager.SECannel.Button); 
-		IAPManager.instance.PurchaseProduct (IAPManager.productID.item_1);
+		//		IAPManager.instance.PurchaseProduct (IAPManager.productID.item_1);
 	}
 
 	public void TicketButton2Clicked(){

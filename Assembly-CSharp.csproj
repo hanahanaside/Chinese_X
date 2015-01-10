@@ -233,6 +233,13 @@
      <Compile Include="Assets\Scripts\WhipMan\WhipManAtack.cs" />
      <Compile Include="Assets\Terasurware\Classes\Entity_StageInfo.cs" />
      <Compile Include="Assets\Terasurware\Classes\Entity_Story.cs" />
+     <Compile Include="Assets\iTweenEditor\Examples\StartAndStopTween.cs" />
+     <Compile Include="Assets\iTweenEditor\Helper Classes\EventParamMappings.cs" />
+     <Compile Include="Assets\iTweenEditor\Helper Classes\Vector3OrTransform.cs" />
+     <Compile Include="Assets\iTweenEditor\Helper Classes\Vector3OrTransformArray.cs" />
+     <Compile Include="Assets\iTweenEditor\iTween.cs" />
+     <Compile Include="Assets\iTweenEditor\iTweenEvent.cs" />
+     <Compile Include="Assets\iTweenEditor\iTweenPath.cs" />
      <None Include="Assets\Plugins\Android\res\drawable\com_unicon_ltd_konect_sdk_ad_typeb_mobile_close.xml" />
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_list_row_content_image_view.xml" />
      <None Include="Assets\Plugins\Android\LobiCore\res\drawable\lobi_action_bar_ico_close_on.xml" />
@@ -387,6 +394,7 @@
      <None Include="Assets\Plugins\Android\LobiCore\res\values\lobi_ids.xml" />
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_chat_list_left_item.xml" />
      <None Include="Assets\Plugins\Android\LobiCore\res\drawable\lobi_setting_row_selector.xml" />
+     <None Include="Assets\iTweenEditor\README.txt" />
      <None Include="Assets\Plugins\Android\LobiCore\res\drawable\lobi_checkbox_small_selector.xml" />
      <None Include="Assets\Plugins\Android\LobiCore\res\drawable\lobi_action_bar_ico_accept_enabled_on.xml" />
      <None Include="Assets\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />

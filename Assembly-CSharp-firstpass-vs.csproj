@@ -217,6 +217,7 @@
      <None Include="Assets\Plugins\Android\LobiCore\res\values\lobi_ids.xml" />
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_chat_list_left_item.xml" />
      <None Include="Assets\Plugins\Android\LobiCore\res\drawable\lobi_setting_row_selector.xml" />
+     <None Include="Assets\iTweenEditor\README.txt" />
      <None Include="Assets\Plugins\Android\LobiCore\res\drawable\lobi_checkbox_small_selector.xml" />
      <None Include="Assets\Plugins\Android\LobiCore\res\drawable\lobi_action_bar_ico_accept_enabled_on.xml" />
      <None Include="Assets\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
