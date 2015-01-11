@@ -34,7 +34,6 @@ public class KnifeMan : Enemy {
 
 		CheckFlip (mMoveSpeed);
 
-		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (0);
 
 		float distance = Vector3.Distance (mPlayerTransform.position, transform.position);
 		if (distance <= atackDistance) {
@@ -43,7 +42,18 @@ public class KnifeMan : Enemy {
 				mAnimator.SetFloat ("Speed", 0);
 				Invoke ("SetAtack",1.5f);
 			}
-		} 
+		}else {
+			mAtacking = false;
+			CancelInvoke ();
+		}
+
+		if(mAtacking){
+			return;
+		}
+
+		mAnimator.SetFloat ("Speed", moveForce);
+
+		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (0);
 
 		if (info.nameHash == Animator.StringToHash ("Base Layer.Walk")) {
 			Move (mMoveSpeed);
@@ -52,14 +62,19 @@ public class KnifeMan : Enemy {
 	}
 
 	private void SetAtack(){
+		if(!mAtacking){
+			return;
+		}
 		mAnimator.SetTrigger ("Atack");
 		Invoke ("ThrowKnife", 0.3f);
 	}
 
 	private void ThrowKnife () {
+		if (!mAtacking) {
+			return;
+		}
 		if(enabled){
 			Instantiate (knifePrefab, mThrowPointTransform.position, Quaternion.identity);
-			Invoke ("SetAtack",1.5f);
 		}
 	}
 }

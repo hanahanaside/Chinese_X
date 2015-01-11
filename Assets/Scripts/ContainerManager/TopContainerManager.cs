@@ -14,7 +14,7 @@ public class TopContainerManager : MonoBehaviour {
 			string json = response.text;
 			IDictionary parentObject = (IDictionary)Json.Deserialize (json);
 			IDictionary childObject = (IDictionary)parentObject ["environments"];
-			string status = childObject ["production"].ToString();
+			string status = childObject ["1"].ToString();
 			Debug.Log("status " + status);
 			if (status == "production") {
 				AdManager.instance.ShowIconAd ();
