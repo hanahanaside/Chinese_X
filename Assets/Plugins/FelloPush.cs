@@ -43,22 +43,17 @@ public class FelloPush : MonoBehaviour {
 		#endif
 	}
 	
-	//	private static DateTime UNIX_EPOCH = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+	private static DateTime UNIX_EPOCH = new DateTime(1970, 1, 1, 0, 0, 0, 0);
 	
 	public void ScheduleLocalNotification (string text, DateTime date, string label) {
 		// Unix
-
-		#if UNITY_EDITOR || UNITY_STANDALONE
-		#elif UNITY_IPHONE
-		DateTime UNIX_EPOCH = new DateTime(1970, 1, 1, 0, 0, 0, 0);
 		TimeSpan span = date - UNIX_EPOCH;
 		long unixtime = (long)span.TotalSeconds;
+		#if UNITY_EDITOR || UNITY_STANDALONE
+		#elif UNITY_IPHONE
 		_FelloPushBridgePlugin_ScheduleLocalNotification(text, unixtime, label);
 		#elif UNITY_ANDROID
 		if ( felloBridge != null ) {
-		DateTime UNIX_EPOCH = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-		TimeSpan span = date - UNIX_EPOCH;
-		long unixtime = (long)span.TotalSeconds;
 			felloBridge.Call("scheduleLocalNotification", text, unixtime, label);
 		}
 		#endif
