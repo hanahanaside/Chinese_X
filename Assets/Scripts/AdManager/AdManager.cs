@@ -2,25 +2,41 @@
 using System.Collections;
 
 public class AdManager : MonoSingleton<AdManager> {
-	private const string PUBLICER_ID = "34257";
+	#if UNITY_IPHONE
+	private string mPublisherId = "34257";
+	private string mBannerMediaId = "135714";
+	private string mBannerSpotId = "344009";
+	private string mIconMediaId = "131681";
+	private string mIconSpotId = "330695";
+	private string mInterstitialMediaId = "135714";
 	private string mInterstitialSpotId = "344010";
-	private int mBannerId;
-	private int mIconId;
+	#endif
+	#if UNITY_ANDROID
+	private string mPublisherId = "34257";
+	private string mBannerMediaId = "135714";
+	private string mBannerSpotId = "344009";
+	private string mIconMediaId = "131681";
+	private string mIconSpotId = "330695";
+	private string mInterstitialMediaId = "135714";
+	private string mInterstitialSpotId = "344010";
+	#endif
+	private int mBannerViewId;
+	private int mIconViewId;
 
 	public override void OnInitialize () {
-		IMobileSdkAdsUnityPlugin.registerInline (PUBLICER_ID, "135714", "344009");
-		mBannerId = IMobileSdkAdsUnityPlugin.show ("344009", IMobileSdkAdsUnityPlugin.AdType.BANNER,
+		IMobileSdkAdsUnityPlugin.registerInline (mPublisherId, mBannerMediaId, mBannerSpotId);
+		mBannerViewId = IMobileSdkAdsUnityPlugin.show (mBannerSpotId, IMobileSdkAdsUnityPlugin.AdType.BANNER,
 			IMobileSdkAdsUnityPlugin.AdAlignPosition.CENTER, IMobileSdkAdsUnityPlugin.AdValignPosition.BOTTOM);
 
-		IMobileSdkAdsUnityPlugin.registerInline (PUBLICER_ID, "131681", "330695");
-		IMobileSdkAdsUnityPlugin.start ("330695");
+		IMobileSdkAdsUnityPlugin.registerInline (mPublisherId, mIconMediaId, mIconSpotId);
+		IMobileSdkAdsUnityPlugin.start (mIconSpotId);
 		var iconParams = new IMobileIconParams ();
 		iconParams.iconNumber = 2;
 		iconParams.iconTitleShadowEnable = false;
 		iconParams.iconTitleEnable = false;
-		mIconId = IMobileSdkAdsUnityPlugin.show ("330695", IMobileSdkAdsUnityPlugin.AdType.ICON, 0, 10, iconParams);
+		mIconViewId = IMobileSdkAdsUnityPlugin.show (mIconSpotId, IMobileSdkAdsUnityPlugin.AdType.ICON, 0, 10, iconParams);
 
-		IMobileSdkAdsUnityPlugin.registerFullScreen (PUBLICER_ID, "135714", mInterstitialSpotId);
+		IMobileSdkAdsUnityPlugin.registerFullScreen (mPublisherId, mInterstitialMediaId, mInterstitialSpotId);
 		IMobileSdkAdsUnityPlugin.start (mInterstitialSpotId);
 		IMobileSdkAdsUnityPlugin.setAdOrientation (IMobileSdkAdsUnityPlugin.ImobileSdkAdsAdOrientation.IMOBILESDKADS_AD_ORIENTATION_LANDSCAPE);
 
@@ -32,9 +48,9 @@ public class AdManager : MonoSingleton<AdManager> {
 	public void ShowBannerAd () {
 		if (Application.systemLanguage == SystemLanguage.Japanese) {
 			AdMobManager.instance.hide ();
-			IMobileSdkAdsUnityPlugin.setVisibility (mBannerId, true);
+			IMobileSdkAdsUnityPlugin.setVisibility (mBannerViewId, true);
 		} else {
-			IMobileSdkAdsUnityPlugin.setVisibility (mBannerId, false);
+			IMobileSdkAdsUnityPlugin.setVisibility (mBannerViewId, false);
 			AdMobManager.instance.show ();
 		}
 
@@ -42,7 +58,7 @@ public class AdManager : MonoSingleton<AdManager> {
 
 	public void HideBannerAd () {
 		if (Application.systemLanguage == SystemLanguage.Japanese) {
-			IMobileSdkAdsUnityPlugin.setVisibility (mBannerId, false);
+			IMobileSdkAdsUnityPlugin.setVisibility (mBannerViewId, false);
 		}else {
 			AdMobManager.instance.hide ();
 		}
@@ -51,12 +67,12 @@ public class AdManager : MonoSingleton<AdManager> {
 
 	public void ShowIconAd () {
 		if (Application.systemLanguage == SystemLanguage.Japanese) {
-			IMobileSdkAdsUnityPlugin.setVisibility (mIconId, true);
+			IMobileSdkAdsUnityPlugin.setVisibility (mIconViewId, true);
 		}
 	}
 
 	public void HideIconAd () {
-		IMobileSdkAdsUnityPlugin.setVisibility (mIconId, false);
+		IMobileSdkAdsUnityPlugin.setVisibility (mIconViewId, false);
 	}
 
 	public void ShowInterstitialAd () {
