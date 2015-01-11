@@ -209,6 +209,7 @@
      <Compile Include="Assets\Scripts\EnemyGenerator\EnemyGenerator.cs" />
      <Compile Include="Assets\Scripts\Floor\Floor.cs" />
      <Compile Include="Assets\Scripts\Ground\Ground.cs" />
+     <Compile Include="Assets\Scripts\IAB\IABManager.cs" />
      <Compile Include="Assets\Scripts\IAP\IAPManager.cs" />
      <Compile Include="Assets\Scripts\KickMan\KickMan.cs" />
      <Compile Include="Assets\Scripts\KickMan\KickManAtack.cs" />
@@ -323,6 +324,7 @@
      <None Include="Assets\Plugins\Android\LobiCore\res\anim\lobisdk_badge_unread_out.xml" />
      <None Include="Assets\Plugins\Android\res\drawable-xhdpi\com_unicon_ltd_konect_sdk_shape_button_positive_default.xml" />
      <None Include="Assets\Plugins\Android\res\layout-small\com_unicon_ltd_konect_sdk_notification_popup.xml" />
+     <None Include="Assets\Plugins\InAppBillingAndroid\Manifest.xml" />
      <None Include="Assets\Plugins\Android\LobiRanking\AndroidManifest.xml" />
      <None Include="Assets\Plugins\Android\LobiCore\res\layout\lobi_chat_list_read_mark.xml" />
      <None Include="Assets\Plugins\Android\res\layout-normal\com_unicon_ltd_konect_sdk_notification_popup.xml" />
