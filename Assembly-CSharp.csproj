@@ -229,6 +229,7 @@
      <Compile Include="Assets\Scripts\TimeKeeper\TimeKeeper.cs" />
      <Compile Include="Assets\Scripts\Util\Singleton.cs" />
      <Compile Include="Assets\Scripts\Util\SingletonMonoBehaviour.cs" />
+     <Compile Include="Assets\Scripts\WWW\WWWClient.cs" />
      <Compile Include="Assets\Scripts\WhipMan\WhipMan.cs" />
      <Compile Include="Assets\Scripts\WhipMan\WhipManAtack.cs" />
      <Compile Include="Assets\Terasurware\Classes\Entity_StageInfo.cs" />

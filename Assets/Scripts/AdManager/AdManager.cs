@@ -26,6 +26,7 @@ public class AdManager : MonoSingleton<AdManager> {
 
 		HideBannerAd ();
 		HideIconAd ();
+
 	}
 
 	public void ShowBannerAd () {

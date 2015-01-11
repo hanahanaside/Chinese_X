@@ -53,6 +53,7 @@
      <Compile Include="Assets\Plugins\ImobileSdkAdsUnityPluginUtility.cs" />
      <Compile Include="Assets\Plugins\Lobi\Scripts\LobiMiniJson.cs" />
      <Compile Include="Assets\Plugins\Lobi\Scripts\LobiSettings.cs" />
+     <Compile Include="Assets\Plugins\MiniJSON.cs" />
      <Compile Include="Assets\Plugins\MonoSingleton.cs" />
      <Compile Include="Assets\Plugins\PlayerPrefsX.cs" />
      <Compile Include="Assets\Plugins\Singleton.cs" />
