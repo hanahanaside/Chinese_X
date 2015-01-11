@@ -7,22 +7,11 @@ public class StageInfoContainerManager : MonoBehaviour {
 	public static event Action OnStartButtonClickedEvent;
 	public UILabel storyLabel;
 	public Entity_StageInfo entityStageInfo;
-	public int stageInfoId;
 
 	// Use this for initialization
 	void Start () {
-		string story = "";
-		switch(stageInfoId){
-		case 1:
-			story = entityStageInfo.param [MainSceneManager.instance.GameLevel-1].story_1;
-			break;
-		case 2:
-			story = entityStageInfo.param [MainSceneManager.instance.GameLevel-1].story_2;
-			break;
-		case 3:
-			story = entityStageInfo.param [MainSceneManager.instance.GameLevel-1].story_3;
-			break;
-		}
+		int rand = UnityEngine.Random.Range (0,9);
+		string story = entityStageInfo.param[rand].story_1;
 		storyLabel.text = story;
 	}
 	
