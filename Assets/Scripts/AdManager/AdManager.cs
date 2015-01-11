@@ -11,6 +11,7 @@ public class AdManager : MonoSingleton<AdManager> {
 	private string mInterstitialMediaId = "135714";
 	private string mInterstitialSpotId = "344010";
 	#endif
+
 	#if UNITY_ANDROID
 	private string mPublisherId = "34257";
 	private string mBannerMediaId = "135714";
@@ -20,6 +21,7 @@ public class AdManager : MonoSingleton<AdManager> {
 	private string mInterstitialMediaId = "135714";
 	private string mInterstitialSpotId = "344010";
 	#endif
+
 	private int mBannerViewId;
 	private int mIconViewId;
 
