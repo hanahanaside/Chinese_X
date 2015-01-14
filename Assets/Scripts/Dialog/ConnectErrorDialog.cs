@@ -5,7 +5,9 @@ public class ConnectErrorDialog : MonoSingleton<ConnectErrorDialog> {
 
 	public void YesClicked(){
 		SoundManager.instance.PlaySE (SoundManager.SECannel.Button);
+		#if UNITY_IPHONE
 		IAPManager.instance.RequestProducts ();
+		#endif
 		Dismiss ();
 	}
 

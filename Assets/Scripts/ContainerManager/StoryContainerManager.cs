@@ -3,8 +3,8 @@ using System.Collections;
 using System;
 
 public class StoryContainerManager : MonoBehaviour {
-
 	public static event Action OnStoryFinishedEvent;
+
 	public Entity_Story entityStory;
 	private string[] storyTextArray;
 	public Texture[] backgroundTextureArray;
@@ -14,13 +14,18 @@ public class StoryContainerManager : MonoBehaviour {
 	private int mStoryIndex;
 
 	void Start () {
-		mTypewriterEffect = storyLabel.GetComponent<TypewriterEffect>();
-		backgroundTexture.mainTexture = backgroundTextureArray[mStoryIndex];
+		mTypewriterEffect = storyLabel.GetComponent<TypewriterEffect> ();
+		backgroundTexture.mainTexture = backgroundTextureArray [mStoryIndex];
 		storyTextArray = new string[3];
 		string story = "";
-		Entity_Story.Param param = entityStory.param[MainSceneManager.instance.GameLevel -1];
-		for(int i = 0;i < storyTextArray.Length;i ++){
-			switch(i){
+		Entity_Story.Param param = null;
+		if (Application.systemLanguage == SystemLanguage.Japanese) {
+			param = entityStory.param [0];
+		} else {
+			param = entityStory.param [1];
+		}
+		for (int i = 0; i < storyTextArray.Length; i++) {
+			switch (i) {
 			case 0:
 				story = param.story_1;
 				break;
@@ -33,18 +38,18 @@ public class StoryContainerManager : MonoBehaviour {
 			}
 			storyTextArray [i] = story;
 		}
-		storyLabel.text = storyTextArray[mStoryIndex];
+		storyLabel.text = storyTextArray [mStoryIndex];
 	}
 
-	public void OnSkipButtonClicked(){
+	public void OnSkipButtonClicked () {
 		mTypewriterEffect.Finish ();
 		mStoryIndex++;
-		if(mStoryIndex >= storyTextArray.Length){
+		if (mStoryIndex >= storyTextArray.Length) {
 			OnStoryFinishedEvent ();
 			Destroy (transform.parent.gameObject);
-		}else {
-			backgroundTexture.mainTexture = backgroundTextureArray[mStoryIndex];
-			storyLabel.text = storyTextArray[mStoryIndex];
+		} else {
+			backgroundTexture.mainTexture = backgroundTextureArray [mStoryIndex];
+			storyLabel.text = storyTextArray [mStoryIndex];
 			mTypewriterEffect.ResetToBeginning ();
 		}
 		SoundManager.instance.PlaySE (SoundManager.SECannel.Button);

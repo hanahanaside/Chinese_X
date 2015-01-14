@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class KickMan :  Enemy {
-
 	private Animator mAnimator;
 	private GameObject mAtackObject;
 	private Transform mPlayerTransform;
@@ -17,18 +16,18 @@ public class KickMan :  Enemy {
 	}
 
 	void FixedUpdate () {
-		if(life <=0){
+		if (life <= 0) {
 			CheckFlip (mMoveSpeed);
 			Move (-mMoveSpeed * 10);
 			mAnimator.SetTrigger ("Death");
 			enabled = false;
 			ScoreKeeper.instance.AddScore (score);
-			Destroy (gameObject,0.6f);
+			Destroy (gameObject, 0.6f);
 		}
 		AnimatorStateInfo info = mAnimator.GetCurrentAnimatorStateInfo (0);
-		if(info.nameHash == Animator.StringToHash ("Base Layer.Atack")){
+		if (info.nameHash == Animator.StringToHash ("Base Layer.Atack")) {
 			mAtackObject.SetActive (true);
-		}else {
+		} else {
 			mAtackObject.SetActive (false);
 		}			
 
@@ -40,14 +39,14 @@ public class KickMan :  Enemy {
 
 		CheckFlip (mMoveSpeed);
 
-		float distance = Vector3.Distance (mPlayerTransform.position,transform.position);
-		if(distance <= atackDistance){
+		float distance = Vector3.Distance (mPlayerTransform.position, transform.position);
+		if (distance <= atackDistance) {
 			mAnimator.SetFloat ("Speed", 0);
-		}else {
+		} else {
 			mAnimator.SetFloat ("Speed", moveForce);
 		}
 
-		if(info.nameHash == Animator.StringToHash("Base Layer.Walk")){
+		if (info.nameHash == Animator.StringToHash ("Base Layer.Walk")) {
 			Move (mMoveSpeed);
 		}
 

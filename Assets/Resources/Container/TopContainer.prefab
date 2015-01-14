@@ -344,6 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 551c19322f84d4a6c83b9640f002c35e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  recommendButtonObject: {fileID: 100000}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -5,8 +5,12 @@ using MiniJSON;
 
 public class TopContainerManager : MonoBehaviour {
 	public static event Action OnStartButtonClickedEvent;
+	public GameObject recommendButtonObject;
 
 	void Start () {
+		if (Application.systemLanguage != SystemLanguage.Japanese) {
+			recommendButtonObject.SetActive (false);
+		}
 		AdManager.instance.ShowBannerAd ();
 		string url = "https://dl.dropboxusercontent.com/u/66223745/App/Sparutan/environment.json";
 		WWWClient wwwClient = new WWWClient (this, url);
@@ -48,5 +52,6 @@ public class TopContainerManager : MonoBehaviour {
 
 	public void OnRecommendButtonClicked () {
 		SoundManager.instance.PlaySE (SoundManager.SECannel.Button);
+		AdManager.instance.ShowWallAd ();
 	}
 }

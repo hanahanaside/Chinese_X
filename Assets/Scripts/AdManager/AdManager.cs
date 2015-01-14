@@ -10,8 +10,9 @@ public class AdManager : MonoSingleton<AdManager> {
 	private string mIconSpotId = "330695";
 	private string mInterstitialMediaId = "135714";
 	private string mInterstitialSpotId = "344010";
+	private string mWallMediaId = "135714";
+	private string mWallSpotId = "353732";
 	#endif
-
 	#if UNITY_ANDROID
 	private string mPublisherId = "34257";
 	private string mBannerMediaId = "135714";
@@ -20,12 +21,18 @@ public class AdManager : MonoSingleton<AdManager> {
 	private string mIconSpotId = "330695";
 	private string mInterstitialMediaId = "135714";
 	private string mInterstitialSpotId = "344010";
+	private string mWallMediaId = "135714";
+	private string mWallSpotId = "353732";
 	#endif
-
 	private int mBannerViewId;
 	private int mIconViewId;
 
 	public override void OnInitialize () {
+
+		if (Application.systemLanguage != SystemLanguage.Japanese) {
+			return;
+		}
+
 		IMobileSdkAdsUnityPlugin.registerInline (mPublisherId, mBannerMediaId, mBannerSpotId);
 		mBannerViewId = IMobileSdkAdsUnityPlugin.show (mBannerSpotId, IMobileSdkAdsUnityPlugin.AdType.BANNER,
 			IMobileSdkAdsUnityPlugin.AdAlignPosition.CENTER, IMobileSdkAdsUnityPlugin.AdValignPosition.BOTTOM);
@@ -40,6 +47,10 @@ public class AdManager : MonoSingleton<AdManager> {
 
 		IMobileSdkAdsUnityPlugin.registerFullScreen (mPublisherId, mInterstitialMediaId, mInterstitialSpotId);
 		IMobileSdkAdsUnityPlugin.start (mInterstitialSpotId);
+		IMobileSdkAdsUnityPlugin.setAdOrientation (IMobileSdkAdsUnityPlugin.ImobileSdkAdsAdOrientation.IMOBILESDKADS_AD_ORIENTATION_LANDSCAPE);
+
+		IMobileSdkAdsUnityPlugin.registerFullScreen (mPublisherId, mWallMediaId, mWallSpotId);
+		IMobileSdkAdsUnityPlugin.start (mWallSpotId);
 		IMobileSdkAdsUnityPlugin.setAdOrientation (IMobileSdkAdsUnityPlugin.ImobileSdkAdsAdOrientation.IMOBILESDKADS_AD_ORIENTATION_LANDSCAPE);
 
 		HideBannerAd ();
@@ -61,7 +72,7 @@ public class AdManager : MonoSingleton<AdManager> {
 	public void HideBannerAd () {
 		if (Application.systemLanguage == SystemLanguage.Japanese) {
 			IMobileSdkAdsUnityPlugin.setVisibility (mBannerViewId, false);
-		}else {
+		} else {
 			AdMobManager.instance.hide ();
 		}
 
@@ -80,6 +91,12 @@ public class AdManager : MonoSingleton<AdManager> {
 	public void ShowInterstitialAd () {
 		if (Application.systemLanguage == SystemLanguage.Japanese) {
 			IMobileSdkAdsUnityPlugin.show (mInterstitialSpotId);
+		}
+	}
+
+	public void ShowWallAd () {
+		if (Application.systemLanguage == SystemLanguage.Japanese) {
+			IMobileSdkAdsUnityPlugin.show (mWallSpotId);
 		}
 	}
 }

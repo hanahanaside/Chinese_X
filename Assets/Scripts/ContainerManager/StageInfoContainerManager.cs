@@ -10,8 +10,14 @@ public class StageInfoContainerManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		int rand = UnityEngine.Random.Range (0,9);
-		string story = entityStageInfo.param[rand].story_1;
+		string story = "";
+		if (Application.systemLanguage == SystemLanguage.Japanese) {
+			int rand = UnityEngine.Random.Range (0,9);
+			story = entityStageInfo.param[rand].story_1;
+		}else {
+			int rand = UnityEngine.Random.Range (0,4);
+			story = entityStageInfo.param[rand].story_2;
+		}
 		storyLabel.text = story;
 	}
 	

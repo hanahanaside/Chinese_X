@@ -8,11 +8,15 @@ public class ShopContainerManager : MonoBehaviour {
 	public UILabel ticketLabel;
 
 	void OnEnable(){
+		#if UNITY_IPHONE
 		IAPManager.UpdateTicketCountEvent += UpdateTicketCountEvent;
+		#endif
 	}
 
 	void OnDisable(){
+		#if UNITY_IPHONE
 		IAPManager.UpdateTicketCountEvent -= UpdateTicketCountEvent;
+		#endif
 	}
 
 	void Start(){
@@ -25,12 +29,16 @@ public class ShopContainerManager : MonoBehaviour {
 
 	public void TicketButton1Clicked(){
 		SoundManager.instance.PlaySE (SoundManager.SECannel.Button); 
-		//		IAPManager.instance.PurchaseProduct (IAPManager.productID.item_1);
+		#if UNITY_IPHONE
+		IAPManager.instance.PurchaseProduct (IAPManager.productID.item_1);
+		#endif
 	}
 
 	public void TicketButton2Clicked(){
 		SoundManager.instance.PlaySE (SoundManager.SECannel.Button);
+		#if UNITY_IPHONE
 		IAPManager.instance.PurchaseProduct (IAPManager.productID.item_2);
+		#endif
 	}
 
 	public void BackButtonClicked(){

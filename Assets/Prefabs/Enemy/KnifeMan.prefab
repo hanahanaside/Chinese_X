@@ -115,8 +115,9 @@ MonoBehaviour:
   moveForce: 100
   maxSpeed: 1
   life: 1
+  levelLabelPrefab: {fileID: 0}
   atackDistance: 2
-  score: 1000
+  score: 50
   hp: 2
   knifePrefab: {fileID: 100000, guid: cd3661378ba3042ca83d395ee6dc95af, type: 2}
 --- !u!212 &21200000

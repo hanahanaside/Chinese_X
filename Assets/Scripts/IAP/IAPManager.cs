@@ -5,6 +5,7 @@ using System;
 
 public class IAPManager : MonoSingleton<IAPManager> {
 
+	#if UNITY_IPHONE
 	public static event Action UpdateTicketCountEvent;
 
 	public enum productID {
@@ -14,7 +15,7 @@ public class IAPManager : MonoSingleton<IAPManager> {
 	}
 
 	public string[] productIdentifiers;
-	#if UNITY_IPHONE
+
 	private List<StoreKitProduct> mProductList;
 
 	void OnEnable () {
@@ -58,7 +59,7 @@ public class IAPManager : MonoSingleton<IAPManager> {
 			PrefsManager.instance.TicketCount = PrefsManager.instance.TicketCount + 1;
 		}
 		if (productId == productIdentifiers [1]) {
-
+			PrefsManager.instance.TicketCount = PrefsManager.instance.TicketCount + 3;
 		}
 		if(productId == productIdentifiers[2]){
 			PrefsManager.instance.TicketCount = PrefsManager.instance.TicketCount + 2;

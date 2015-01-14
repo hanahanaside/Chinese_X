@@ -207,9 +207,10 @@ MonoBehaviour:
   moveForce: 100
   maxSpeed: 1
   life: 1
+  levelLabelPrefab: {fileID: 0}
   atackDistance: 1.5
   score: 3000
-  hp: 4
+  hp: 8
   barrelPrefab: {fileID: 100000, guid: 6dc9fdfa14a614a9c9bcf7b8a489f8e6, type: 2}
   maxAtackInterval: 1
 --- !u!212 &21200000
