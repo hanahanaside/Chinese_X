@@ -78,13 +78,11 @@ public class MainSceneManager : MonoSingleton<MainSceneManager> {
 		if (mStageLevel >= 3) {
 			mStageLevel = 1;
 			mGameLevel++;
-			InstantiateContainer ("Container/StoryContainer");
-			SoundManager.instance.PlayBGM (SoundManager.BGMChannel.Story);
 		} else {
 			mStageLevel++;
-			InstantiateContainer ("Container/StageInfoContainer_" + mStageLevel);
-			SoundManager.instance.PlayBGM (SoundManager.BGMChannel.StageInfo);
 		}
+		InstantiateContainer ("Container/StageInfoContainer_" + mStageLevel);
+		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.StageInfo);
 	}
 
 	void CloseShopEvent () {
