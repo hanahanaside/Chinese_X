@@ -61,7 +61,7 @@ GameObject:
   - 114: {fileID: 11400008}
   - 54: {fileID: 5431330}
   m_Layer: 13
-  m_Name: StageInfoContainer_3
+  m_Name: StageInfoContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,6 +79,22 @@ GameObject:
   - 114: {fileID: 11431330}
   m_Layer: 13
   m_Name: StoryLabel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &172926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 472926}
+  - 114: {fileID: 11472926}
+  m_Layer: 13
+  m_Name: LevelLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,6 +150,7 @@ Transform:
   - {fileID: 400002}
   - {fileID: 400004}
   - {fileID: 431330}
+  - {fileID: 472926}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &431330
@@ -148,6 +165,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400006}
   m_RootOrder: 3
+--- !u!4 &472926
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172926}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 284, y: -111, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400006}
+  m_RootOrder: 4
 --- !u!54 &5431330
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -324,8 +353,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storyLabel: {fileID: 11431328}
+  levelLabel: {fileID: 11472926}
   entityStageInfo: {fileID: 11400000, guid: eb1eb1fb3cce1445cbb78bd50949b78c, type: 2}
-  stageInfoId: 3
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -411,7 +440,7 @@ MonoBehaviour:
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 4a010654079fa495c96a5374c53aa7ce, type: 3}
   mFont: {fileID: 0}
-  mText: "\u3042\u308C\u3001\u305D\u3046\u3044\u3048\u3070...\n\u307B\u304B\u306B\u3082\u3055\u3089\u308F\u308C\u305F\u6C17\u304C...........\n\u3044\u3084\u3001\n\u30E1\u30B7\u3060\u30E1\u30B7\u3060\u30E1\u30B7\u3060\u30FC\u30FC\u30FC\u30FC\u30FC\u30FC!!"
+  mText: "\u30CF\u30E9\u3078\u3063\u305F\u30FC\u30FC\u30FC\n\u305C\u3063\u305F\u3044\u306B\u30E1\u30B7\u3092\u3068\u308A\u3082\u3069\u3057\u3066\u3084\u308B\u30FC\u30FC\u30FC\u30FC\u30FC\u30FC!!"
   mFontSize: 30
   mFontStyle: 0
   mAlignment: 0
@@ -454,6 +483,71 @@ MonoBehaviour:
   scrollView: {fileID: 0}
   keepFullDimensions: 0
   onFinished: []
+--- !u!114 &11472926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftAnchor:
+    target: {fileID: 0}
+    relative: 0
+    absolute: 0
+  rightAnchor:
+    target: {fileID: 0}
+    relative: 1
+    absolute: 0
+  bottomAnchor:
+    target: {fileID: 0}
+    relative: 0
+    absolute: 0
+  topAnchor:
+    target: {fileID: 0}
+    relative: 1
+    absolute: 0
+  updateAnchors: 1
+  mColor: {r: 1, g: 1, b: 1, a: 1}
+  mPivot: 4
+  mWidth: 200
+  mHeight: 30
+  mDepth: 1
+  autoResizeBoxCollider: 0
+  hideIfOffScreen: 0
+  keepAspectRatio: 0
+  aspectRatio: 6.66666651
+  keepCrispWhenShrunk: 1
+  mTrueTypeFont: {fileID: 12800000, guid: 4a010654079fa495c96a5374c53aa7ce, type: 3}
+  mFont: {fileID: 0}
+  mText: New Label
+  mFontSize: 30
+  mFontStyle: 0
+  mAlignment: 0
+  mEncoding: 1
+  mMaxLineCount: 0
+  mEffectStyle: 0
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
+  mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mOverflow: 0
+  mMaterial: {fileID: 0}
+  mApplyGradient: 0
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: .699999988, g: .699999988, b: .699999988, a: 1}
+  mSpacingX: 0
+  mSpacingY: 0
+  mUseFloatSpacing: 0
+  mFloatSpacingX: 0
+  mFloatSpacingY: 0
+  mShrinkToFit: 0
+  mMaxLineWidth: 0
+  mMaxLineHeight: 0
+  mLineWidth: 0
+  mMultiline: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

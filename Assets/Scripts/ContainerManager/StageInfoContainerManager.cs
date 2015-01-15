@@ -6,6 +6,7 @@ public class StageInfoContainerManager : MonoBehaviour {
 
 	public static event Action OnStartButtonClickedEvent;
 	public UILabel storyLabel;
+	public UILabel levelLabel;
 	public Entity_StageInfo entityStageInfo;
 
 	// Use this for initialization
@@ -19,6 +20,7 @@ public class StageInfoContainerManager : MonoBehaviour {
 			story = entityStageInfo.param[rand].story_2;
 		}
 		storyLabel.text = story;
+		levelLabel.text = "LEVEL" + (MainSceneManager.instance.ClearedCount + 1);
 	}
 	
 	// Update is called once per frame

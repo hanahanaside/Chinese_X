@@ -6,6 +6,7 @@ public class MainSceneManager : MonoSingleton<MainSceneManager> {
 	private GameObject mUIRoot;
 	private int mStageLevel = 0;
 	private int mGameLevel = 1;
+	private int mClearedCount;
 
 	void OnEnable () {
 		TopContainerManager.OnStartButtonClickedEvent += OnStartStoryEvent;
@@ -44,7 +45,7 @@ public class MainSceneManager : MonoSingleton<MainSceneManager> {
 	}
 
 	void OnStoryFinishedEvent () {
-		InstantiateContainer ("Container/StageInfoContainer_" + mStageLevel);
+		InstantiateContainer ("Container/StageInfoContainer");
 		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.StageInfo);
 	}
 
@@ -67,12 +68,13 @@ public class MainSceneManager : MonoSingleton<MainSceneManager> {
 	}
 
 	void ContinueEvent () {
-		InstantiateContainer ("Container/StageInfoContainer_" + mStageLevel);
+		InstantiateContainer ("Container/StageInfoContainer");
 		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.StageInfo);
 	}
 
 	void StageClearedEvent () {
 		Debug.Log ("clear");
+		mClearedCount++;
 		SoundManager.instance.StopSE (SoundManager.SECannel.Go);
 		AdManager.instance.ShowInterstitialAd ();
 		if (mStageLevel >= 3) {
@@ -81,7 +83,7 @@ public class MainSceneManager : MonoSingleton<MainSceneManager> {
 		} else {
 			mStageLevel++;
 		}
-		InstantiateContainer ("Container/StageInfoContainer_" + mStageLevel);
+		InstantiateContainer ("Container/StageInfoContainer");
 		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.StageInfo);
 	}
 
@@ -96,6 +98,12 @@ public class MainSceneManager : MonoSingleton<MainSceneManager> {
 	public int GameLevel {
 		get {
 			return mGameLevel;
+		}
+	}
+
+	public int ClearedCount{
+		get{
+			return mClearedCount;
 		}
 	}
 
