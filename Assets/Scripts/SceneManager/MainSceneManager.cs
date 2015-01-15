@@ -38,13 +38,12 @@ public class MainSceneManager : MonoSingleton<MainSceneManager> {
 	}
 
 	void OnStartStoryEvent () {
-		mStageLevel = 1;
 		InstantiateContainer ("Container/StoryContainer");
 		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.Story);
 	}
 
 	void OnStoryFinishedEvent () {
-		InstantiateContainer ("Container/StageInfoContainer_" + mStageLevel);
+		InstantiateContainer ("Container/StageInfoContainer");
 		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.StageInfo);
 	}
 
@@ -62,12 +61,11 @@ public class MainSceneManager : MonoSingleton<MainSceneManager> {
 	void OnFinishGameEvent () {
 		InstantiateContainer ("Container/TopContainer");
 		ScoreKeeper.instance.score = 0;
-		mStageLevel = 0;
 		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.Opening);
 	}
 
 	void ContinueEvent () {
-		InstantiateContainer ("Container/StageInfoContainer_" + mStageLevel);
+		InstantiateContainer ("Container/StageInfoContainer");
 		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.StageInfo);
 	}
 
@@ -76,12 +74,10 @@ public class MainSceneManager : MonoSingleton<MainSceneManager> {
 		SoundManager.instance.StopSE (SoundManager.SECannel.Go);
 		AdManager.instance.ShowInterstitialAd ();
 		if (mStageLevel >= 3) {
-			mStageLevel = 1;
 			mGameLevel++;
-		} else {
-			mStageLevel++;
 		}
-		InstantiateContainer ("Container/StageInfoContainer_" + mStageLevel);
+		mStageLevel++;
+		InstantiateContainer ("Container/StageInfoContainer");
 		SoundManager.instance.PlayBGM (SoundManager.BGMChannel.StageInfo);
 	}
 
@@ -96,6 +92,12 @@ public class MainSceneManager : MonoSingleton<MainSceneManager> {
 	public int GameLevel {
 		get {
 			return mGameLevel;
+		}
+	}
+
+	public int StageLevel {
+		get {
+			return mStageLevel;
 		}
 	}
 
