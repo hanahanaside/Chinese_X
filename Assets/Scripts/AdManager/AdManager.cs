@@ -28,7 +28,7 @@ public class AdManager : MonoSingleton<AdManager> {
 	private int mIconViewId;
 
 	public override void OnInitialize () {
-
+	
 		if (Application.systemLanguage != SystemLanguage.Japanese) {
 			return;
 		}
