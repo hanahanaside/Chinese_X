@@ -189,7 +189,7 @@ public static class LobiPostProcessor
 		if (Directory.Exists (fileFullPath)) {
 			files.Add (filePath);
 		} else {
-			//			Debug.LogWarning ("Lobi SDK: file not found \"" + filePath + "\"");
+			Debug.LogWarning ("Lobi SDK: file not found \"" + filePath + "\"");
 		}
 	}
 
