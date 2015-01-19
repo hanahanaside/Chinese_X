@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class AdManager : MonoSingleton<AdManager> {
-	#if UNITY_IPHONE
+
+	#if !UNITY_EDITOR
 	private string mPublisherId = "34257";
 	private string mBannerMediaId = "135714";
 	private string mBannerSpotId = "344009";
@@ -12,30 +13,21 @@ public class AdManager : MonoSingleton<AdManager> {
 	private string mInterstitialSpotId = "344010";
 	private string mWallMediaId = "135714";
 	private string mWallSpotId = "353732";
-	#endif
-	#if UNITY_ANDROID
-	private string mPublisherId = "34257";
-	private string mBannerMediaId = "135714";
-	private string mBannerSpotId = "344009";
-	private string mIconMediaId = "131681";
-	private string mIconSpotId = "330695";
-	private string mInterstitialMediaId = "135714";
-	private string mInterstitialSpotId = "344010";
-	private string mWallMediaId = "135714";
-	private string mWallSpotId = "353732";
-	#endif
+
+
 	private int mBannerViewId;
 	private int mIconViewId;
+	#endif
 
 	public override void OnInitialize () {
 	
 		if (Application.systemLanguage != SystemLanguage.Japanese) {
 			return;
 		}
-
+		#if !UNITY_EDITOR
 		IMobileSdkAdsUnityPlugin.registerInline (mPublisherId, mBannerMediaId, mBannerSpotId);
 		mBannerViewId = IMobileSdkAdsUnityPlugin.show (mBannerSpotId, IMobileSdkAdsUnityPlugin.AdType.BANNER,
-			IMobileSdkAdsUnityPlugin.AdAlignPosition.CENTER, IMobileSdkAdsUnityPlugin.AdValignPosition.BOTTOM);
+		IMobileSdkAdsUnityPlugin.AdAlignPosition.CENTER, IMobileSdkAdsUnityPlugin.AdValignPosition.BOTTOM);
 
 		IMobileSdkAdsUnityPlugin.registerInline (mPublisherId, mIconMediaId, mIconSpotId);
 		IMobileSdkAdsUnityPlugin.start (mIconSpotId);
@@ -56,9 +48,11 @@ public class AdManager : MonoSingleton<AdManager> {
 		HideBannerAd ();
 		HideIconAd ();
 
+		#endif
 	}
 
 	public void ShowBannerAd () {
+		#if !UNITY_EDITOR
 		if (Application.systemLanguage == SystemLanguage.Japanese) {
 			AdMobManager.instance.hide ();
 			IMobileSdkAdsUnityPlugin.setVisibility (mBannerViewId, true);
@@ -66,37 +60,46 @@ public class AdManager : MonoSingleton<AdManager> {
 			IMobileSdkAdsUnityPlugin.setVisibility (mBannerViewId, false);
 			AdMobManager.instance.show ();
 		}
-
+		#endif
 	}
 
 	public void HideBannerAd () {
+		#if !UNITY_EDITOR
 		if (Application.systemLanguage == SystemLanguage.Japanese) {
 			IMobileSdkAdsUnityPlugin.setVisibility (mBannerViewId, false);
 		} else {
 			AdMobManager.instance.hide ();
 		}
-
+		#endif
 	}
 
 	public void ShowIconAd () {
+		#if !UNITY_EDITOR
 		if (Application.systemLanguage == SystemLanguage.Japanese) {
 			IMobileSdkAdsUnityPlugin.setVisibility (mIconViewId, true);
 		}
+		#endif
 	}
 
 	public void HideIconAd () {
+		#if !UNITY_EDITOR
 		IMobileSdkAdsUnityPlugin.setVisibility (mIconViewId, false);
+		#endif
 	}
 
 	public void ShowInterstitialAd () {
+		#if !UNITY_EDITOR
 		if (Application.systemLanguage == SystemLanguage.Japanese) {
 			IMobileSdkAdsUnityPlugin.show (mInterstitialSpotId);
 		}
+		#endif
 	}
 
 	public void ShowWallAd () {
+		#if !UNITY_EDITOR
 		if (Application.systemLanguage == SystemLanguage.Japanese) {
 			IMobileSdkAdsUnityPlugin.show (mWallSpotId);
 		}
+		#endif
 	}
 }

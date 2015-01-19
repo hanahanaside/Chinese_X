@@ -12,6 +12,7 @@ public class TopContainerManager : MonoBehaviour {
 			recommendButtonObject.SetActive (false);
 		}
 		AdManager.instance.ShowBannerAd ();
+		#if UNITY_IPHONE
 		string url = "https://dl.dropboxusercontent.com/u/66223745/App/Sparutan/environment.json";
 		WWWClient wwwClient = new WWWClient (this, url);
 		wwwClient.OnSuccess = (WWW response) => {
@@ -25,7 +26,9 @@ public class TopContainerManager : MonoBehaviour {
 			}
 		};
 		wwwClient.Request ();
-
+		#else 
+		AdManager.instance.ShowIconAd();
+		#endif
 	}
 
 	public void OnStartButtonClicked () {
