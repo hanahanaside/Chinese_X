@@ -29,7 +29,7 @@
 [KonectNotificationsAPI processLocalNotifications:notification];
 #endif
 
-static NSString* _appId = @"12431";
+static NSString* _appId = (アプリID);
 // 例: static NSString* appId = @"10000";
 
 void _FelloPushBridgePlugin_SetDeviceId(const char* deviceId)
