@@ -98,14 +98,26 @@ PlayerSettings:
   iPadHighResLandscapeSplashScreen: {fileID: 0}
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
-  AndroidKeystoreName: /Users/flower/Desktop/supartan.keystore
-  AndroidKeyaliasName: supartan
+  AndroidKeystoreName: /Users/flower/Desktop/spartan.keystore
+  AndroidKeyaliasName: spartan
   resolutionDialogBanner: {fileID: 0}
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
     - m_Icon: {fileID: 0}
       m_Size: 128
+  - m_BuildTarget: Android
+    m_Icons:
+    - m_Icon: {fileID: 2800000, guid: 7c91ea3d8cf2041b486e1449aab7adbb, type: 3}
+      m_Size: 144
+    - m_Icon: {fileID: 2800000, guid: d7e93e60dbd324b47be18dbcfd7b773c, type: 3}
+      m_Size: 96
+    - m_Icon: {fileID: 2800000, guid: d3a9b318243844f76b51085d360fd0d3, type: 3}
+      m_Size: 72
+    - m_Icon: {fileID: 2800000, guid: 019f130f5ffc14fd98ad713e78719f08, type: 3}
+      m_Size: 48
+    - m_Icon: {fileID: 2800000, guid: 48c0bbe4f0f8a47b79644f350616ebb4, type: 3}
+      m_Size: 36
   m_BuildTargetBatching:
   - m_BuildTarget: iPhone
     m_StaticBatching: 1
