@@ -3,7 +3,7 @@ using System.Collections;
 
 public class AdManager : MonoSingleton<AdManager> {
 
-	#if !UNITY_EDITOR
+	//	#if !UNITY_EDITOR
 	private string mPublisherId = "34257";
 	private string mBannerMediaId = "135714";
 	private string mBannerSpotId = "344009";
@@ -17,14 +17,14 @@ public class AdManager : MonoSingleton<AdManager> {
 
 	private int mBannerViewId;
 	private int mIconViewId;
-	#endif
+	//	#endif
 
 	public override void OnInitialize () {
 	
 		if (Application.systemLanguage != SystemLanguage.Japanese) {
 			return;
 		}
-		#if !UNITY_EDITOR
+		//		#if !UNITY_EDITOR
 		IMobileSdkAdsUnityPlugin.registerInline (mPublisherId, mBannerMediaId, mBannerSpotId);
 		mBannerViewId = IMobileSdkAdsUnityPlugin.show (mBannerSpotId, IMobileSdkAdsUnityPlugin.AdType.BANNER,
 		IMobileSdkAdsUnityPlugin.AdAlignPosition.CENTER, IMobileSdkAdsUnityPlugin.AdValignPosition.BOTTOM);
@@ -34,9 +34,14 @@ public class AdManager : MonoSingleton<AdManager> {
 		var iconParams = new IMobileIconParams ();
 		iconParams.iconNumber = 2;
 		iconParams.iconTitleShadowEnable = false;
-		iconParams.iconTitleEnable = false;
-		mIconViewId = IMobileSdkAdsUnityPlugin.show (mIconSpotId, IMobileSdkAdsUnityPlugin.AdType.ICON, 0, 10, iconParams);
 
+		iconParams.iconTitleEnable = false;
+		#if UNITY_IPHONE
+		mIconViewId = IMobileSdkAdsUnityPlugin.show (mIconSpotId, IMobileSdkAdsUnityPlugin.AdType.ICON, 0, 10, iconParams);
+		#endif
+		#if UNITY_ANDROID
+		mIconViewId = IMobileSdkAdsUnityPlugin.show (mIconSpotId, IMobileSdkAdsUnityPlugin.AdType.ICON, 0, 50, iconParams);
+		#endif
 		IMobileSdkAdsUnityPlugin.registerFullScreen (mPublisherId, mInterstitialMediaId, mInterstitialSpotId);
 		IMobileSdkAdsUnityPlugin.start (mInterstitialSpotId);
 		IMobileSdkAdsUnityPlugin.setAdOrientation (IMobileSdkAdsUnityPlugin.ImobileSdkAdsAdOrientation.IMOBILESDKADS_AD_ORIENTATION_LANDSCAPE);
@@ -48,7 +53,7 @@ public class AdManager : MonoSingleton<AdManager> {
 		HideBannerAd ();
 		HideIconAd ();
 
-		#endif
+		//		#endif
 	}
 
 	public void ShowBannerAd () {
