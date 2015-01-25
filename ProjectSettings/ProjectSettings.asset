@@ -99,7 +99,7 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   AndroidKeystoreName: /Users/flower/Desktop/spartan.keystore
-  AndroidKeyaliasName: 
+  AndroidKeyaliasName: spartan
   resolutionDialogBanner: {fileID: 0}
   m_BuildTargetIcons:
   - m_BuildTarget: 

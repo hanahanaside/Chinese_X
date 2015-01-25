@@ -31,6 +31,14 @@ public class TopContainerManager : MonoBehaviour {
 		#endif
 	}
 
+	void Update(){
+		#if UNITY_ANDROID
+		if(Input.GetKey(KeyCode.Escape)){
+			Application.Quit();
+		}
+		#endif
+	}
+
 	public void OnStartButtonClicked () {
 		AdManager.instance.HideBannerAd ();
 		AdManager.instance.HideIconAd ();
@@ -45,6 +53,7 @@ public class TopContainerManager : MonoBehaviour {
 	}
 
 	public void OnItemButtonClicked () {
+		AdManager.instance.HideIconAd ();
 		GameObject containerPrefab = Resources.Load ("Container/ShopContainer") as GameObject;
 		GameObject containerObject = Instantiate (containerPrefab) as GameObject;
 		containerObject.transform.parent = transform.parent.transform.parent;

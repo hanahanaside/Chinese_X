@@ -2,22 +2,24 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class IABManager : MonoSingleton<IABManager> { 
-
+public class IABManager : MonoSingleton<IABManager> {
 	#if UNITY_ANDROID
 	public enum Products {
 		Ticket_1,
 		Ticket_2}
 	;
 
-	private const string PUBLIC_KEY = "";
+	private const string PUBLIC_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtePLGnOL5ttlNvWJCKY1lcGqK60bM+Pxlr3KPt9Yz5tlZb5fz7v0UjDNhmzO4pJVQkxfQLJU+dLXkQvMOFuJYyrTl1icaydLYRp8H8NAHKO5KeIi1LeuEJ8DeZkLcdOkcCtGdSQJWQNlQHzKO35QIIltH1p1S++J0h1exVKNIvZ0PGV6QtUhnm1MLhapCDcrFNN866wIb0mHc6BOhs3Bx4pQdkICZeT7h8p4PdCIOIb6E42TnVvKozhAtq/tKk4J0Xvy0nhQtd5/NMAkKxP9g4YRPgOkKZi1vm9/75gBr1MofevN7JIVWw1E3E6MNIbbqeZQNV2CpD7Pa6ESd8C6/wIDAQAB";
+	private string[] mSKUArray = {"com.maruiorimono.spartan.item1" };
 
 	public override void OnInitialize () {
 		GoogleIAB.init (PUBLIC_KEY);
 	}
 
 	public void PurchaseProduct (Products products) {
-		GoogleIAB.purchaseProduct ("android.test.purchased");
+		int index = (int)products;
+		string sku = mSKUArray[index];
+		GoogleIAB.purchaseProduct (sku);
 	}
 
 	void OnEnable () {
@@ -48,13 +50,7 @@ public class IABManager : MonoSingleton<IABManager> {
 
 	void billingSupportedEvent () {
 		Debug.Log ("billingSupportedEvent");
-		var skus = new string[] {
-			"com.prime31.testproduct",
-			"android.test.purchased",
-			"com.prime31.managedproduct",
-			"com.prime31.testsubscription"
-		};
-		GoogleIAB.queryInventory (skus);
+		GoogleIAB.queryInventory (mSKUArray);
 	}
 
 	void billingNotSupportedEvent (string error) {

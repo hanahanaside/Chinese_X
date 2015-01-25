@@ -31,6 +31,10 @@ public class ShopContainerManager : MonoBehaviour {
 		SoundManager.instance.PlaySE (SoundManager.SECannel.Button); 
 		#if UNITY_IPHONE
 		IAPManager.instance.PurchaseProduct (IAPManager.productID.item_1);
+		#endif 
+
+		#if UNITY_ANDROID
+		IABManager.instance.PurchaseProduct(IABManager.Products.Ticket_1);
 		#endif
 	}
 
