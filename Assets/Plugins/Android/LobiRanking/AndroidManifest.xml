@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kayac.lobi.sdk.ranking"
+    android:versionCode="4"
+    android:versionName="5.3.2" >
+
+    <application>
+        <activity
+            android:name="com.kayac.lobi.sdk.ranking.activity.RankingActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+        </activity>
+    </application>
+
+</manifest>
