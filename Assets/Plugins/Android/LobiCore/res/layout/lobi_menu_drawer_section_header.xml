@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/lobi_padding_middle"
+    android:layout_marginTop="@dimen/lobi_padding_section"
+    android:background="@color/lobi_menu_drawer_background"
+    android:orientation="vertical" >
+
+    <View
+        android:id="@+id/lobi_section_extra_padding"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lobi_margin_middle" />
+
+    <TextView
+        android:id="@+id/lobi_section_view_text"
+        style="@style/lobi_textview_gray_small_singleline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:padding="@dimen/lobi_padding_middle" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lobi_section_underline"
+        android:background="@color/lobi_pearl_gray"
+        android:paddingTop="@dimen/lobi_padding_middle" >
+    </FrameLayout>
+
+</LinearLayout>

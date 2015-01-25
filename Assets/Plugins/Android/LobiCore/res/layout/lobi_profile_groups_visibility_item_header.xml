@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:lobi="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top|left"
+    android:background="@drawable/lobi_bg_light_repeat"
+    android:orientation="vertical" >
+
+ <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="@dimen/lobi_padding_high"
+        android:paddingTop="@dimen/lobi_padding_high"
+        android:text="@string/lobi_list_public_groups" />
+
+</LinearLayout>
