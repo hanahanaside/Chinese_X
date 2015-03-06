@@ -14,11 +14,11 @@
     <application>
         <meta-data
             android:name="com.kayac.lobi.sdk.clientId"
-            android:value="f92bd261db0bf4a1cf277fcee37d26d07d1e06ec" >
+            android:value="bf26a7955af25c6a5911e0888306dd56aeaa9f2c" >
         </meta-data>
         <meta-data
             android:name="com.kayac.lobi.sdk.accountBaseName"
-            android:value="LobiSDK User" >
+            android:value="Lobi User" >
         </meta-data>
 
         <service android:name="com.kayac.lobi.sdk.service.AppInstallChecker" >
@@ -26,7 +26,7 @@
         
         <service android:name="com.kayac.nakamap.sdk.auth.NakamapAuthCallbackService" android:exported="true">
             <intent-filter>
-                <action android:name="com.kayac.nakamap.NAKAMAP_APP_AUTH_CALLBACK_f92bd261db0bf4a1cf277fcee37d26d07d1e06ec" />
+                <action android:name="com.kayac.nakamap.NAKAMAP_APP_AUTH_CALLBACK_bf26a7955af25c6a5911e0888306dd56aeaa9f2c" />
             </intent-filter>
         </service>
         
@@ -76,7 +76,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="nakamapapp-f92bd261db0bf4a1cf277fcee37d26d07d1e06ec" />
+                <data android:scheme="nakamapapp-bf26a7955af25c6a5911e0888306dd56aeaa9f2c" />
             </intent-filter>
         </activity>
         <activity

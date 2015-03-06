@@ -93,6 +93,7 @@ GameObject:
   - 114: {fileID: 11400010}
   - 65: {fileID: 6500002}
   - 114: {fileID: 11400008}
+  - 114: {fileID: 11400044}
   m_Layer: 13
   m_Name: JumpButton
   m_TagString: Untagged
@@ -111,6 +112,7 @@ GameObject:
   - 114: {fileID: 11400014}
   - 65: {fileID: 6500004}
   - 114: {fileID: 11400012}
+  - 114: {fileID: 11400038}
   m_Layer: 13
   m_Name: AtackButton
   m_TagString: Untagged
@@ -128,6 +130,7 @@ GameObject:
   - 4: {fileID: 400016}
   - 114: {fileID: 11400018}
   - 114: {fileID: 11400020}
+  - 114: {fileID: 11400048}
   m_Layer: 13
   m_Name: PlayerLife
   m_TagString: Untagged
@@ -145,6 +148,7 @@ GameObject:
   - 4: {fileID: 400020}
   - 114: {fileID: 11400028}
   - 114: {fileID: 11400026}
+  - 114: {fileID: 11400046}
   m_Layer: 13
   m_Name: EnemyLife
   m_TagString: Untagged
@@ -177,6 +181,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400010}
   - 65: {fileID: 6500000}
+  - 114: {fileID: 11400050}
   m_Layer: 13
   m_Name: Joystick
   m_TagString: Untagged
@@ -302,7 +307,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .454345703, y: .0383796692, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400004}
@@ -314,7 +319,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -136.013123, y: -186.123123, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -352,7 +357,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -304.220001, y: -10.6999998, z: 0}
+  m_LocalPosition: {x: -389, y: -205, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
@@ -365,7 +370,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 293.359985, y: -223.699997, z: 0}
+  m_LocalPosition: {x: 256, y: -224, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400022}
@@ -377,7 +382,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 479.660004, y: -187.729996, z: 0}
+  m_LocalPosition: {x: 420, y: -192, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400022}
@@ -389,7 +394,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 386.000031, y: 236, z: 0}
+  m_LocalPosition: {x: 327, y: 224, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400006}
@@ -414,7 +419,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -381.000031, y: 239, z: 0}
+  m_LocalPosition: {x: -327, y: 224, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400008}
@@ -1297,6 +1302,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   remainingTimeLabel: {fileID: 11400032}
   time: 100
+--- !u!114 &11400038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8077b76001d36d489868d20d28bddb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiCamera: {fileID: 0}
+  container: {fileID: 100022}
+  side: 6
+  runOnlyOnce: 1
+  relativeOffset: {x: -.0900000036, y: .200000003}
+  pixelOffset: {x: 0, y: 0}
+  widgetContainer: {fileID: 0}
 --- !u!114 &11400040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1374,6 +1397,78 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreLabel: {fileID: 11400040}
+--- !u!114 &11400044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8077b76001d36d489868d20d28bddb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiCamera: {fileID: 0}
+  container: {fileID: 100022}
+  side: 6
+  runOnlyOnce: 1
+  relativeOffset: {x: -.25, y: .150000006}
+  pixelOffset: {x: 0, y: 0}
+  widgetContainer: {fileID: 0}
+--- !u!114 &11400046
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8077b76001d36d489868d20d28bddb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiCamera: {fileID: 0}
+  container: {fileID: 100022}
+  side: 2
+  runOnlyOnce: 1
+  relativeOffset: {x: .180000007, y: -.150000006}
+  pixelOffset: {x: 0, y: 0}
+  widgetContainer: {fileID: 0}
+--- !u!114 &11400048
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8077b76001d36d489868d20d28bddb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiCamera: {fileID: 0}
+  container: {fileID: 100022}
+  side: 4
+  runOnlyOnce: 1
+  relativeOffset: {x: -.180000007, y: -.150000006}
+  pixelOffset: {x: 0, y: 0}
+  widgetContainer: {fileID: 0}
+--- !u!114 &11400050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8077b76001d36d489868d20d28bddb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiCamera: {fileID: 0}
+  container: {fileID: 100022}
+  side: 0
+  runOnlyOnce: 1
+  relativeOffset: {x: .119999997, y: .180000007}
+  pixelOffset: {x: 0, y: 0}
+  widgetContainer: {fileID: 0}
 --- !u!114 &11441454
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -11,11 +11,19 @@ public class ShopContainerManager : MonoBehaviour {
 		#if UNITY_IPHONE
 		IAPManager.UpdateTicketCountEvent += UpdateTicketCountEvent;
 		#endif
+
+		#if UNITY_ANDROID
+		IABManager.UpdateTicketCountEvent += UpdateTicketCountEvent;
+		#endif
 	}
 
 	void OnDisable(){
 		#if UNITY_IPHONE
 		IAPManager.UpdateTicketCountEvent -= UpdateTicketCountEvent;
+		#endif
+
+		#if UNITY_ANDROID
+		IABManager.UpdateTicketCountEvent -= UpdateTicketCountEvent;
 		#endif
 	}
 
@@ -42,6 +50,10 @@ public class ShopContainerManager : MonoBehaviour {
 		SoundManager.instance.PlaySE (SoundManager.SECannel.Button);
 		#if UNITY_IPHONE
 		IAPManager.instance.PurchaseProduct (IAPManager.productID.item_2);
+		#endif
+
+		#if UNITY_ANDROID
+		IABManager.instance.PurchaseProduct(IABManager.Products.Ticket_2);
 		#endif
 	}
 

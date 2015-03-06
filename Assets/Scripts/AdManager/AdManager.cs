@@ -3,7 +3,7 @@ using System.Collections;
 
 public class AdManager : MonoSingleton<AdManager> {
 
-	//	#if !UNITY_EDITOR
+	#if !UNITY_EDITOR
 	private string mPublisherId = "34257";
 	private string mBannerMediaId = "135714";
 	private string mBannerSpotId = "344009";
@@ -17,14 +17,16 @@ public class AdManager : MonoSingleton<AdManager> {
 
 	private int mBannerViewId;
 	private int mIconViewId;
-	//	#endif
+	#endif
 
 	public override void OnInitialize () {
 	
+		#if !UNITY_EDITOR
 		if (Application.systemLanguage != SystemLanguage.Japanese) {
 			return;
 		}
-		//		#if !UNITY_EDITOR
+	
+
 		IMobileSdkAdsUnityPlugin.registerInline (mPublisherId, mBannerMediaId, mBannerSpotId);
 		mBannerViewId = IMobileSdkAdsUnityPlugin.show (mBannerSpotId, IMobileSdkAdsUnityPlugin.AdType.BANNER,
 		IMobileSdkAdsUnityPlugin.AdAlignPosition.CENTER, IMobileSdkAdsUnityPlugin.AdValignPosition.BOTTOM);
@@ -53,7 +55,7 @@ public class AdManager : MonoSingleton<AdManager> {
 		HideBannerAd ();
 		HideIconAd ();
 
-		//		#endif
+		#endif
 	}
 
 	public void ShowBannerAd () {
